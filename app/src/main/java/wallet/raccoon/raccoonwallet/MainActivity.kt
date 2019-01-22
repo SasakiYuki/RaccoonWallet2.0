@@ -1,12 +1,12 @@
 package wallet.raccoon.raccoonwallet
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import wallet.raccoon.raccoonwallet.view.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+  override fun setLayout() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+  }
 }
