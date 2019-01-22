@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import wallet.raccoon.raccoonwallet.BuildConfig
+import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 
-class SharedPreferencesService(context: Context) {
+class SharedPreferenceUtils(context: Context) {
     companion object {
         private const val SHARED_PREF_NAME = BuildConfig.APPLICATION_ID + ".preferences"
 
         private const val ACCOUNT_NAME = "account_name"
+        private const val MY_PROFILE = "my_profile"
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -22,6 +24,14 @@ class SharedPreferencesService(context: Context) {
                 sharedPreferences.putValue(ACCOUNT_NAME, it)
             } ?: run {
                 sharedPreferences.removeValue(ACCOUNT_NAME)
+            }
+        }
+
+    var myProfile:MyProfileEntity
+        get() = sharedPreferences.getValue(MY_PROFILE)
+        set(value) {
+            value?.let {
+                sharedPreferences.putValue()
             }
         }
 
