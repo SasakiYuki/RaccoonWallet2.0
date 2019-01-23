@@ -1,6 +1,6 @@
 package wallet.raccoon.raccoonwallet.model.epoxy
 
-//import wallet.raccoon.raccoonwallet.BR
+import wallet.raccoon.raccoonwallet.BR
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
@@ -27,8 +27,8 @@ abstract class DrawerHeaderModel : DataBindingEpoxyModel() {
 
     override fun setDataBindingVariables(binding: ViewDataBinding?) {
         binding?.let {
-//            it.setVariable(BR.name, name)
-//            it.setVariable(BR.clickListener, onClickHeaderListener)
+            it.setVariable(BR.name, name)
+            it.setVariable(BR.clickListener, onClickHeaderListener)
 
             it.root.apply {
                 val userScreenImageView = findViewById<ImageView>(R.id.userScreenImageView)
