@@ -20,14 +20,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 def supportLibraryVersion = '1.0.2'
 def daggerVersion = "2.21"
 def lifecycleVersion = "2.0.0"
+def coroutineVersion = '1.0.0'
+def epoxyVersion = "2.9.0"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // KotlinCoroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutineVersion"
 
     // AndroidSupportLibrary
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
@@ -51,6 +64,21 @@ dependencies {
     // RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Epoxy
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    implementation "com.airbnb.android:epoxy-databinding:$epoxyVersion"
+    kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
+    annotationProcessor "com.airbnb.android:epoxy-processor:$epoxyVersion"
+
+    // CircleImage
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

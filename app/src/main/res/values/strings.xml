@@ -34,6 +34,7 @@
   <string name="com_select">選択</string>
   <string name="com_complete">完了</string>
   <string name="com_delete">削除</string>
+  <string name="com_network_error">ネットワークエラー</string>
 
   <!-- Menu -->
   <string name="menu_search">検索</string>
