@@ -3,17 +3,18 @@ package wallet.raccoon.raccoonwallet
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
-import kotlinx.android.synthetic.main.activity_main.*
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.view.BaseActivity
+import wallet.raccoon.raccoonwallet.view.DrawerListController
+import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), HasSupportFragmentInjector {
+    private lateinit var viewModel: MainActivityViewModel
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
@@ -21,10 +22,20 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
     override fun supportFragmentInjector() = fragmentDispatchingAndroidInjector
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         showSplash()
+    }
+
+    private fun setupViweModel() {
+        viewModel = ViewModelProviders.of(this)
+            .get(MainActivityViewModel::class.java)
+
+        viewModel.myProfileData.observe(this, Observer {
+
+        })
     }
 
     private fun showSplash() {
@@ -39,28 +50,25 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
         }
     }
 
-    private fun setupNavigationRecyclerView() {
-//        val myProfileString =
-//            SharedPreferenceUtils[this@MainActivity, KEY_PREF_MY_PROFILE, Gson().toJson(MyProfileEntity())]
-//        val myProfile = Gson().fromJson(myProfileString, MyProfileEntity::class.java)
-//        controller = DrawerListController(
-//            this@MainActivity,
-//            if (myProfile.name.isEmpty()) getString(R.string.my_address_profile_activity_title_initial_guest) else myProfile.name,
-//            myProfile.screenPath,
-//            myProfile.iconPath
-//        )
-//        navigationRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
-//        navigationRecyclerView.adapter = controller.adapter
-//        val drawerIconTypes = DrawerItemType.values()
-//        val list = ArrayList<DrawerEntity>()
-//        drawerIconTypes.mapTo(list) {
-//            DrawerEntity(
-//                ContextCompat.getDrawable(this@MainActivity, it.imageResource)!!,
-//                getString(it.titleResource),
-//                it.drawerType
-//            )
-//        }
-//        controller.setData(list)
+    private fun setupNavigationRecyclerView(myProfile: MyProfileEntity) {
+        controller = DrawerListController(
+            this,
+            if (myProfile.name.isEmpty()) getString(R.string.my_address_profile_activity_title_initial_guest) else myProfile.name,
+            myProfile.screenPath,
+            myProfile.iconPath
+        )
+        navigationRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+        navigationRecyclerView.adapter = controller.adapter
+        val drawerIconTypes = DrawerItemType.values()
+        val list = ArrayList<DrawerEntity>()
+        drawerIconTypes.mapTo(list) {
+            DrawerEntity(
+                ContextCompat.getDrawable(this@MainActivity, it.imageResource)!!,
+                getString(it.titleResource),
+                it.drawerType
+            )
+        }
+        controller.setData(list)
     }
 
     private val shouldShowSplash by lazy {
