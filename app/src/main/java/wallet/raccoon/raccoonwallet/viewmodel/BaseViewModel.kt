@@ -1,11 +1,10 @@
 package wallet.raccoon.raccoonwallet.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-open class BaseViewModel(application: Application) : AndroidViewModel(application) {
+open class BaseViewModel() : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     protected fun addDisposable(disposable: Disposable) {

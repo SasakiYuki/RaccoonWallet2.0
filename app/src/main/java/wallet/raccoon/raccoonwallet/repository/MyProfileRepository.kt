@@ -1,15 +1,18 @@
 package wallet.raccoon.raccoonwallet.repository
 
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
-import kotlin.coroutines.suspendCoroutine
+import javax.inject.Inject
 
-class MyProfileRepository(
-  private val sharedPreferenceUtils: SharedPreferenceUtils
+class MyProfileRepository @Inject constructor(
+    private val sharedPreferenceUtils: SharedPreferenceUtils
 ) {
 
-  suspend fun loadMyProfile(): Deferred<MyProfileEntity> = suspendCoroutine {
-    sharedPreferenceUtils.myProfile
-  }
+    fun loadMyProfile(): Deferred<MyProfileEntity?> =
+        GlobalScope.async {
+            sharedPreferenceUtils.myProfile
+        }
 }

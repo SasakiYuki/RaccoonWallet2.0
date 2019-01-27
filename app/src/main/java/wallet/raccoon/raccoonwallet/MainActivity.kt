@@ -3,18 +3,39 @@ package wallet.raccoon.raccoonwallet
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import wallet.raccoon.raccoonwallet.di.ViewModelFactory
+import wallet.raccoon.raccoonwallet.model.DrawerEntity
+import wallet.raccoon.raccoonwallet.model.DrawerItemType
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.view.BaseActivity
 import wallet.raccoon.raccoonwallet.view.DrawerListController
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasSupportFragmentInjector {
+class MainActivity : BaseActivity(), HasSupportFragmentInjector, DrawerListController.OnDrawerClickListener {
+    override fun onHeaderClick() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRowClick(drawerEntity: DrawerEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     private lateinit var viewModel: MainActivityViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
@@ -24,17 +45,23 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
+        setupViewModel()
         showSplash()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.loadMyProfile()
+        }
     }
 
-    private fun setupViweModel() {
-        viewModel = ViewModelProviders.of(this)
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(MainActivityViewModel::class.java)
 
         viewModel.myProfileData.observe(this, Observer {
-
+            setupNavigationRecyclerView(it)
         })
     }
 
@@ -51,7 +78,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
     }
 
     private fun setupNavigationRecyclerView(myProfile: MyProfileEntity) {
-        controller = DrawerListController(
+        val controller = DrawerListController(
             this,
             if (myProfile.name.isEmpty()) getString(R.string.my_address_profile_activity_title_initial_guest) else myProfile.name,
             myProfile.screenPath,

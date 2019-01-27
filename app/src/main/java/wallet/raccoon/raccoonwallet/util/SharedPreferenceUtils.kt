@@ -17,8 +17,10 @@ class SharedPreferenceUtils(context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE)
 
-    var myProfile: MyProfileEntity
-        get() = Gson().fromJson(sharedPreferences.getValue(MY_PROFILE), MyProfileEntity::class.java)
+    var myProfile: MyProfileEntity?
+        get() = sharedPreferences.getValue(MY_PROFILE)?.let {
+            Gson().fromJson(sharedPreferences.getValue(MY_PROFILE), MyProfileEntity::class.java)
+        }
         set(value) {
             sharedPreferences.putValue(MY_PROFILE, Gson().toJson(value))
         }
