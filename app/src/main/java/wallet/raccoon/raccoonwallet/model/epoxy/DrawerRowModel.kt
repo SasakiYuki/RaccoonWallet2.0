@@ -5,6 +5,7 @@ import androidx.databinding.ViewDataBinding
 import com.airbnb.epoxy.DataBindingEpoxyModel
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
+import wallet.raccoon.raccoonwallet.BR
 //import wallet.raccoon.raccoonwallet.BR
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.model.DrawerEntity
@@ -18,7 +19,7 @@ abstract class DrawerRowModel : DataBindingEpoxyModel() {
   var drawerEntity: DrawerEntity? = null
 
   override fun setDataBindingVariables(binding: ViewDataBinding?) {
-//    binding?.setVariable(BR.clickListener, onClickRowListener)
-//    binding?.setVariable(BR.drawer, drawerEntity)
+    binding?.setVariable(BR.clickListener, onClickRowListener)
+    binding?.setVariable(BR.drawer, drawerEntity)
   }
 }
