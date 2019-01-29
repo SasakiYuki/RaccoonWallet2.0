@@ -57,7 +57,7 @@
   <string name="main_navigation_help">Help</string>
   <string name="main_navigation_setting">設定</string>
   <string name="main_bottom_navigation_receive">RECEIVE</string>
-  <string name="main_bottom_navigation_home">HOME</string>
+  <string name="main_bottom_navigation_home"> </string>
   <string name="main_bottom_navigation_send">SEND</string>
   <string name="main_bottom_navigation_qr_labo">QR Lab</string>
   <string name="main_bottom_navigation_scan">SCAN</string>

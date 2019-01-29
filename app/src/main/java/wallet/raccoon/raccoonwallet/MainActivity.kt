@@ -3,27 +3,35 @@ package wallet.raccoon.raccoonwallet
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayout
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.drawerLayout
 import kotlinx.android.synthetic.main.activity_main.navigationRecyclerView
 import kotlinx.android.synthetic.main.activity_main.nemIcon
+import kotlinx.android.synthetic.main.activity_main.tabLayout
+import kotlinx.android.synthetic.main.activity_main.viewpager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.model.DrawerEntity
 import wallet.raccoon.raccoonwallet.model.DrawerItemType
+import wallet.raccoon.raccoonwallet.model.MainBottomNavigationType
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.util.ToastUtil
 import wallet.raccoon.raccoonwallet.view.BaseActivity
 import wallet.raccoon.raccoonwallet.view.DrawerListController
+import wallet.raccoon.raccoonwallet.view.adapter.TopFragmentPagerAdapter
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
@@ -46,6 +54,8 @@ class MainActivity : BaseActivity(),
 
     setupViewModel()
     showSplash()
+    setupViewPager()
+    setupBottomTabLayout()
 
     nemIcon.setOnClickListener {
       if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawers()
@@ -81,6 +91,103 @@ class MainActivity : BaseActivity(),
     } else {
 //            hideSplash()
     }
+  }
+
+  private fun setupViewPager() {
+    val adapter = TopFragmentPagerAdapter(supportFragmentManager)
+    viewpager.adapter = adapter
+    tabLayout.setupWithViewPager(viewpager)
+    viewpager.currentItem = HOME_POSITION
+    viewpager.offscreenPageLimit = 5
+  }
+
+  private fun setupBottomTabLayout() {
+    val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    setupTabAt(inflater, 0)
+    setupTabAt(inflater, 1)
+    setupTabAt(inflater, 2)
+    setupTabAt(inflater, 3)
+    setupTabAt(inflater, 4)
+    tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+      override fun onTabReselected(tab: TabLayout.Tab?) {
+      }
+
+      override fun onTabUnselected(tab: TabLayout.Tab?) {
+        val color = R.color.textGray
+        tab?.let {
+          getTabTextView(tab)?.let {
+            setTextColor(it, color)
+          }
+          getTabImageView(tab)?.let {
+            setDrawableTint(it, color)
+          }
+        }
+      }
+
+      override fun onTabSelected(tab: TabLayout.Tab?) {
+        val color = R.color.nemGreen
+        tab?.let {
+          getTabTextView(tab)?.let {
+            setTextColor(it, color)
+          }
+          getTabImageView(tab)?.let {
+            setDrawableTint(it, color)
+          }
+        }
+      }
+
+    })
+  }
+
+  private fun setDrawableTint(
+    imageView: ImageView,
+    color: Int
+  ) {
+    imageView.setColorFilter(
+        ContextCompat.getColor(this@MainActivity, color), android.graphics.PorterDuff.Mode.SRC_IN
+    )
+  }
+
+  private fun setTextColor(
+    textView: TextView,
+    color: Int
+  ) {
+    textView.setTextColor(ContextCompat.getColor(this, color))
+  }
+
+  private fun getTabImageView(tab: TabLayout.Tab): ImageView? {
+    tab.customView?.let {
+      return it.findViewById(R.id.tabLayoutImageView)
+    }
+    return null
+  }
+
+  private fun getTabTextView(tab: TabLayout.Tab): TextView? {
+    tab.customView?.let {
+      return it.findViewById(R.id.tabLayoutTextView)
+    }
+    return null
+  }
+
+  private fun setupTabAt(
+    layoutInflater: LayoutInflater,
+    position: Int
+  ) {
+    val tab = tabLayout.getTabAt(position)
+    val items = MainBottomNavigationType.values()
+    val text = getString(items[position].textResource)
+
+    val tab1View = layoutInflater.inflate(R.layout.view_main_tab, null)
+    val textView = tab1View.findViewById<TextView>(R.id.tabLayoutTextView)
+    val imageView = tab1View.findViewById<ImageView>(R.id.tabLayoutImageView)
+    textView.text = text
+    if (position == HOME_POSITION) {
+      val color = R.color.nemGreen
+      setTextColor(textView, color)
+      setDrawableTint(imageView, color)
+    }
+    imageView.setImageDrawable(ContextCompat.getDrawable(this, items[position].drawableResource))
+    tab!!.customView = tab1View
   }
 
   private fun setupNavigationRecyclerView(myProfile: MyProfileEntity) {
