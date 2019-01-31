@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.viewpager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import wallet.raccoon.raccoonwallet.R.string
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.model.DrawerEntity
 import wallet.raccoon.raccoonwallet.model.DrawerItemType
@@ -30,8 +31,8 @@ import wallet.raccoon.raccoonwallet.model.MainBottomNavigationType
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.util.ToastUtil
 import wallet.raccoon.raccoonwallet.view.BaseActivity
-import wallet.raccoon.raccoonwallet.view.DrawerListController
 import wallet.raccoon.raccoonwallet.view.adapter.TopFragmentPagerAdapter
+import wallet.raccoon.raccoonwallet.view.controller.DrawerListController
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
@@ -194,7 +195,7 @@ class MainActivity : BaseActivity(),
     val controller = DrawerListController(
         this,
         if (myProfile.name.isEmpty()) getString(
-            R.string.my_address_profile_activity_title_initial_guest
+            string.my_address_profile_activity_title_initial_guest
         ) else myProfile.name,
         myProfile.screenPath,
         myProfile.iconPath

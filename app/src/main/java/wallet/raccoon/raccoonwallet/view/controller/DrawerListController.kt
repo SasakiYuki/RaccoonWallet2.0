@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.view
+package wallet.raccoon.raccoonwallet.view.controller
 
 import android.view.View
 import androidx.lifecycle.ViewModelProviders

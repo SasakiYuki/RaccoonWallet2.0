@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.DammyFragment
+import wallet.raccoon.raccoonwallet.view.fragment.HomeFragment
 
 class TopFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
   private val list = ArrayList<Fragment>()
@@ -11,7 +12,7 @@ class TopFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
   init {
     list.add(DammyFragment.createIntent())
     list.add(DammyFragment.createIntent())
-    list.add(DammyFragment.createIntent())
+    list.add(HomeFragment.newInstance())
     list.add(DammyFragment.createIntent())
     list.add(DammyFragment.createIntent())
   }
