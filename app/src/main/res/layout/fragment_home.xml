@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,81 +28,65 @@
         android:foreground="?selectableItemBackground"
         >
 
-      <FrameLayout
+      <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:orientation="vertical"
           >
 
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            />
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            >
+          <ImageView
+              android:layout_width="12dp"
+              android:layout_height="12dp"
+              android:layout_marginStart="32dp"
+              android:contentDescription="@null"
+              android:src="@mipmap/icon_home_harvest"
+              android:tint="@color/gray_medium"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="6dp"
+              android:text="@string/home_fragment_balance"
+              android:textSize="12sp"
+              />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             >
 
-          <ImageView
-              android:layout_width="wrap_content"
+          <TextView
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:gravity="center"
+              tools:text="1,500.192837"
+              android:textSize="32sp"
+              android:textColor="@color/textBlack"
+              android:layout_marginTop="22dp"
               android:layout_height="wrap_content"
-              android:layout_marginLeft="10dp"
               />
 
-          <LinearLayout
-              android:layout_width="match_parent"
+          <TextView
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_marginTop="20dp"
-              android:orientation="horizontal"
-              android:weightSum="10"
-              >
-
-            <TextView
-                android:id="@+id/balanceText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_weight="7"
-                android:text="0.000000000"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="right"
-                android:text="xem"
-                android:textSize="20sp"
-                />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                />
-          </LinearLayout>
-
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal"
-              android:weightSum="10"
-              >
-
-            <TextView
-                android:id="@+id/jpyText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:gravity="right"
-                />
-          </LinearLayout>
+              android:text="@string/com_xem_uppercase"
+              android:layout_marginRight="32dp"
+              android:textColor="@color/textBlack"
+              android:layout_gravity="bottom"
+              android:textSize="20sp"
+              />
         </LinearLayout>
-      </FrameLayout>
+
+      </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -155,28 +140,28 @@
           </LinearLayout>
 
           <!--<wacode.yamada.yuki.nempaymentapp.view.MiniTransactionItemView-->
-              <!--android:id="@+id/miniTransactionItemView1"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--/>-->
+          <!--android:id="@+id/miniTransactionItemView1"-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--/>-->
 
           <!--<wacode.yamada.yuki.nempaymentapp.view.MiniTransactionItemView-->
-              <!--android:id="@+id/miniTransactionItemView2"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--/>-->
+          <!--android:id="@+id/miniTransactionItemView2"-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--/>-->
 
           <!--<wacode.yamada.yuki.nempaymentapp.view.MiniTransactionItemView-->
-              <!--android:id="@+id/miniTransactionItemView3"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--/>-->
+          <!--android:id="@+id/miniTransactionItemView3"-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--/>-->
 
           <!--<wacode.yamada.yuki.nempaymentapp.view.MiniTransactionItemView-->
-              <!--android:id="@+id/miniTransactionItemView4"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--/>-->
+          <!--android:id="@+id/miniTransactionItemView4"-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--/>-->
         </LinearLayout>
 
         <FrameLayout
@@ -264,10 +249,10 @@
           </LinearLayout>
 
           <!--<wacode.yamada.yuki.nempaymentapp.view.MiniHarvestItemView-->
-              <!--android:id="@+id/miniHarvestItemView"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--/>-->
+          <!--android:id="@+id/miniHarvestItemView"-->
+          <!--android:layout_width="match_parent"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--/>-->
 
         </LinearLayout>
 
