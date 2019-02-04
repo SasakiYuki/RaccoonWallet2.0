@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.store
+package wallet.raccoon.raccoonwallet.store.getter
 
 import io.reactivex.Observable
 import wallet.raccoon.raccoonwallet.flux.DisposableMapper

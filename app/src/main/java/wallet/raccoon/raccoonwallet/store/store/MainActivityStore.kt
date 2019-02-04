@@ -1,8 +1,9 @@
-package wallet.raccoon.raccoonwallet.store
+package wallet.raccoon.raccoonwallet.store.store
 
 import io.reactivex.Observable
 import wallet.raccoon.raccoonwallet.flux.Store
 import wallet.raccoon.raccoonwallet.store.creator.MainActivityActionCreator
+import wallet.raccoon.raccoonwallet.store.getter.MainActivityGetter
 import wallet.raccoon.raccoonwallet.store.reducer.MainActivityReducer
 import wallet.raccoon.raccoonwallet.store.type.MainActivityActionType
 import wallet.raccoon.raccoonwallet.usecase.MainActivityUseCase
