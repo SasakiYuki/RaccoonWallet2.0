@@ -12,6 +12,7 @@ class SharedPreferenceUtils(context: Context) {
         private const val SHARED_PREF_NAME = BuildConfig.APPLICATION_ID + ".preferences"
 
         private const val MY_PROFILE = "my_profile"
+        private const val NODE_TYPE_NAME = "node_type"
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -24,6 +25,10 @@ class SharedPreferenceUtils(context: Context) {
         set(value) {
             sharedPreferences.putValue(MY_PROFILE, Gson().toJson(value))
         }
+
+    var nodeTypeName: String
+        get() = sharedPreferences.getValue(NODE_TYPE_NAME) ?: ""
+        set(value) = sharedPreferences.putValue(NODE_TYPE_NAME, value)
 
     private fun SharedPreferences.getValue(key: String): String? = this.getString(key, "")
 

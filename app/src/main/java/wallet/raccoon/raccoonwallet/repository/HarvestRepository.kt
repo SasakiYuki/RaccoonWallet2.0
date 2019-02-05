@@ -1,4 +1,8 @@
 package wallet.raccoon.raccoonwallet.repository
 
-class HarvestRepository {
+import wallet.raccoon.raccoonwallet.rest.service.HarvestService
+import javax.inject.Inject
+
+class HarvestRepository @Inject constructor(private val harvestService: HarvestService) {
+    fun getHarvestInfo(address: String) = harvestService.getHarvestInfo(address)
 }
