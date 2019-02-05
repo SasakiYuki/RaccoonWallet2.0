@@ -83,6 +83,9 @@ dependencies {
     // CircleImage
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+    // Nem-Kotlin
+    implementation 'com.ryuta46:nem-kotlin:0.4.2'
+
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
