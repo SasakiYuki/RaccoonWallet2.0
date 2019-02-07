@@ -1,5 +1,7 @@
 package wallet.raccoon.raccoonwallet.rest
 
+import com.google.gson.GsonBuilder
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,24 +18,24 @@ object ApiManager {
 
     fun builder(): Retrofit {
         val retrofit = Retrofit.Builder()
-                .baseUrl(getBaseUrl())
-                .client(builderHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(builderHttpClient())
-                .build()
+            .baseUrl(getBaseUrl())
+            .client(builderHttpClient())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(builderHttpClient())
+            .build()
         return retrofit
     }
 
     fun builderNemBook(): Retrofit {
         val url: String = API_NEM_BOOK_URL
         return Retrofit.Builder()
-                .baseUrl(url)
-                .client(builderHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(builderHttpClient())
-                .build()
+            .baseUrl(url)
+            .client(builderHttpClient())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(builderHttpClient())
+            .build()
     }
 
     private fun builderHttpClient(): OkHttpClient {
@@ -49,9 +51,9 @@ object ApiManager {
             val original = chain.request()
 
             val request = original.newBuilder()
-                    .header("Accept", "application/json")
-                    .method(original.method(), original.body())
-                    .build()
+                .header("Accept", "application/json")
+                .method(original.method(), original.body())
+                .build()
 
             val response = chain.proceed(request)
 
@@ -64,27 +66,27 @@ object ApiManager {
     fun builderZaif(): Retrofit {
         val url: String = API_ZAIF_URL
         return Retrofit.Builder()
-                .baseUrl(url)
-                .client(builderHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(builderHttpClient())
-                .build()
+            .baseUrl(url)
+            .client(builderHttpClient())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(builderHttpClient())
+            .build()
     }
 
     fun builderNodeExplorer(): Retrofit {
         val url: String = API_NODE_EXPLORER
         return Retrofit.Builder()
-                .baseUrl(url)
-                .client(builderHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(builderHttpClient())
-                .build()
+            .baseUrl(url)
+            .client(builderHttpClient())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(builderHttpClient())
+            .build()
     }
 
     fun getBaseUrl() =
-            ActiveNodeHelper.selectedNodeType?.let { "http://" + it.nodeBaseUrl }
-                    ?: run { "http://" + NodeType.ALICE2.nodeBaseUrl }
+        ActiveNodeHelper.selectedNodeType?.let { "http://" + it.nodeBaseUrl }
+            ?: run { "http://" + NodeType.ALICE2.nodeBaseUrl }
 
 }
