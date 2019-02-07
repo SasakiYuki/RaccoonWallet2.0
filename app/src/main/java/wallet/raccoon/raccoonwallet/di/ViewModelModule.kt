@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 
 @Module
@@ -16,5 +17,10 @@ internal abstract class ViewModelModule {
   @IntoMap
   @ViewModelKey(MainActivityViewModel::class)
   abstract fun bindMainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(HomeFragmentViewModel::class)
+  abstract fun bindHomeFragmentViewModel(viewModel: HomeFragmentViewModel): ViewModel
 
 }
