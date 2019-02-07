@@ -1,6 +1,6 @@
 package wallet.raccoon.raccoonwallet.repository
 
-import wallet.raccoon.raccoonwallet.rest.service.HarvestService
+import wallet.raccoon.raccoonwallet.rest.HarvestService
 import javax.inject.Inject
 
 class HarvestRepository @Inject constructor(private val harvestService: HarvestService) {
