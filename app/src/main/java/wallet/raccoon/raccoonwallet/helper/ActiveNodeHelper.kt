@@ -5,7 +5,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import wallet.raccoon.raccoonwallet.rest.ApiManager
-import wallet.raccoon.raccoonwallet.rest.NodeExplorerApiService
+import wallet.raccoon.raccoonwallet.rest.service.NodeExplorerApiService
 import wallet.raccoon.raccoonwallet.type.NodeType
 import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
 

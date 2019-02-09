@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.rest
+package wallet.raccoon.raccoonwallet.rest.service
 
 import com.ryuta46.nemkotlin.model.AccountMetaDataPair
 import kotlinx.coroutines.Deferred

@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.rest
+package wallet.raccoon.raccoonwallet.rest.service
 
 import io.reactivex.Single
 import retrofit2.http.GET

@@ -3,7 +3,7 @@ package wallet.raccoon.raccoonwallet.di
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
-import wallet.raccoon.raccoonwallet.rest.AccountService
+import wallet.raccoon.raccoonwallet.rest.service.AccountService
 import javax.inject.Singleton
 
 @Module
