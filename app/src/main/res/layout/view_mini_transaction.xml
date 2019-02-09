@@ -10,11 +10,11 @@
       android:id="@+id/dateTimeTextView"
       android:layout_width="70dp"
       android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
       android:gravity="end"
       android:textColor="@color/textGray"
       android:textSize="12sp"
       tools:text="12/30,2018"
-      android:layout_marginStart="32dp"
       />
 
   <ImageView
@@ -41,11 +41,11 @@
       android:id="@+id/amountTextView"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginEnd="32dp"
       android:layout_weight="1"
-      android:gravity="right"
+      android:gravity="end"
       android:textColor="@color/textBlack"
       android:textSize="12sp"
-      android:layout_marginEnd="32dp"
       tools:text="23,000 xem"
       />
 </LinearLayout>
