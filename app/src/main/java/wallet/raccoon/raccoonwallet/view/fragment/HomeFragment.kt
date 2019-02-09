@@ -2,14 +2,19 @@ package wallet.raccoon.raccoonwallet.view.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.ryuta46.nemkotlin.model.TransactionMetaDataPair
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_home.balanceTextView
 import kotlinx.android.synthetic.main.fragment_home.harvestEmptyView
 import kotlinx.android.synthetic.main.fragment_home.miniHarvestItemView
+import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView1
+import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView2
+import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView3
+import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView4
+import kotlinx.android.synthetic.main.fragment_home.transactionEmptyView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,7 +56,7 @@ class HomeFragment : BaseFragment() {
     })
 
     viewModel.transactionList.observe(this, Observer {
-      
+      setupTransactionItems(it.data)
     })
 
     viewModel.accountInfoData.observe(this, Observer {
@@ -66,6 +71,35 @@ class HomeFragment : BaseFragment() {
       viewModel.loadHarvestInfo("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
       viewModel.loadAccountInfo("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
       viewModel.loadTransactionList("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
+    }
+  }
+
+  private fun setupTransactionItems(list: List<TransactionMetaDataPair>) {
+    val address = "NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK" // TODO アドレスをアカウントから取得する
+    val selectedList = ArrayList<TransactionMetaDataPair>()
+    list.filterTo(
+        selectedList
+    ) { it.transaction.mosaics == null || (it.transaction.mosaics != null && it.transaction.mosaics!!.isEmpty()) }
+    if (selectedList.isNotEmpty()) {
+      transactionEmptyView.visibility = View.GONE
+      miniTransactionItemView1.setupTransaction(address, list[0])
+      if (selectedList.size > 1) {
+        miniTransactionItemView2.setupTransaction(address, list[1])
+      } else {
+        miniTransactionItemView2.visibility = View.GONE
+      }
+
+      if (selectedList.size > 2) {
+        miniTransactionItemView3.setupTransaction(address, list[2])
+      } else {
+        miniTransactionItemView3.visibility = View.GONE
+      }
+
+      if (selectedList.size > 3) {
+        miniTransactionItemView4.setupTransaction(address, list[3])
+      } else {
+        miniTransactionItemView4.visibility = View.GONE
+      }
     }
   }
 
