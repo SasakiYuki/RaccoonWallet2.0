@@ -2,10 +2,12 @@ package wallet.raccoon.raccoonwallet.view.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_home.balanceTextView
 import kotlinx.android.synthetic.main.fragment_home.harvestEmptyView
 import kotlinx.android.synthetic.main.fragment_home.miniHarvestItemView
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
+import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
 import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
+import java.text.NumberFormat
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
@@ -46,9 +50,22 @@ class HomeFragment : BaseFragment() {
           }
     })
 
+    viewModel.transactionList.observe(this, Observer {
+
+    })
+
+    viewModel.accountInfoData.observe(this, Observer {
+      it?.let { accountMetaDataPair ->
+        balanceTextView.text = NumberFormat.getNumberInstance()
+            .format(accountMetaDataPair.account.balance.convertNEMFromMicroToDouble())
+      }
+    })
+
     CoroutineScope(Dispatchers.IO).launch {
       // TODO アドレスをアカウントから取得する
       viewModel.loadHarvestInfo("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
+      viewModel.loadAccountInfo("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
+      viewModel.loadTransactionList("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
     }
   }
 
