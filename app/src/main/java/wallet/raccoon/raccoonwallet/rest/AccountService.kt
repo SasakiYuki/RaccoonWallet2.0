@@ -1,11 +1,11 @@
 package wallet.raccoon.raccoonwallet.rest
 
 import com.ryuta46.nemkotlin.model.AccountMetaDataPair
-import com.ryuta46.nemkotlin.model.TransactionMetaDataPair
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
+import wallet.raccoon.raccoonwallet.model.rest.TransactionData
 
 interface AccountService {
 
@@ -14,7 +14,7 @@ interface AccountService {
     @Query(
         "address"
     ) address: String
-  ): Deferred<List<TransactionMetaDataPair>>
+  ): Deferred<TransactionData>
 
   @GET("/account/get")
   fun accountGet(@Query("address") address: String): Deferred<AccountMetaDataPair>

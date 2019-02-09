@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ryuta46.nemkotlin.model.AccountMetaDataPair
 import com.ryuta46.nemkotlin.model.TransactionMetaDataPair
 import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
+import wallet.raccoon.raccoonwallet.model.rest.TransactionData
 import wallet.raccoon.raccoonwallet.store.store.HomeFragmentStore
 import javax.inject.Inject
 
@@ -14,7 +15,7 @@ class HomeFragmentViewModel @Inject constructor(
 ) : BaseViewModel() {
   val harvestInfoData: MutableLiveData<HarvestInfos> = MutableLiveData()
   val accountInfoData: MutableLiveData<AccountMetaDataPair> = MutableLiveData()
-  val transactionList: MutableLiveData<List<TransactionMetaDataPair>> = MutableLiveData()
+  val transactionList: MutableLiveData<TransactionData> = MutableLiveData()
 
   init {
     addDisposable(store.getter.harvestList

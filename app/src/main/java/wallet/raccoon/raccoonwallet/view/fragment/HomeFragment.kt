@@ -51,7 +51,7 @@ class HomeFragment : BaseFragment() {
     })
 
     viewModel.transactionList.observe(this, Observer {
-
+      
     })
 
     viewModel.accountInfoData.observe(this, Observer {
