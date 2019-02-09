@@ -40,6 +40,7 @@
             android:layout_marginTop="6dp"
             android:gravity="center"
             android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables"
             >
           <ImageView
               android:layout_width="12dp"
@@ -79,7 +80,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="bottom"
-              android:layout_marginRight="32dp"
+              android:layout_marginEnd="32dp"
               android:text="@string/com_xem_uppercase"
               android:textColor="@color/textBlack"
               android:textSize="20sp"
@@ -232,8 +233,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="100dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="22dp"
             android:orientation="vertical"
             >
@@ -244,12 +245,14 @@
               android:layout_height="match_parent"
               android:layout_marginBottom="10dp"
               android:orientation="horizontal"
+              tools:ignore="UseCompoundDrawables"
               >
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:contentDescription="@null"
                 android:src="@mipmap/image_empty2_small"
                 />
 
@@ -257,7 +260,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginLeft="26dp"
+                android:layout_marginStart="26dp"
                 android:gravity="center"
                 android:text="@string/home_fragment_empty_harvest"
                 android:textColor="@color/hintGray"
@@ -265,11 +268,13 @@
                 />
           </LinearLayout>
 
-          <!--<wacode.yamada.yuki.nempaymentapp.view.MiniHarvestItemView-->
-          <!--android:id="@+id/miniHarvestItemView"-->
-          <!--android:layout_width="match_parent"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--/>-->
+          <wallet.raccoon.raccoonwallet.view.MiniHarvestItemView
+              android:id="@+id/miniHarvestItemView"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="15dp"
+              android:layout_marginTop="15dp"
+              />
 
         </LinearLayout>
       </FrameLayout>
