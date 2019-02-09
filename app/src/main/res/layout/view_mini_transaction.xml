@@ -14,6 +14,7 @@
       android:textColor="@color/textGray"
       android:textSize="12sp"
       tools:text="12/30,2018"
+      android:layout_marginStart="32dp"
       />
 
   <ImageView
@@ -44,6 +45,7 @@
       android:gravity="right"
       android:textColor="@color/textBlack"
       android:textSize="12sp"
+      android:layout_marginEnd="32dp"
       tools:text="23,000 xem"
       />
 </LinearLayout>
