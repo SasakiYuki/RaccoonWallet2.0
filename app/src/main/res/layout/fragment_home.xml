@@ -87,6 +87,16 @@
               android:textSize="20sp"
               />
         </LinearLayout>
+        <TextView
+            android:id="@+id/nemJpPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/textBlack"
+            android:textSize="16sp"
+            />
 
       </LinearLayout>
     </androidx.cardview.widget.CardView>

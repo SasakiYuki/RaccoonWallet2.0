@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView1
 import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView2
 import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView3
 import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView4
+import kotlinx.android.synthetic.main.fragment_home.nemJpPriceTextView
 import kotlinx.android.synthetic.main.fragment_home.transactionEmptyView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,7 @@ import kotlinx.coroutines.launch
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
+import wallet.raccoon.raccoonwallet.extentions.remove
 import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
 import java.text.NumberFormat
 import javax.inject.Inject
@@ -64,6 +66,19 @@ class HomeFragment : BaseFragment() {
         balanceTextView.text = NumberFormat.getNumberInstance()
             .format(accountMetaDataPair.account.balance.convertNEMFromMicroToDouble())
       }
+      CoroutineScope(Dispatchers.IO).launch {
+        viewModel.loadNemPrice()
+      }
+    })
+
+    viewModel.nemPriceData.observe(this, Observer {
+      val balanceText = balanceTextView.text.toString()
+          .remove(",")
+          .toDouble()
+      nemJpPriceTextView.text = getString(
+          R.string.home_fragment_jpy_before,
+          NumberFormat.getNumberInstance().format(balanceText * it.last_price)
+      )
     })
 
     CoroutineScope(Dispatchers.IO).launch {

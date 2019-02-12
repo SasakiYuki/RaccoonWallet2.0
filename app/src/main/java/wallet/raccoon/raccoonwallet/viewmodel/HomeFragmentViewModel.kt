@@ -3,9 +3,9 @@ package wallet.raccoon.raccoonwallet.viewmodel
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.ryuta46.nemkotlin.model.AccountMetaDataPair
-import com.ryuta46.nemkotlin.model.TransactionMetaDataPair
 import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
 import wallet.raccoon.raccoonwallet.model.rest.TransactionData
+import wallet.raccoon.raccoonwallet.model.rest.ZaifNemEntity
 import wallet.raccoon.raccoonwallet.store.store.HomeFragmentStore
 import javax.inject.Inject
 
@@ -16,6 +16,7 @@ class HomeFragmentViewModel @Inject constructor(
   val harvestInfoData: MutableLiveData<HarvestInfos> = MutableLiveData()
   val accountInfoData: MutableLiveData<AccountMetaDataPair> = MutableLiveData()
   val transactionList: MutableLiveData<TransactionData> = MutableLiveData()
+  val nemPriceData: MutableLiveData<ZaifNemEntity> = MutableLiveData()
 
   init {
     addDisposable(store.getter.harvestList
@@ -32,6 +33,11 @@ class HomeFragmentViewModel @Inject constructor(
         .subscribe {
           transactionList.postValue(it)
         })
+
+    addDisposable(store.getter.nemPrice
+        .subscribe {
+          nemPriceData.postValue(it)
+        })
   }
 
   suspend fun loadHarvestInfo(address: String) {
@@ -44,5 +50,9 @@ class HomeFragmentViewModel @Inject constructor(
 
   suspend fun loadTransactionList(address: String) {
     store.actionCreator.loadTransactionList(context, address)
+  }
+
+  suspend fun loadNemPrice() {
+    store.actionCreator.loadZaifNemPrice(context)
   }
 }

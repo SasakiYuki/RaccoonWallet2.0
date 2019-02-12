@@ -79,7 +79,7 @@
   <string name="home_fragment_balance">残高</string>
   <string name="home_fragment_send_receive_history">送受信</string>
   <string name="home_fragment_harvest">ハーベスト</string>
-  <string name="home_fragment_jpy_before">JPY : </string>
+  <string name="home_fragment_jpy_before">JPY : %s</string>
   <string name="home_fragment_error_account">アカウント取得エラー</string>
   <string name="home_fragment_error_transaction">トランザクション取得エラー</string>
   <string name="home_fragment_empty_transaction">You have no current transaction.</string>

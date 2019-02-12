@@ -12,81 +12,81 @@ import wallet.raccoon.raccoonwallet.type.NodeType
 import java.util.concurrent.TimeUnit
 
 object ApiManager {
-    const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
-    const val API_ZAIF_URL = "https://api.zaif.jp/"
-    const val API_NODE_EXPLORER = "https://nodeexplorer.com/"
+  const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
+  const val API_ZAIF_URL = "https://api.zaif.jp/"
+  const val API_NODE_EXPLORER = "https://nodeexplorer.com/"
 
-    fun builder(): Retrofit {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(getBaseUrl())
-            .client(builderHttpClient())
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .client(builderHttpClient())
-            .build()
-        return retrofit
+  fun builder(): Retrofit {
+    val retrofit = Retrofit.Builder()
+        .baseUrl(getBaseUrl())
+        .client(builderHttpClient())
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(builderHttpClient())
+        .build()
+    return retrofit
+  }
+
+  fun builderNemBook(): Retrofit {
+    val url: String = API_NEM_BOOK_URL
+    return Retrofit.Builder()
+        .baseUrl(url)
+        .client(builderHttpClient())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(builderHttpClient())
+        .build()
+  }
+
+  private fun builderHttpClient(): OkHttpClient {
+    val logging = HttpLoggingInterceptor()
+    logging.level = HttpLoggingInterceptor.Level.BODY
+
+    val client = OkHttpClient.Builder()
+    client.connectTimeout(30, TimeUnit.SECONDS)
+    client.readTimeout(30, TimeUnit.SECONDS)
+    client.writeTimeout(30, TimeUnit.SECONDS)
+    client.addInterceptor(logging)
+    client.addInterceptor { chain ->
+      val original = chain.request()
+
+      val request = original.newBuilder()
+          .header("Accept", "application/json")
+          .method(original.method(), original.body())
+          .build()
+
+      val response = chain.proceed(request)
+
+      response
     }
 
-    fun builderNemBook(): Retrofit {
-        val url: String = API_NEM_BOOK_URL
-        return Retrofit.Builder()
-            .baseUrl(url)
-            .client(builderHttpClient())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(builderHttpClient())
-            .build()
-    }
+    return client.build()
+  }
 
-    private fun builderHttpClient(): OkHttpClient {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
+  fun builderZaif(): Retrofit {
+    val url: String = API_ZAIF_URL
+    return Retrofit.Builder()
+        .baseUrl(url)
+        .client(builderHttpClient())
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(builderHttpClient())
+        .build()
+  }
 
-        val client = OkHttpClient.Builder()
-        client.connectTimeout(30, TimeUnit.SECONDS)
-        client.readTimeout(30, TimeUnit.SECONDS)
-        client.writeTimeout(30, TimeUnit.SECONDS)
-        client.addInterceptor(logging)
-        client.addInterceptor { chain ->
-            val original = chain.request()
+  fun builderNodeExplorer(): Retrofit {
+    val url: String = API_NODE_EXPLORER
+    return Retrofit.Builder()
+        .baseUrl(url)
+        .client(builderHttpClient())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(builderHttpClient())
+        .build()
+  }
 
-            val request = original.newBuilder()
-                .header("Accept", "application/json")
-                .method(original.method(), original.body())
-                .build()
-
-            val response = chain.proceed(request)
-
-            response
-        }
-
-        return client.build()
-    }
-
-    fun builderZaif(): Retrofit {
-        val url: String = API_ZAIF_URL
-        return Retrofit.Builder()
-            .baseUrl(url)
-            .client(builderHttpClient())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(builderHttpClient())
-            .build()
-    }
-
-    fun builderNodeExplorer(): Retrofit {
-        val url: String = API_NODE_EXPLORER
-        return Retrofit.Builder()
-            .baseUrl(url)
-            .client(builderHttpClient())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(builderHttpClient())
-            .build()
-    }
-
-    fun getBaseUrl() =
-        ActiveNodeHelper.selectedNodeType?.let { "http://" + it.nodeBaseUrl }
-            ?: run { "http://" + NodeType.ALICE2.nodeBaseUrl }
+  fun getBaseUrl() =
+    ActiveNodeHelper.selectedNodeType?.let { "http://" + it.nodeBaseUrl }
+        ?: run { "http://" + NodeType.ALICE2.nodeBaseUrl }
 
 }

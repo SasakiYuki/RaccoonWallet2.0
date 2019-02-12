@@ -18,3 +18,12 @@ fun String.toDisplayAddress(): String {
   }
   return address
 }
+
+fun String.remove(target: String): String {
+  val charArray = this.toCharArray()
+  val stringBuilder = StringBuilder()
+  charArray
+      .filter { it != target.single() }
+      .forEach { stringBuilder.append(it) }
+  return String(stringBuilder)
+}

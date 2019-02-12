@@ -54,4 +54,18 @@ class HomeFragmentActionCreator(
     }
     )
   }
+
+  suspend fun loadZaifNemPrice(
+    context: Context
+  ) {
+    Network.request(
+        context,
+        useCase.getNemPrice(),
+        {
+          dispatch(HomeFragmentActionType.ZaifNemPrice(it))
+        }, {
+      it.printStackTrace()
+    }
+    )
+  }
 }
