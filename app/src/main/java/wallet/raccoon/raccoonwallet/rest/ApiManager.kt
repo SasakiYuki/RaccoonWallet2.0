@@ -7,14 +7,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import wallet.raccoon.raccoonwallet.helper.ActiveNodeHelper
-import wallet.raccoon.raccoonwallet.type.NodeType
 import java.util.concurrent.TimeUnit
 
 object ApiManager {
   const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
   const val API_ZAIF_URL = "https://api.zaif.jp/"
-  const val API_NODE_EXPLORER = "https://nodeexplorer.com/"
 
   fun builder(): Retrofit {
     val retrofit = Retrofit.Builder()
@@ -27,10 +24,9 @@ object ApiManager {
     return retrofit
   }
 
-  fun builderNemBook(): Retrofit {
-    val url: String = API_NEM_BOOK_URL
+  fun builderXembook(): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(url)
+        .baseUrl(API_NEM_BOOK_URL)
         .client(builderHttpClient())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
@@ -74,19 +70,6 @@ object ApiManager {
         .build()
   }
 
-  fun builderNodeExplorer(): Retrofit {
-    val url: String = API_NODE_EXPLORER
-    return Retrofit.Builder()
-        .baseUrl(url)
-        .client(builderHttpClient())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(builderHttpClient())
-        .build()
-  }
-
-  fun getBaseUrl() =
-    ActiveNodeHelper.selectedNodeType?.let { "http://" + it.nodeBaseUrl }
-        ?: run { "http://" + NodeType.ALICE2.nodeBaseUrl }
-
+    //todo nodeを反映させる
+  fun getBaseUrl() = "http://62.75.251.134:7890"
 }

@@ -1,5 +1,7 @@
 package wallet.raccoon.raccoonwallet.model
 
 data class ActiveNodeEntity(
-  val nodes: List<String>
+    val http: List<String>,
+    val https: List<String>,
+    val last_update: String
 )

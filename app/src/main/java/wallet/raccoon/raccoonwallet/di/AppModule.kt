@@ -34,8 +34,16 @@ internal class AppModule {
     return ApiManager.builderZaif()
   }
 
+  @Provides
+  @Singleton
+  @Named(XEMBOOK)
+  fun provideXembookRetrofit(): Retrofit {
+    return ApiManager.builderXembook()
+  }
+
   companion object {
     const val NORMAL = "normal"
     const val ZAIF = "zaif"
+    const val XEMBOOK = "xembook"
   }
 }
