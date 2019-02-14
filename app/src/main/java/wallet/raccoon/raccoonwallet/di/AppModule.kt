@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import wallet.raccoon.raccoonwallet.RaccoonApplication
 import wallet.raccoon.raccoonwallet.rest.ApiManager
 import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module(includes = [(ServiceModule::class), (RepositoryModule::class), (ViewModelModule::class)])
@@ -21,7 +22,20 @@ internal class AppModule {
 
   @Provides
   @Singleton
+  @Named(NORMAL)
   fun provideRetrofit(): Retrofit {
     return ApiManager.builder()
+  }
+
+  @Provides
+  @Singleton
+  @Named(ZAIF)
+  fun provideZaifRetrofit(): Retrofit {
+    return ApiManager.builderZaif()
+  }
+
+  companion object {
+    const val NORMAL = "normal"
+    const val ZAIF = "zaif"
   }
 }
