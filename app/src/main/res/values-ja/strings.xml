@@ -251,8 +251,8 @@
   <string name="select_wallet_activity_title">ウォレットを選択</string>
 
   <!-- SelectCreateOrScanWalletFragment -->
-  <string name="select_create_or_scan_wallet_create_text">Create New Wallet</string>
-  <string name="select_create_or_scan_wallet_login_text">LOGIN</string>
+  <string name="select_create_or_scan_wallet_create_text">新しくウォレットを作る</string>
+  <string name="select_create_or_scan_wallet_login_text">インポート</string>
 
   <!-- CreateWalletActivity -->
   <string name="create_wallet_activity_title">ようこそ、お客人</string>
