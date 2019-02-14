@@ -13,6 +13,7 @@ class WalletCreateActivity : BaseFragmentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    setToolBarBackButton()
   }
 
   companion object {
