@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
+import wallet.raccoon.raccoonwallet.view.activity.callback.MainActivityCallback
 import wallet.raccoon.raccoonwallet.viewmodel.SplashFragmentViewModel
 import javax.inject.Inject
 
@@ -34,7 +35,10 @@ class SplashFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.activeNodeData.observe(this, Observer { activeNode ->
             SharedPreferenceUtils(context!!).activeNode = activeNode
-
+            activity?.let {
+                it.supportFragmentManager.beginTransaction().remove(this).commit()
+                (activity as MainActivityCallback).onCompleteSplash()
+            }
         })
 
         CoroutineScope(Dispatchers.IO).launch {
