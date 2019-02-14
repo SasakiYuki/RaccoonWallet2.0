@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.view_wallet_bar.view.fab
 import wallet.raccoon.raccoonwallet.R
 
 class WalletBarView(
@@ -20,5 +21,12 @@ class WalletBarView(
 
   init {
     View.inflate(context, R.layout.view_wallet_bar, this)
+  }
+
+  override fun onFinishInflate() {
+    super.onFinishInflate()
+    fab.setOnClickListener {
+      context.startActivity(WalletCreateActivity.createIntent(context))
+    }
   }
 }
