@@ -33,6 +33,7 @@ import wallet.raccoon.raccoonwallet.util.ToastUtil
 import wallet.raccoon.raccoonwallet.view.BaseActivity
 import wallet.raccoon.raccoonwallet.view.adapter.TopFragmentPagerAdapter
 import wallet.raccoon.raccoonwallet.view.controller.DrawerListController
+import wallet.raccoon.raccoonwallet.view.fragment.SplashFragment
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
@@ -84,11 +85,10 @@ class MainActivity : BaseActivity(),
 
   private fun showSplash() {
     if (shouldShowSplash) {
-      // TODO SplashFragmentの実装
-//            val fragmentTransaction = supportFragmentManager.beginTransaction()
-//            val fragment = SplashFragment.newInstance()
-//            fragmentTransaction.replace(R.id.fragment_container, fragment, fragment::class.java.simpleName)
-//            fragmentTransaction.commit()
+      val fragmentTransaction = supportFragmentManager.beginTransaction()
+      val fragment = SplashFragment.newInstance()
+      fragmentTransaction.replace(R.id.fragment_container, fragment, fragment::class.java.simpleName)
+      fragmentTransaction.commit()
     } else {
 //            hideSplash()
     }
