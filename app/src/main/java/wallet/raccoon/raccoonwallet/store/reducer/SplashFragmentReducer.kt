@@ -3,7 +3,7 @@ package wallet.raccoon.raccoonwallet.store.reducer
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import wallet.raccoon.raccoonwallet.flux.DisposableMapper
-import wallet.raccoon.raccoonwallet.model.ActiveNodeEntity
+import wallet.raccoon.raccoonwallet.model.rest.ActiveNodeEntity
 import wallet.raccoon.raccoonwallet.store.type.SplashFragmentActionType
 
 class SplashFragmentReducer(actionType: Observable<SplashFragmentActionType>) : DisposableMapper() {

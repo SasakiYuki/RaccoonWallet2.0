@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.model
+package wallet.raccoon.raccoonwallet.model.rest
 
 data class ActiveNodeEntity(
     val http: List<String>,
