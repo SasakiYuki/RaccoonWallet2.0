@@ -2,7 +2,7 @@ package wallet.raccoon.raccoonwallet.rest.service
 
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
-import wallet.raccoon.raccoonwallet.model.ActiveNodeEntity
+import wallet.raccoon.raccoonwallet.model.rest.ActiveNodeEntity
 
 interface XembookService {
 
