@@ -68,7 +68,7 @@ class ApiManager @Inject constructor(private val preferenceUtils: SharedPreferen
   }
 
   companion object {
-    const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
-    const val API_ZAIF_URL = "https://api.zaif.jp/"
+    private const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
+    private const val API_ZAIF_URL = "https://api.zaif.jp/"
   }
 }
