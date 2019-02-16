@@ -6,21 +6,20 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-object ApiManager {
-  const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
-  const val API_ZAIF_URL = "https://api.zaif.jp/"
+class ApiManager @Inject constructor(private val preferenceUtils: SharedPreferenceUtils){
 
   fun builder(): Retrofit {
-    val retrofit = Retrofit.Builder()
-        .baseUrl(getBaseUrl())
+    return Retrofit.Builder()
+        .baseUrl(preferenceUtils.activeNode)
         .client(builderHttpClient())
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(builderHttpClient())
         .build()
-    return retrofit
   }
 
   fun builderXembook(): Retrofit {
@@ -59,9 +58,8 @@ object ApiManager {
   }
 
   fun builderZaif(): Retrofit {
-    val url: String = API_ZAIF_URL
     return Retrofit.Builder()
-        .baseUrl(url)
+        .baseUrl(API_ZAIF_URL)
         .client(builderHttpClient())
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
@@ -69,6 +67,8 @@ object ApiManager {
         .build()
   }
 
-    //todo nodeを反映させる
-  fun getBaseUrl() = "http://62.75.251.134:7890"
+  companion object {
+    const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
+    const val API_ZAIF_URL = "https://api.zaif.jp/"
+  }
 }

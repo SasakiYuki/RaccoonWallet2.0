@@ -23,22 +23,22 @@ internal class AppModule {
   @Provides
   @Singleton
   @Named(NORMAL)
-  fun provideRetrofit(): Retrofit {
-    return ApiManager.builder()
+  fun provideRetrofit(sharedPreferenceUtils: SharedPreferenceUtils): Retrofit {
+    return ApiManager(sharedPreferenceUtils).builder()
   }
 
   @Provides
   @Singleton
   @Named(ZAIF)
-  fun provideZaifRetrofit(): Retrofit {
-    return ApiManager.builderZaif()
+  fun provideZaifRetrofit(sharedPreferenceUtils: SharedPreferenceUtils): Retrofit {
+    return ApiManager(sharedPreferenceUtils).builderZaif()
   }
 
   @Provides
   @Singleton
   @Named(XEMBOOK)
-  fun provideXembookRetrofit(): Retrofit {
-    return ApiManager.builderXembook()
+  fun provideXembookRetrofit(sharedPreferenceUtils: SharedPreferenceUtils): Retrofit {
+    return ApiManager(sharedPreferenceUtils).builderXembook()
   }
 
   companion object {
