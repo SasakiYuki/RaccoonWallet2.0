@@ -10,6 +10,6 @@ abstract class RaccoonDatabase : RoomDatabase() {
     abstract fun walletDao(): WalletDao
 
     companion object {
-        val RACCOON_WALLET_DATABASE_NAME = "raccoon_wallet.db"
+        const val RACCOON_WALLET_DATABASE_NAME = "raccoon_wallet.db"
     }
 }
