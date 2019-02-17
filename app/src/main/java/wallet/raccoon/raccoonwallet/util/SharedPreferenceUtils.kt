@@ -26,7 +26,7 @@ class SharedPreferenceUtils(context: Context) {
             sharedPreferences.putValue(MY_PROFILE, Gson().toJson(value))
         }
 
-    var nodeTypeName: String
+    var activeNode: String
         get() = sharedPreferences.getValue(NODE_TYPE_NAME) ?: ""
         set(value) = sharedPreferences.putValue(NODE_TYPE_NAME, value)
 

@@ -15,11 +15,7 @@ import com.google.android.material.tabs.TabLayout
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
-import kotlinx.android.synthetic.main.activity_main.drawerLayout
-import kotlinx.android.synthetic.main.activity_main.navigationRecyclerView
-import kotlinx.android.synthetic.main.activity_main.nemIcon
-import kotlinx.android.synthetic.main.activity_main.tabLayout
-import kotlinx.android.synthetic.main.activity_main.viewpager
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,11 +29,11 @@ import wallet.raccoon.raccoonwallet.util.ToastUtil
 import wallet.raccoon.raccoonwallet.view.BaseActivity
 import wallet.raccoon.raccoonwallet.view.adapter.TopFragmentPagerAdapter
 import wallet.raccoon.raccoonwallet.view.controller.DrawerListController
+import wallet.raccoon.raccoonwallet.view.fragment.SplashFragment
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(),
-    HasSupportFragmentInjector {
+class MainActivity : BaseActivity(), HasSupportFragmentInjector{
 
   private lateinit var viewModel: MainActivityViewModel
   @Inject
@@ -55,17 +51,6 @@ class MainActivity : BaseActivity(),
 
     setupViewModel()
     showSplash()
-    setupViewPager()
-    setupBottomTabLayout()
-
-    nemIcon.setOnClickListener {
-      if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawers()
-      else drawerLayout.openDrawer(GravityCompat.START)
-    }
-
-    CoroutineScope(Dispatchers.IO).launch {
-      viewModel.loadMyProfile()
-    }
   }
 
   private fun setupViewModel() {
@@ -80,17 +65,34 @@ class MainActivity : BaseActivity(),
       // TODO 遷移をそれぞれ実装　ドロワー
       ToastUtil.show(this, R.string.app_name)
     })
+
+    viewModel.splashCompleteEvent.observe(this, Observer {
+      onCompleteSplash()
+    })
   }
 
   private fun showSplash() {
     if (shouldShowSplash) {
-      // TODO SplashFragmentの実装
-//            val fragmentTransaction = supportFragmentManager.beginTransaction()
-//            val fragment = SplashFragment.newInstance()
-//            fragmentTransaction.replace(R.id.fragment_container, fragment, fragment::class.java.simpleName)
-//            fragmentTransaction.commit()
+      val fragmentTransaction = supportFragmentManager.beginTransaction()
+      val fragment = SplashFragment.newInstance()
+      fragmentTransaction.replace(R.id.fragment_container, fragment, fragment::class.java.simpleName)
+      fragmentTransaction.commit()
     } else {
-//            hideSplash()
+      onCompleteSplash()
+    }
+  }
+
+  private fun onCompleteSplash() {
+    setupViewPager()
+    setupBottomTabLayout()
+
+    nemIcon.setOnClickListener {
+      if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawers()
+      else drawerLayout.openDrawer(GravityCompat.START)
+    }
+
+    CoroutineScope(Dispatchers.IO).launch {
+      viewModel.loadMyProfile()
     }
   }
 

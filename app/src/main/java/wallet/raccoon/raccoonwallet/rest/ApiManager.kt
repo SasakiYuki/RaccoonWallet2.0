@@ -5,35 +5,29 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import wallet.raccoon.raccoonwallet.helper.ActiveNodeHelper
-import wallet.raccoon.raccoonwallet.type.NodeType
+import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-object ApiManager {
-  const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
-  const val API_ZAIF_URL = "https://api.zaif.jp/"
-  const val API_NODE_EXPLORER = "https://nodeexplorer.com/"
+class ApiManager @Inject constructor(private val preferenceUtils: SharedPreferenceUtils){
 
   fun builder(): Retrofit {
-    val retrofit = Retrofit.Builder()
-        .baseUrl(getBaseUrl())
+    return Retrofit.Builder()
+        .baseUrl(preferenceUtils.activeNode)
         .client(builderHttpClient())
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(builderHttpClient())
         .build()
-    return retrofit
   }
 
-  fun builderNemBook(): Retrofit {
-    val url: String = API_NEM_BOOK_URL
+  fun builderXembook(): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(url)
+        .baseUrl(API_NEM_BOOK_URL)
         .client(builderHttpClient())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(builderHttpClient())
         .build()
   }
@@ -64,9 +58,8 @@ object ApiManager {
   }
 
   fun builderZaif(): Retrofit {
-    val url: String = API_ZAIF_URL
     return Retrofit.Builder()
-        .baseUrl(url)
+        .baseUrl(API_ZAIF_URL)
         .client(builderHttpClient())
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
@@ -74,19 +67,8 @@ object ApiManager {
         .build()
   }
 
-  fun builderNodeExplorer(): Retrofit {
-    val url: String = API_NODE_EXPLORER
-    return Retrofit.Builder()
-        .baseUrl(url)
-        .client(builderHttpClient())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(builderHttpClient())
-        .build()
+  companion object {
+    private const val API_NEM_BOOK_URL = "https://s3-ap-northeast-1.amazonaws.com/xembook.net/"
+    private const val API_ZAIF_URL = "https://api.zaif.jp/"
   }
-
-  fun getBaseUrl() =
-    ActiveNodeHelper.selectedNodeType?.let { "http://" + it.nodeBaseUrl }
-        ?: run { "http://" + NodeType.ALICE2.nodeBaseUrl }
-
 }
