@@ -23,6 +23,7 @@
       </intent-filter>
     </activity>
     <activity android:name=".view.WalletCreateActivity"/>
+    <activity android:name=".view.activity.PinCodeSettingActivity"/>
   </application>
 
 </manifest>
