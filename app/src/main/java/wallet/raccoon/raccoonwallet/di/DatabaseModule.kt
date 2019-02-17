@@ -10,6 +10,5 @@ import javax.inject.Singleton
 class DatabaseModule {
     @Provides
     @Singleton
-    fun provideWalletDao(database: RaccoonDatabase): WalletDao =
-        database.walletDao()
+    fun provideWalletDao(database: RaccoonDatabase): WalletDao = database.walletDao()
 }

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Wallet constructor(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     val salt: ByteArray,
     val name: String,
     val publicKey: String,

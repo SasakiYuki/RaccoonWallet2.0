@@ -68,4 +68,10 @@ class HomeFragmentActionCreator(
     }
     )
   }
+
+  suspend fun loadWallet(
+    walletId: Long
+  ){
+    dispatch(HomeFragmentActionType.WalletEntity(useCase.getWallet(walletId)))
+  }
 }
