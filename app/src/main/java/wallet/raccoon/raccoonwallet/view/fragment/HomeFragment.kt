@@ -84,8 +84,8 @@ class HomeFragment : BaseFragment() {
     viewModel.walletData.observe(this, Observer {
       CoroutineScope(Dispatchers.IO).launch {
         // TODO アドレスをアカウントから取得する
-        val address = it.address
-//        val address = "NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK"
+//        val address = it.address
+        val address = "NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK"
         viewModel.loadHarvestInfo(address)
         viewModel.loadAccountInfo(address)
         viewModel.loadTransactionList(address)
