@@ -293,7 +293,6 @@
   <string name="tutorial_description_fragment_button">ウォレットのバックアップ</string>
 
   <!-- PrivateKeyDescriptionFragment -->
-  <string name="private_key_description_fragment_title">秘密鍵について</string>
   <string name="private_key_description_fragment_description_1">プライベートキー(秘密鍵)について</string>
   <string name="private_key_description_fragment_description">プライベートキー（秘密鍵）はあなたのアカウント情報において最も重要であり、機密事項として注意して取り扱わなければなりません。\n\nプライベートキーは、関連する資金と資産を制御し、あなたのアカウントを元に戻すために必要なものであり、この知識は誰もが身につける必要があります。\n\nこのプライベートキーは、決してなくさないようにしてください。 また絶対に外部に漏れないように注意して扱ってください。</string>
 
