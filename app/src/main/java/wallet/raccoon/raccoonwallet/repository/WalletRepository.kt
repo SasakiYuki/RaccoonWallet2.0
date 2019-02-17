@@ -8,4 +8,6 @@ class WalletRepository @Inject constructor(private val walletDao: WalletDao) {
     suspend fun saveWallet(wallet: Wallet) = walletDao.insertOrUpdate(wallet)
 
     suspend fun getWalletById(walletId: Long) = walletDao.findById(walletId)
+
+    suspend fun getAll() = walletDao.findAll()
 }

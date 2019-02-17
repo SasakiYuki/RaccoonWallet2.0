@@ -13,11 +13,12 @@ class SelectWalletActivityReducer(actionType: Observable<SelectWalletActivityAct
         get() = mWallets
 
     init {
-//        actionType.ofType(MainActivityActionType.MyProfile::class.java)
-//            .subscribe({
-//                mMyProfile.onNext(it.myProfileEntity)
-//            }, {
-//                it.printStackTrace()
-//            }).let { disposables.add(it) }
+        actionType.ofType(SelectWalletActivityActionType.Wallets::class.java)
+            .subscribe({
+                mWallets.onNext(it.wallets)
+            }, {
+                it.printStackTrace()
+            })
+            .let { disposables.add(it) }
     }
 }

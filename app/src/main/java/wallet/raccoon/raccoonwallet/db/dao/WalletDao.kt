@@ -14,4 +14,7 @@ interface WalletDao {
 
     @Query("SELECT * FROM Wallet WHERE id = :walletId")
     suspend fun findById(walletId: Long): Wallet
+
+    @Query("SELECT * FROM Wallet ORDER BY id ASC")
+    suspend fun findAll(): List<Wallet>
 }

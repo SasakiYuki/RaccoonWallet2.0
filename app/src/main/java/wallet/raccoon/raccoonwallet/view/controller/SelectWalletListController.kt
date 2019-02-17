@@ -1,6 +1,5 @@
 package wallet.raccoon.raccoonwallet.view.controller
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.airbnb.epoxy.AutoModel
@@ -32,7 +31,7 @@ class SelectWalletListController(activity: SelectWalletActivity) : TypedEpoxyCon
     private fun addList(data: List<SelectWalletItem>) {
         selectWalletHeaderModel
             .onClickCreateWallet(View.OnClickListener {
-                Log.d("", "")
+                selectWalletViewModel.navigationCreateWalletClickEvent.postValue(Unit)
             })
             .addTo(this)
 
@@ -43,10 +42,10 @@ class SelectWalletListController(activity: SelectWalletActivity) : TypedEpoxyCon
                 .id(modelCountBuiltSoFar)
                 .selectWalletItem(item)
                 .onClickRowListener(View.OnClickListener {
-                    Log.d("", "")
+                    selectWalletViewModel.onClickRowEvent.postValue(item.wallet)
                 })
                 .onClickSettingListener(View.OnClickListener {
-                    Log.d("", "")
+                    selectWalletViewModel.navigationSettingClickEvent.postValue(item.wallet)
                 })
                 .addTo(this)
         }
