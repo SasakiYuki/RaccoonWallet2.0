@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
+import wallet.raccoon.raccoonwallet.viewmodel.SelectWalletViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.SplashFragmentViewModel
 
 @Module
@@ -28,4 +29,9 @@ internal abstract class ViewModelModule {
   @IntoMap
   @ViewModelKey(SplashFragmentViewModel::class)
   abstract fun bindSplashFragmentViewModel(viewModel: SplashFragmentViewModel): ViewModel
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(SelectWalletViewModel::class)
+  abstract fun bindSelectWalletActivityViewModel(viewModel: SelectWalletViewModel): ViewModel
 }
