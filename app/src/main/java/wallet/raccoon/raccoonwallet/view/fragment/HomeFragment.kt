@@ -7,15 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ryuta46.nemkotlin.model.TransactionMetaDataPair
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.fragment_home.balanceTextView
-import kotlinx.android.synthetic.main.fragment_home.harvestEmptyView
-import kotlinx.android.synthetic.main.fragment_home.miniHarvestItemView
-import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView1
-import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView2
-import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView3
-import kotlinx.android.synthetic.main.fragment_home.miniTransactionItemView4
-import kotlinx.android.synthetic.main.fragment_home.nemJpPriceTextView
-import kotlinx.android.synthetic.main.fragment_home.transactionEmptyView
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,13 +40,21 @@ class HomeFragment : BaseFragment() {
     savedInstanceState: Bundle?
   ) {
     super.onViewCreated(view, savedInstanceState)
+    setupViewModel()
 
+    CoroutineScope(Dispatchers.IO).launch {
+      //todo 現在選択されているWalletIdをSharedPreferenceから取得する
+      viewModel.loadWallet(0)
+    }
+  }
+
+  private fun setupViewModel(){
     viewModel.harvestInfoData.observe(this, Observer {
       it.data.getOrNull(0)
-          ?.let { harvestInfo ->
-            harvestEmptyView.visibility = View.GONE
-            miniHarvestItemView.setupHarvest(harvestInfo)
-          }
+        ?.let { harvestInfo ->
+          harvestEmptyView.visibility = View.GONE
+          miniHarvestItemView.setupHarvest(harvestInfo)
+        }
     })
 
     viewModel.transactionList.observe(this, Observer {
@@ -64,7 +64,7 @@ class HomeFragment : BaseFragment() {
     viewModel.accountInfoData.observe(this, Observer {
       it?.let { accountMetaDataPair ->
         balanceTextView.text = NumberFormat.getNumberInstance()
-            .format(accountMetaDataPair.account.balance.convertNEMFromMicroToDouble())
+          .format(accountMetaDataPair.account.balance.convertNEMFromMicroToDouble())
       }
       CoroutineScope(Dispatchers.IO).launch {
         viewModel.loadNemPrice()
@@ -73,20 +73,24 @@ class HomeFragment : BaseFragment() {
 
     viewModel.nemPriceData.observe(this, Observer {
       val balanceText = balanceTextView.text.toString()
-          .remove(",")
-          .toDouble()
+        .remove(",")
+        .toDouble()
       nemJpPriceTextView.text = getString(
-          R.string.home_fragment_jpy_before,
-          NumberFormat.getNumberInstance().format(balanceText * it.last_price)
+        R.string.home_fragment_jpy_before,
+        NumberFormat.getNumberInstance().format(balanceText * it.last_price)
       )
     })
 
-    CoroutineScope(Dispatchers.IO).launch {
-      // TODO アドレスをアカウントから取得する
-      viewModel.loadHarvestInfo("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
-      viewModel.loadAccountInfo("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
-      viewModel.loadTransactionList("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
-    }
+    viewModel.walletData.observe(this, Observer {
+      CoroutineScope(Dispatchers.IO).launch {
+        // TODO アドレスをアカウントから取得する
+//        val address = it.address
+        val address = "NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK"
+        viewModel.loadHarvestInfo(address)
+        viewModel.loadAccountInfo(address)
+        viewModel.loadTransactionList(address)
+      }
+    })
   }
 
   private fun setupTransactionItems(list: List<TransactionMetaDataPair>) {

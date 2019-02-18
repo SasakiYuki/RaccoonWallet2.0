@@ -4,6 +4,7 @@ import com.ryuta46.nemkotlin.model.AccountMetaDataPair
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import wallet.raccoon.raccoonwallet.flux.DisposableMapper
+import wallet.raccoon.raccoonwallet.model.db.Wallet
 import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
 import wallet.raccoon.raccoonwallet.model.rest.TransactionData
 import wallet.raccoon.raccoonwallet.model.rest.ZaifNemEntity
@@ -14,6 +15,7 @@ class HomeFragmentReducer(actionType: Observable<HomeFragmentActionType>) : Disp
   private val mTransactionList: PublishSubject<TransactionData> = PublishSubject.create()
   private val mHarvestInfoList: PublishSubject<HarvestInfos> = PublishSubject.create()
   private val mNemPrice: PublishSubject<ZaifNemEntity> = PublishSubject.create()
+  private val mWallet: PublishSubject<Wallet> = PublishSubject.create()
 
   val accountInfo: Observable<AccountMetaDataPair>
     get() = mAccountInfo
@@ -23,6 +25,8 @@ class HomeFragmentReducer(actionType: Observable<HomeFragmentActionType>) : Disp
     get() = mHarvestInfoList
   val nemPrice: Observable<ZaifNemEntity>
     get() = mNemPrice
+  val wallet: Observable<Wallet>
+    get() = mWallet
 
   init {
     actionType.ofType(HomeFragmentActionType.AccountInfo::class.java)
@@ -56,5 +60,13 @@ class HomeFragmentReducer(actionType: Observable<HomeFragmentActionType>) : Disp
           it.printStackTrace()
         })
         .let { disposables.add(it) }
+
+    actionType.ofType(HomeFragmentActionType.WalletEntity::class.java)
+      .subscribe({
+        mWallet.onNext(it.wallet)
+      },{
+        it.printStackTrace()
+      })
+      .let { disposables.add(it) }
   }
 }

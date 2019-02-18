@@ -1,6 +1,7 @@
 package wallet.raccoon.raccoonwallet.store.creator
 
 import android.content.Context
+import wallet.raccoon.raccoonwallet.db.Database
 import wallet.raccoon.raccoonwallet.flux.DisposableMapper
 import wallet.raccoon.raccoonwallet.network.Network
 import wallet.raccoon.raccoonwallet.store.type.HomeFragmentActionType
@@ -67,5 +68,13 @@ class HomeFragmentActionCreator(
       it.printStackTrace()
     }
     )
+  }
+
+  suspend fun loadWallet(
+    walletId: Long
+  ){
+    Database.query(useCase.getWallet(walletId),{
+      dispatch(HomeFragmentActionType.WalletEntity(it))
+    })
   }
 }

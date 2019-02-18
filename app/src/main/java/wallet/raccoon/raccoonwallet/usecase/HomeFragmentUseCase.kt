@@ -1,16 +1,14 @@
 package wallet.raccoon.raccoonwallet.usecase
 
-import wallet.raccoon.raccoonwallet.repository.AccountRepository
-import wallet.raccoon.raccoonwallet.repository.HarvestRepository
-import wallet.raccoon.raccoonwallet.repository.TransactionRepository
-import wallet.raccoon.raccoonwallet.repository.ZaifRepository
+import wallet.raccoon.raccoonwallet.repository.*
 import javax.inject.Inject
 
 class HomeFragmentUseCase @Inject constructor(
   private val harvestRepository: HarvestRepository,
   private val transactionRepository: TransactionRepository,
   private val accountRepository: AccountRepository,
-  private val zaifRepository: ZaifRepository
+  private val zaifRepository: ZaifRepository,
+  private val walletRepository: WalletRepository
 ) {
   fun getHarvestInfo(address: String) = harvestRepository.getHarvestInfo(address)
 
@@ -21,4 +19,6 @@ class HomeFragmentUseCase @Inject constructor(
     accountRepository.getAccountInfo(address)
 
   fun getNemPrice() = zaifRepository.getNemPrice()
+
+  suspend fun getWallet(walletId: Long) = walletRepository.getWalletById(walletId)
 }
