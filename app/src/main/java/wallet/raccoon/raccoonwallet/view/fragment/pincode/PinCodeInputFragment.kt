@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_pin_code_input.displayText
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.extentions.showToast
 import wallet.raccoon.raccoonwallet.view.BaseFragmentActivity
+import wallet.raccoon.raccoonwallet.view.dialog.RaccoonConfirmDialog
+import wallet.raccoon.raccoonwallet.view.dialog.RaccoonConfirmViewModel
 import wallet.raccoon.raccoonwallet.view.dialog.RaccoonPagerDialog
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.view.fragment.SimpleMessageFragment
@@ -79,6 +81,7 @@ class PinCodeInputFragment : BaseFragment() {
         if (arguments?.getString(ARG_PIN_CODE) == String(stringBuilder)) {
           // rewriteSecretKey()
           // TODO NewPincodeSettingFragment.kt#130 の実装をする
+          showSuccessDialog()
         } else {
           context?.showToast(R.string.pin_code_setting_confirm_error)
           resetViews()
@@ -100,17 +103,27 @@ class PinCodeInputFragment : BaseFragment() {
       SimpleMessageFragment.newInstance(getString(R.string.pin_code_setting_fragment_dialog_2))
     list.add(fragment1)
     list.add(fragment2)
-    val viewModel = RaccoonPagerViewModel()
-    viewModel.clickEvent
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe { item ->
-
-        }
     RaccoonPagerDialog.createDialog(
         RaccoonPagerViewModel(), getString(R.string.pin_code_setting_fragment_dialog_title),
         getString(R.string.com_ok), list
     )
         .show(activity?.supportFragmentManager, RaccoonPagerDialog::class.java.toString())
+  }
+
+  private fun showSuccessDialog() {
+    val viewModel = RaccoonConfirmViewModel()
+
+    viewModel.closeEvent
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe {
+        }
+
+    RaccoonConfirmDialog.createDialog(
+        viewModel, getString(R.string.pin_code_setting_fragment_dialog_confirm_title),
+        getString(R.string.pin_code_setting_fragment_dialog_confirm_message),
+        getString(R.string.com_ok)
+    )
+        .show(activity?.supportFragmentManager, "")
   }
 
   private fun setupButtons() {
