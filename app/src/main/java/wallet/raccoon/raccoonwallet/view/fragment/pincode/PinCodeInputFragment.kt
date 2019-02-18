@@ -116,6 +116,7 @@ class PinCodeInputFragment : BaseFragment() {
     viewModel.closeEvent
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe {
+          replaceFragment(CompletedPinCodeSettingFragment.newInstance(), true)
         }
 
     RaccoonConfirmDialog.createDialog(
