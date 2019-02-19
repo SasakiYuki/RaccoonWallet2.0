@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_tutorial_lesson_private_key_description.button
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.type.TutorialType.NEWBIE
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
 class TutorialLessonNewbieFragment : BaseFragment() {
@@ -15,7 +16,7 @@ class TutorialLessonNewbieFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
     button.setOnClickListener {
-      replaceFragment(TutorialLessonPrivateKeyDescriptionFragment.newInstance(), true)
+      replaceFragment(TutorialLessonPrivateKeyDescriptionFragment.newInstance(NEWBIE), true)
     }
   }
 

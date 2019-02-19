@@ -347,7 +347,6 @@
   <string name="tutorial_login_description_fragment_description">NEMユーザーのあなた！\nラクーンウォレットを選んでくれて嬉しいよ。 すでによく知っている君には、\n僕から説明することはあまりないかな。\nここの画面から、PINコードを設定できるから、\nサクッと設定しといてくれ。\n\nもし秘密鍵のバックアップを取り忘れてたなら、初心者のカードからレッスンを受けてね。\n</string>
 
   <!-- TutorialRaccoonDescriptionFragment -->
-  <string name="tutorial_raccoon_description_fragment_title">また君か～</string>
   <string name="tutorial_raccoon_description_fragment_description">あっ、なんだ君か。\n人にものを教えるのって大変だよね。\nなんでも３倍理解してないとダメだとか。\n僕の苦労も報われるといいだけど。そう思わない？\n\nえ？秘密鍵のバックアップ？次の画面だよ。\nそうそう、それでさ～この間さ～...</string>
 
   <!-- ImportSecretKeyFragment -->

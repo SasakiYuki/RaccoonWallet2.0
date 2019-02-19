@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_tutorial_lesson_level.newbieButton
 import kotlinx.android.synthetic.main.fragment_tutorial_lesson_level.pinCodeButton
+import kotlinx.android.synthetic.main.fragment_tutorial_lesson_level.raccoonButton
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.type.TutorialType.NEWBIE
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
 class TutorialLessonLevelFragment : BaseFragment() {
@@ -20,6 +22,9 @@ class TutorialLessonLevelFragment : BaseFragment() {
     }
     pinCodeButton.setOnClickListener {
       replaceFragment(TutorialLessonPinCodeFragment.newInstance(), true)
+    }
+    raccoonButton.setOnClickListener {
+      replaceFragment(TutorialLessonRaccoonUserFragment.newInstance(), true)
     }
   }
 
