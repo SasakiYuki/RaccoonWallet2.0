@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_tutorial_lesson_for_newbie_pin_code.button
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.view.activity.PinCodeSettingActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
-class TutorialLessonPrivateKeyDisplayFragment : BaseFragment() {
-  override fun layoutRes() = R.layout.fragment_tutorial_lesson_private_key_display
+class TutorialLessonForNewbiePinCodeFragment : BaseFragment() {
+  override fun layoutRes() = R.layout.fragment_tutorial_lesson_for_newbie_pin_code
 
   override fun onViewCreated(
     view: View,
@@ -15,15 +16,15 @@ class TutorialLessonPrivateKeyDisplayFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
     button.setOnClickListener {
-      replaceFragment(TutorialLessonForNewbiePinCodeFragment.newInstance(), true)
+      startActivity(PinCodeSettingActivity.createIntent(button.context))
     }
   }
 
   companion object {
-    fun newInstance(): TutorialLessonPrivateKeyDisplayFragment {
-      val fragment = TutorialLessonPrivateKeyDisplayFragment()
+    fun newInstance(): TutorialLessonForNewbiePinCodeFragment {
+      val fragment = TutorialLessonForNewbiePinCodeFragment()
       fragment.arguments = Bundle().apply {
-        putInt(ARG_CONTENTS_NAME_ID, R.string.tutorial_description_fragment_title)
+        putInt(ARG_CONTENTS_NAME_ID, R.string.select_tutorial_level_fragment_login_subtitle)
       }
       return fragment
     }

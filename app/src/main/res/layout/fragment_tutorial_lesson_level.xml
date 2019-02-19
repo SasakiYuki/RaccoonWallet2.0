@@ -90,7 +90,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/loginButton"
+        android:id="@+id/pinCodeButton"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:layout_marginLeft="21dp"
