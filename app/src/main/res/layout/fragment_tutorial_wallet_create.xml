@@ -97,7 +97,7 @@
             >
 
           <androidx.cardview.widget.CardView
-              android:id="@+id/loginButton"
+              android:id="@+id/importButton"
               android:layout_width="192dp"
               android:layout_height="36dp"
               android:elevation="2dp"
@@ -107,7 +107,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/nemBlue"
+                android:background="@color/nemGreen"
                 android:gravity="center"
                 android:text="@string/select_create_or_scan_wallet_login_text"
                 android:textColor="@android:color/white"

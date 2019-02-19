@@ -3,8 +3,10 @@ package wallet.raccoon.raccoonwallet.view.fragment.tutorial
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_tutorial_wallet_create.createButton
+import kotlinx.android.synthetic.main.fragment_tutorial_wallet_create.importButton
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
+import wallet.raccoon.raccoonwallet.view.fragment.import.ImportSecretKeyFragment
 
 class TutorialWalletCreateFragment : BaseFragment() {
   override fun layoutRes() = R.layout.fragment_tutorial_wallet_create
@@ -17,6 +19,9 @@ class TutorialWalletCreateFragment : BaseFragment() {
 
     createButton.setOnClickListener {
       replaceFragment(TutorialCreateNewWalletFragment.newInstance(), true)
+    }
+    importButton.setOnClickListener {
+      replaceFragment(ImportSecretKeyFragment.newInstance(), true)
     }
   }
 
