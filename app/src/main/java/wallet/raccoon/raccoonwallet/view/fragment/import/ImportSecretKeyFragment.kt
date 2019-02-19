@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.browser.customtabs.CustomTabsIntent
+import kotlinx.android.synthetic.main.fragment_import_secret_key.nextButton
 import kotlinx.android.synthetic.main.fragment_import_secret_key.policyButton
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
@@ -21,6 +22,9 @@ class ImportSecretKeyFragment : BaseFragment() {
       val builder = CustomTabsIntent.Builder()
       val customTabsIntent = builder.build()
       customTabsIntent.launchUrl(activity, Uri.parse(url))
+    }
+    nextButton.setOnClickListener {
+      replaceFragment(ImportedWalletNamingFragment.newInstance(), true)
     }
   }
 
