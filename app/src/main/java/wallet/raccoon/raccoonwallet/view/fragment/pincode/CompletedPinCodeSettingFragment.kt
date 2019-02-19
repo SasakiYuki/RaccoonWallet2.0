@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_completed_pin_code_setting.lessonEndButton
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.view.activity.PinCodeSettingActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.view.fragment.tutorial.TutorialLessonFinishFragment
-import wallet.raccoon.raccoonwallet.view.fragment.tutorial.WalletCreatedType.NEWBIE
 
 class CompletedPinCodeSettingFragment : BaseFragment() {
   override fun layoutRes() = R.layout.fragment_completed_pin_code_setting
@@ -17,7 +17,13 @@ class CompletedPinCodeSettingFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
     lessonEndButton.setOnClickListener {
-      replaceFragment(TutorialLessonFinishFragment.newInstance(NEWBIE), true)
+      if (activity is PinCodeSettingActivity) {
+        replaceFragment(
+            TutorialLessonFinishFragment.newInstance(
+                (activity as PinCodeSettingActivity).getTutorialType()
+            ), true
+        )
+      }
     }
   }
 

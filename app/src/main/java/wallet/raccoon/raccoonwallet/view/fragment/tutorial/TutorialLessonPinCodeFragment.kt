@@ -2,7 +2,10 @@ package wallet.raccoon.raccoonwallet.view.fragment.tutorial
 
 import android.os.Bundle
 import android.view.View
+import kotlinx.android.synthetic.main.fragment_tutorial_lesson_pin_code.button
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.type.TutorialType.PIN_CODE
+import wallet.raccoon.raccoonwallet.view.activity.PinCodeSettingActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
 class TutorialLessonPinCodeFragment : BaseFragment() {
@@ -13,6 +16,9 @@ class TutorialLessonPinCodeFragment : BaseFragment() {
     savedInstanceState: Bundle?
   ) {
     super.onViewCreated(view, savedInstanceState)
+    button.setOnClickListener {
+      startActivity(PinCodeSettingActivity.createIntent(button.context,PIN_CODE))
+    }
   }
 
   companion object {

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import wallet.raccoon.raccoonwallet.MainActivity
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.type.TutorialType
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
 class TutorialLessonFinishFragment : BaseFragment() {
@@ -34,23 +35,23 @@ class TutorialLessonFinishFragment : BaseFragment() {
         }
   }
 
-  private fun getLayout(walletCreatedType: WalletCreatedType): Int {
+  private fun getLayout(walletCreatedType: TutorialType): Int {
     return when (walletCreatedType) {
-      WalletCreatedType.NEWBIE ->
+      TutorialType.NEWBIE ->
         R.layout.fragment_tutorial_lesson_finish_newbie
-      WalletCreatedType.LOGIN ->
+      TutorialType.PIN_CODE ->
         R.layout.fragment_tutorial_lesson_finish_pin_code
-      WalletCreatedType.RACCOON ->
+      TutorialType.RACCOON ->
         R.layout.fragment_tutorial_lesson_finish_raccoon
     }
   }
 
-  private fun getWalletCreatedType() = arguments?.get(KEY_WALLET_CREATED_TYPE) as WalletCreatedType
+  private fun getWalletCreatedType() = arguments?.get(KEY_WALLET_CREATED_TYPE) as TutorialType
 
   companion object {
     private const val TOOLBAR_STRING_RES = R.string.wallet_created_fragment_title
     private const val KEY_WALLET_CREATED_TYPE = "wallet_created_type"
-    fun newInstance(walletCreatedType: WalletCreatedType): TutorialLessonFinishFragment {
+    fun newInstance(walletCreatedType: TutorialType): TutorialLessonFinishFragment {
       val fragment = TutorialLessonFinishFragment()
       val bundle = Bundle()
       bundle.putSerializable(KEY_WALLET_CREATED_TYPE, walletCreatedType)
@@ -59,10 +60,4 @@ class TutorialLessonFinishFragment : BaseFragment() {
       return fragment
     }
   }
-}
-
-enum class WalletCreatedType {
-  NEWBIE,
-  LOGIN,
-  RACCOON
 }

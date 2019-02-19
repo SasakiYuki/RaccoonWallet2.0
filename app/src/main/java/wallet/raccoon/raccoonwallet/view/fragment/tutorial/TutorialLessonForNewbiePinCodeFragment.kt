@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_tutorial_lesson_for_newbie_pin_code.button
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.type.TutorialType.NEWBIE
 import wallet.raccoon.raccoonwallet.view.activity.PinCodeSettingActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
@@ -16,7 +17,7 @@ class TutorialLessonForNewbiePinCodeFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
     button.setOnClickListener {
-      startActivity(PinCodeSettingActivity.createIntent(button.context))
+      startActivity(PinCodeSettingActivity.createIntent(button.context, NEWBIE))
     }
   }
 
