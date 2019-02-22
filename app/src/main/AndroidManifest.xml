@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="wallet.raccoon.raccoonwallet">
 
-
   <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
@@ -23,6 +22,8 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <activity android:name=".view.WalletCreateActivity"/>
+    <activity android:name=".view.activity.PinCodeSettingActivity"/>
   </application>
 
 </manifest>
