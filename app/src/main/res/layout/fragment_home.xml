@@ -12,7 +12,7 @@
       android:orientation="vertical"
       >
 
-    <wallet.raccoon.raccoonwallet.view.WalletBarView
+    <wallet.raccoon.raccoonwallet.view.common.WalletBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -176,25 +176,25 @@
                 />
           </LinearLayout>
 
-          <wallet.raccoon.raccoonwallet.view.MiniTransactionItemView
+          <wallet.raccoon.raccoonwallet.view.common.MiniTransactionItemView
               android:id="@+id/miniTransactionItemView1"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               />
 
-          <wallet.raccoon.raccoonwallet.view.MiniTransactionItemView
+          <wallet.raccoon.raccoonwallet.view.common.MiniTransactionItemView
               android:id="@+id/miniTransactionItemView2"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               />
 
-          <wallet.raccoon.raccoonwallet.view.MiniTransactionItemView
+          <wallet.raccoon.raccoonwallet.view.common.MiniTransactionItemView
               android:id="@+id/miniTransactionItemView3"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               />
 
-          <wallet.raccoon.raccoonwallet.view.MiniTransactionItemView
+          <wallet.raccoon.raccoonwallet.view.common.MiniTransactionItemView
               android:id="@+id/miniTransactionItemView4"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -279,7 +279,7 @@
                 />
           </LinearLayout>
 
-          <wallet.raccoon.raccoonwallet.view.MiniHarvestItemView
+          <wallet.raccoon.raccoonwallet.view.common.MiniHarvestItemView
               android:id="@+id/miniHarvestItemView"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
-import wallet.raccoon.raccoonwallet.view.BaseFragmentActivity
+import wallet.raccoon.raccoonwallet.view.activity.BaseFragmentActivity
 import wallet.raccoon.raccoonwallet.view.dialog.LoadingDialogFragment
 
 abstract class BaseFragment : Fragment() {

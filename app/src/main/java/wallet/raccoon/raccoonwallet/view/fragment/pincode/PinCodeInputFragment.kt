@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_pin_code_input.button9
 import kotlinx.android.synthetic.main.fragment_pin_code_input.displayText
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.extentions.showToast
-import wallet.raccoon.raccoonwallet.view.BaseFragmentActivity
+import wallet.raccoon.raccoonwallet.view.activity.BaseFragmentActivity
 import wallet.raccoon.raccoonwallet.view.dialog.RaccoonConfirmDialog
 import wallet.raccoon.raccoonwallet.view.dialog.RaccoonConfirmViewModel
 import wallet.raccoon.raccoonwallet.view.dialog.RaccoonPagerDialog

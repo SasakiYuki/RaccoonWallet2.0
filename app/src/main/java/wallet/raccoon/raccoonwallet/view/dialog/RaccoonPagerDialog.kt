@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import wallet.raccoon.raccoonwallet.R
-import wallet.raccoon.raccoonwallet.view.ViewPagerIndicator
+import wallet.raccoon.raccoonwallet.view.common.ViewPagerIndicator
 import wallet.raccoon.raccoonwallet.view.adapter.DialogPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.SimpleMessageFragment
 import wallet.raccoon.raccoonwallet.viewmodel.RaccoonPagerViewModel

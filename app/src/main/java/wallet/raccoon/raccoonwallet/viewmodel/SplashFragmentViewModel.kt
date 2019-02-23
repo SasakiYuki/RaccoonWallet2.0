@@ -2,7 +2,7 @@ package wallet.raccoon.raccoonwallet.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import wallet.raccoon.raccoonwallet.store.store.SplashFragmentStore
+import wallet.raccoon.raccoonwallet.flux.store.SplashFragmentStore
 import javax.inject.Inject
 
 class SplashFragmentViewModel @Inject constructor(private val store: SplashFragmentStore, private val context: Context) :
