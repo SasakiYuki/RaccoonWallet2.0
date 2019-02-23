@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.view.fragment
+package wallet.raccoon.raccoonwallet.view.fragment.home
 
 import android.content.Context
 import android.os.Bundle
@@ -15,6 +15,7 @@ import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
 import wallet.raccoon.raccoonwallet.extentions.remove
+import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
 import java.text.NumberFormat
 import javax.inject.Inject
