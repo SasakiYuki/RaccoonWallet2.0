@@ -18,7 +18,7 @@
         android:src="@mipmap/heroimage_new_large"
         />
 
-    <wallet.raccoon.raccoonwallet.view.WalletBarView
+    <wallet.raccoon.raccoonwallet.view.common.WalletBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

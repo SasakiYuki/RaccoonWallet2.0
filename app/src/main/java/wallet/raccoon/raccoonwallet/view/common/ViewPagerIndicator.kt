@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.view
+package wallet.raccoon.raccoonwallet.view.common
 
 import android.content.Context
 import android.util.AttributeSet
