@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.view
+package wallet.raccoon.raccoonwallet.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -6,7 +6,6 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import wallet.raccoon.raccoonwallet.MainActivity
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.view.dialog.LoadingDialogFragment
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment

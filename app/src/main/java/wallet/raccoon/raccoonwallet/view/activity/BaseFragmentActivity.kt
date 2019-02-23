@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.view
+package wallet.raccoon.raccoonwallet.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem

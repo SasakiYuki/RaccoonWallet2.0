@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.view_wallet_bar.view.fab
 import wallet.raccoon.raccoonwallet.R
-import wallet.raccoon.raccoonwallet.view.WalletCreateActivity
+import wallet.raccoon.raccoonwallet.view.activity.WalletCreateActivity
 
 class WalletBarView(
   context: Context?,

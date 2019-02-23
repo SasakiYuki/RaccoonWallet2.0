@@ -3,7 +3,6 @@ package wallet.raccoon.raccoonwallet.view.activity
 import android.content.Context
 import android.content.Intent
 import wallet.raccoon.raccoonwallet.type.TutorialType
-import wallet.raccoon.raccoonwallet.view.BaseFragmentActivity
 import wallet.raccoon.raccoonwallet.view.fragment.pincode.PinCodeInputFragment
 
 class PinCodeSettingActivity : BaseFragmentActivity() {

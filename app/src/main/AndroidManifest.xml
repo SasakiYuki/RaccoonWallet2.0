@@ -22,7 +22,7 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <activity android:name=".view.WalletCreateActivity"/>
+    <activity android:name=".view.activity.WalletCreateActivity"/>
     <activity android:name=".view.activity.PinCodeSettingActivity"/>
   </application>
 
