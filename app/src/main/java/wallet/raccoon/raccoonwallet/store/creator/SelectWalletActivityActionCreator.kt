@@ -11,8 +11,18 @@ class SelectWalletActivityActionCreator(
 ) : DisposableMapper() {
 
     suspend fun loadAllWallets() {
-        Database.query(useCase.getAllWallet(),{
+        Database.query(useCase.getAllWallet(), {
             dispatch(SelectWalletActivityActionType.Wallets(it))
         })
+    }
+
+    fun loadSelectedWalletId() {
+        Database.query(useCase.getSelectedWalletId(), {
+            dispatch(SelectWalletActivityActionType.SelectedWalletId(it))
+        })
+    }
+
+    fun saveSelectedWalletId(selectedWalletId: Long) {
+        dispatch(SelectWalletActivityActionType.SaveSelectedWalletId(useCase.saveSelectedWalletId(selectedWalletId)))
     }
 }

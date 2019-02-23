@@ -17,12 +17,14 @@ abstract class SelectWalletRowModel : DataBindingEpoxyModel() {
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     var onClickSettingListener: View.OnClickListener = View.OnClickListener { }
 
-    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    @EpoxyAttribute
     var selectWalletItem: SelectWalletItem? = null
 
     override fun setDataBindingVariables(binding: ViewDataBinding?) {
-        binding?.setVariable(BR.rowClickListener, onClickRowListener)
-        binding?.setVariable(BR.settingClickListener, onClickSettingListener)
-        binding?.setVariable(BR.item, selectWalletItem)
+        binding?.apply {
+            setVariable(BR.rowClickListener, onClickRowListener)
+            setVariable(BR.settingClickListener, onClickSettingListener)
+            setVariable(BR.item, selectWalletItem)
+        }
     }
 }

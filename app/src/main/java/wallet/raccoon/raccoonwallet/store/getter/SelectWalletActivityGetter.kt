@@ -7,4 +7,6 @@ import wallet.raccoon.raccoonwallet.store.reducer.SelectWalletActivityReducer
 
 class SelectWalletActivityGetter(reducer: SelectWalletActivityReducer) : DisposableMapper() {
     val wallets: Observable<List<Wallet>> = reducer.wallets
+    val selectedWalletId: Observable<Long> = reducer.selectedWalletId
+    val saveSelectedWalletId: Observable<Unit> = reducer.saveSelectedWalletId
 }

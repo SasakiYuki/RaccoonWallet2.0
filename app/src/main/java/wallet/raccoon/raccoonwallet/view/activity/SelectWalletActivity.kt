@@ -3,6 +3,7 @@ package wallet.raccoon.raccoonwallet.view.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,18 +35,34 @@ class SelectWalletActivity : BaseActivity() {
 
         setupViewModel()
         setupViews()
+        loadWallets()
     }
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(SelectWalletViewModel::class.java)
 
-        viewModel.allWalletsData.observe(this, Observer { wallets ->
-            controller.setData(
-                wallets.map {
-                    //todo isSelectをPreferenceから取得する
-                    SelectWalletItem(wallet = it, isSelected = true)
-                })
+//        viewModel.allWalletsData.observe(this, Observer { wallets ->
+//            viewModel.selectedWalletIdData.observe(this, Observer { selectedWalletId ->
+//                controller.setData(
+//                    wallets.map { wallet ->
+//                        SelectWalletItem(wallet = wallet, isSelected = wallet.id == selectedWalletId)
+//                    })
+//            })
+//        })
+
+        viewModel.selectedWalletIdData.observe(this, Observer { selectedWalletId ->
+            viewModel.allWalletsData.observe(this, Observer { wallets ->
+                controller.setData(
+                    wallets.map { wallet ->
+                        SelectWalletItem(wallet = wallet, isSelected = wallet.id == selectedWalletId)
+                    }
+                )
+            })
+        })
+
+        viewModel.saveSelectedWalletId.observe(this, Observer {
+            //            loadWallets()
         })
 
         viewModel.navigationCreateWalletClickEvent.observe(this, Observer {
@@ -56,11 +73,22 @@ class SelectWalletActivity : BaseActivity() {
             //todo ウォレット設定へ遷移させる
         })
 
-        viewModel.onClickRowEvent.observe(this, Observer {
-            //todo Walletを選択した際の処理を実行する
+        viewModel.onClickRowEvent.observe(this, Observer { wallet ->
+            val list = controller.currentData?.let { wallets ->
+                wallets.map {
+                    SelectWalletItem(it.wallet, it.wallet.id == wallet.id)
+                }
+            } ?: run { ArrayList<SelectWalletItem>() }
+
+            controller.setData(list)
+            viewModel.saveSelectedWalletId(wallet.id)
         })
 
+    }
+
+    private fun loadWallets() {
         CoroutineScope(Dispatchers.IO).launch {
+            viewModel.loadSelectedWalletId()
             viewModel.loadAllWallets()
         }
     }
@@ -71,10 +99,9 @@ class SelectWalletActivity : BaseActivity() {
         controller = SelectWalletListController(this)
 
         walletSelectRecyclerView.layoutManager = LinearLayoutManager(this)
-        walletSelectRecyclerView.adapter = controller.adapter
+        walletSelectRecyclerView.setController(controller)
 
-        val list = ArrayList<SelectWalletItem>()
-        controller.setData(list)
+        controller.setData(ArrayList())
     }
 
     companion object {
