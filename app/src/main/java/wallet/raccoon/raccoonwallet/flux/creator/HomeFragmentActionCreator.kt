@@ -1,10 +1,10 @@
-package wallet.raccoon.raccoonwallet.store.creator
+package wallet.raccoon.raccoonwallet.flux.creator
 
 import android.content.Context
 import wallet.raccoon.raccoonwallet.db.Database
-import wallet.raccoon.raccoonwallet.flux.DisposableMapper
+import wallet.raccoon.raccoonwallet.flux.store.DisposableMapper
 import wallet.raccoon.raccoonwallet.network.Network
-import wallet.raccoon.raccoonwallet.store.type.HomeFragmentActionType
+import wallet.raccoon.raccoonwallet.flux.type.HomeFragmentActionType
 import wallet.raccoon.raccoonwallet.usecase.HomeFragmentUseCase
 
 class HomeFragmentActionCreator(

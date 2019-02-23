@@ -3,7 +3,7 @@ package wallet.raccoon.raccoonwallet.viewmodel
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.ryuta46.nemkotlin.model.AccountMetaDataPair
-import wallet.raccoon.raccoonwallet.store.store.HomeSendFragmentStore
+import wallet.raccoon.raccoonwallet.flux.store.HomeSendFragmentStore
 import javax.inject.Inject
 
 class HomeSendFragmentViewModel @Inject constructor(

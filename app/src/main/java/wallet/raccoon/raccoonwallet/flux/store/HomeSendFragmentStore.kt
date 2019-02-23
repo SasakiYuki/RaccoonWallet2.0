@@ -1,11 +1,10 @@
-package wallet.raccoon.raccoonwallet.store.store
+package wallet.raccoon.raccoonwallet.flux.store
 
 import io.reactivex.Observable
-import wallet.raccoon.raccoonwallet.flux.Store
-import wallet.raccoon.raccoonwallet.store.creator.HomeSendFragmentActionCreator
-import wallet.raccoon.raccoonwallet.store.getter.HomeSendFragmentGetter
-import wallet.raccoon.raccoonwallet.store.reducer.HomeSendFragmentReducer
-import wallet.raccoon.raccoonwallet.store.type.HomeSendFragmentActionType
+import wallet.raccoon.raccoonwallet.flux.creator.HomeSendFragmentActionCreator
+import wallet.raccoon.raccoonwallet.flux.getter.HomeSendFragmentGetter
+import wallet.raccoon.raccoonwallet.flux.reducer.HomeSendFragmentReducer
+import wallet.raccoon.raccoonwallet.flux.type.HomeSendFragmentActionType
 import wallet.raccoon.raccoonwallet.usecase.HomeSendFragmentUseCase
 import javax.inject.Inject
 

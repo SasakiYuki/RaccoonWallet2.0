@@ -1,9 +1,9 @@
-package wallet.raccoon.raccoonwallet.store.creator
+package wallet.raccoon.raccoonwallet.flux.creator
 
 import android.content.Context
-import wallet.raccoon.raccoonwallet.flux.DisposableMapper
+import wallet.raccoon.raccoonwallet.flux.store.DisposableMapper
 import wallet.raccoon.raccoonwallet.network.Network
-import wallet.raccoon.raccoonwallet.store.type.SplashFragmentActionType
+import wallet.raccoon.raccoonwallet.flux.type.SplashFragmentActionType
 import wallet.raccoon.raccoonwallet.usecase.SplashFragmentUseCase
 
 class SplashFragmentActionCreator(

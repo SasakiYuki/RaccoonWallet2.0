@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.flux
+package wallet.raccoon.raccoonwallet.flux.store
 
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable

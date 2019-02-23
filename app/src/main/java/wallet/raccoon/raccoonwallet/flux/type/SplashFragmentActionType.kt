@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet.store.type
+package wallet.raccoon.raccoonwallet.flux.type
 
 import wallet.raccoon.raccoonwallet.model.rest.ActiveNodeEntity
 

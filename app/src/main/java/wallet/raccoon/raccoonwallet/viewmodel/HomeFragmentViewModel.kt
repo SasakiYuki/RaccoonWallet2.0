@@ -7,7 +7,7 @@ import wallet.raccoon.raccoonwallet.model.db.Wallet
 import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
 import wallet.raccoon.raccoonwallet.model.rest.TransactionData
 import wallet.raccoon.raccoonwallet.model.rest.ZaifNemEntity
-import wallet.raccoon.raccoonwallet.store.store.HomeFragmentStore
+import wallet.raccoon.raccoonwallet.flux.store.HomeFragmentStore
 import javax.inject.Inject
 
 class HomeFragmentViewModel @Inject constructor(

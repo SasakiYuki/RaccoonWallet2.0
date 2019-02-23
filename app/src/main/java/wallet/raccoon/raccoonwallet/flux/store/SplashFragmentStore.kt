@@ -1,16 +1,15 @@
-package wallet.raccoon.raccoonwallet.store.store
+package wallet.raccoon.raccoonwallet.flux.store
 
 import io.reactivex.Observable
-import wallet.raccoon.raccoonwallet.flux.Store
-import wallet.raccoon.raccoonwallet.store.creator.SplashFragmentActionCreator
-import wallet.raccoon.raccoonwallet.store.getter.SplashFragmentGetter
-import wallet.raccoon.raccoonwallet.store.reducer.SplashFragmentReducer
-import wallet.raccoon.raccoonwallet.store.type.SplashFragmentActionType
+import wallet.raccoon.raccoonwallet.flux.creator.SplashFragmentActionCreator
+import wallet.raccoon.raccoonwallet.flux.getter.SplashFragmentGetter
+import wallet.raccoon.raccoonwallet.flux.reducer.SplashFragmentReducer
+import wallet.raccoon.raccoonwallet.flux.type.SplashFragmentActionType
 import wallet.raccoon.raccoonwallet.usecase.SplashFragmentUseCase
 import javax.inject.Inject
 
 class SplashFragmentStore @Inject constructor(private val useCase: SplashFragmentUseCase) : Store<
-        SplashFragmentActionType, SplashFragmentActionCreator, SplashFragmentReducer, SplashFragmentGetter>() {
+    SplashFragmentActionType, SplashFragmentActionCreator, SplashFragmentReducer, SplashFragmentGetter>() {
 
     override fun createActionCreator(
         dispatch: (SplashFragmentActionType) -> Unit,
