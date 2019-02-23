@@ -1,4 +1,4 @@
-package wallet.raccoon.raccoonwallet
+package wallet.raccoon.raccoonwallet.view.activity
 
 import android.content.Context
 import android.content.Intent
@@ -19,6 +19,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.R.color
+import wallet.raccoon.raccoonwallet.R.id
+import wallet.raccoon.raccoonwallet.R.layout
 import wallet.raccoon.raccoonwallet.R.string
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.model.DrawerEntity
@@ -26,7 +30,6 @@ import wallet.raccoon.raccoonwallet.model.DrawerItemType
 import wallet.raccoon.raccoonwallet.model.MainBottomNavigationType
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.util.ToastUtil
-import wallet.raccoon.raccoonwallet.view.activity.BaseActivity
 import wallet.raccoon.raccoonwallet.view.adapter.TopFragmentPagerAdapter
 import wallet.raccoon.raccoonwallet.view.controller.DrawerListController
 import wallet.raccoon.raccoonwallet.view.fragment.SplashFragment
@@ -41,7 +44,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
   @Inject
   lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
-  override fun setLayout() = R.layout.activity_main
+  override fun setLayout() = layout.activity_main
 
   override fun supportFragmentInjector() = fragmentDispatchingAndroidInjector
 
@@ -75,7 +78,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
     if (shouldShowSplash) {
       val fragmentTransaction = supportFragmentManager.beginTransaction()
       val fragment = SplashFragment.newInstance()
-      fragmentTransaction.replace(R.id.fragment_container, fragment, fragment::class.java.simpleName)
+      fragmentTransaction.replace(id.fragment_container, fragment, fragment::class.java.simpleName)
       fragmentTransaction.commit()
     } else {
       onCompleteSplash()
@@ -100,7 +103,8 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
     val adapter = TopFragmentPagerAdapter(supportFragmentManager)
     viewpager.adapter = adapter
     tabLayout.setupWithViewPager(viewpager)
-    viewpager.currentItem = HOME_POSITION
+    viewpager.currentItem =
+        HOME_POSITION
     viewpager.offscreenPageLimit = 5
   }
 
@@ -116,7 +120,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
       }
 
       override fun onTabUnselected(tab: TabLayout.Tab?) {
-        val color = R.color.textGray
+        val color = color.textGray
         tab?.let {
           getTabTextView(tab)?.let {
             setTextColor(it, color)
@@ -128,7 +132,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
       }
 
       override fun onTabSelected(tab: TabLayout.Tab?) {
-        val color = R.color.nemGreen
+        val color = color.nemGreen
         tab?.let {
           getTabTextView(tab)?.let {
             setTextColor(it, color)
@@ -160,14 +164,14 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
 
   private fun getTabImageView(tab: TabLayout.Tab): ImageView? {
     tab.customView?.let {
-      return it.findViewById(R.id.tabLayoutImageView)
+      return it.findViewById(id.tabLayoutImageView)
     }
     return null
   }
 
   private fun getTabTextView(tab: TabLayout.Tab): TextView? {
     tab.customView?.let {
-      return it.findViewById(R.id.tabLayoutTextView)
+      return it.findViewById(id.tabLayoutTextView)
     }
     return null
   }
@@ -180,12 +184,16 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
     val items = MainBottomNavigationType.values()
     val text = getString(items[position].textResource)
 
-    val tab1View = layoutInflater.inflate(R.layout.view_main_tab, null)
-    val textView = tab1View.findViewById<TextView>(R.id.tabLayoutTextView)
-    val imageView = tab1View.findViewById<ImageView>(R.id.tabLayoutImageView)
+    val tab1View = layoutInflater.inflate(layout.view_main_tab, null)
+    val textView = tab1View.findViewById<TextView>(
+        id.tabLayoutTextView
+    )
+    val imageView = tab1View.findViewById<ImageView>(
+        id.tabLayoutImageView
+    )
     textView.text = text
     if (position == HOME_POSITION) {
-      val color = R.color.nemGreen
+      val color = color.nemGreen
       setTextColor(textView, color)
       setDrawableTint(imageView, color)
     }
@@ -217,7 +225,8 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
   }
 
   private val shouldShowSplash by lazy {
-    intent.getBooleanExtra(ARG_SHOULD_SHOW_SPLASH, true)
+    intent.getBooleanExtra(
+        ARG_SHOULD_SHOW_SPLASH, true)
   }
 
   companion object {
@@ -231,8 +240,10 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
       context: Context,
       showSplash: Boolean
     ): Intent {
-      val intent = createIntent(context)
-      intent.putExtra(ARG_SHOULD_SHOW_SPLASH, showSplash)
+      val intent =
+        createIntent(context)
+      intent.putExtra(
+          ARG_SHOULD_SHOW_SPLASH, showSplash)
       return intent
     }
   }

@@ -4,7 +4,7 @@ import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import wallet.raccoon.raccoonwallet.MainActivity
+import wallet.raccoon.raccoonwallet.view.activity.MainActivity
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.type.TutorialType
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
