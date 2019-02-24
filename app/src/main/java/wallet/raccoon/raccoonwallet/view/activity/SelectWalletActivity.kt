@@ -15,7 +15,6 @@ import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.model.db.Wallet
 import wallet.raccoon.raccoonwallet.model.local.SelectWalletItem
-import wallet.raccoon.raccoonwallet.view.BaseActivity
 import wallet.raccoon.raccoonwallet.view.controller.SelectWalletListController
 import wallet.raccoon.raccoonwallet.viewmodel.SelectWalletViewModel
 import javax.inject.Inject

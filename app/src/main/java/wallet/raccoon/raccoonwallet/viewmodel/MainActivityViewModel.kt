@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import wallet.raccoon.raccoonwallet.model.DrawerEntity
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
-import wallet.raccoon.raccoonwallet.store.store.MainActivityStore
+import wallet.raccoon.raccoonwallet.flux.store.MainActivityStore
 import javax.inject.Inject
 
 class MainActivityViewModel @Inject constructor(

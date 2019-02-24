@@ -15,7 +15,7 @@
             android:background="@color/simpleBackground"
             android:paddingBottom="16dp">
 
-        <wallet.raccoon.raccoonwallet.view.WalletBarView
+        <wallet.raccoon.raccoonwallet.view.common.WalletBarView
                 android:id="@+id/walletBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

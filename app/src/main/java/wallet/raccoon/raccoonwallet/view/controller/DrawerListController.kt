@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.airbnb.epoxy.AutoModel
 import com.airbnb.epoxy.TypedEpoxyController
-import wallet.raccoon.raccoonwallet.MainActivity
+import wallet.raccoon.raccoonwallet.view.activity.MainActivity
 import wallet.raccoon.raccoonwallet.model.DrawerEntity
 import wallet.raccoon.raccoonwallet.model.DrawerType
 import wallet.raccoon.raccoonwallet.model.epoxy.DrawerHeaderModel_

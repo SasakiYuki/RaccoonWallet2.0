@@ -26,4 +26,9 @@
     <item name="android:textColorPrimary">@color/toolbarTextColor</item>
   </style>
 
+  <style name="WhiteCheckBox" parent="Theme.AppCompat.Light">
+    <item name="colorControlNormal">@android:color/white</item>
+    <item name="colorControlActivated">@android:color/white</item>
+  </style>
+
 </resources>
