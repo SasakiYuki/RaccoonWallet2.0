@@ -1,5 +1,6 @@
 package wallet.raccoon.raccoonwallet.store.reducer
 
+import com.ryuta46.nemkotlin.model.AccountMetaDataPair
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import wallet.raccoon.raccoonwallet.flux.DisposableMapper
@@ -10,6 +11,8 @@ class SelectWalletActivityReducer(actionType: Observable<SelectWalletActivityAct
     private val mWallets: PublishSubject<List<Wallet>> = PublishSubject.create()
     private val mSelectedWalletId: PublishSubject<Long> = PublishSubject.create()
     private val mSaveSelectedWalletId: PublishSubject<Unit> = PublishSubject.create()
+    private val mAccountInfo: PublishSubject<AccountMetaDataPair> = PublishSubject.create()
+    private val mUpdateWallet: PublishSubject<Long> = PublishSubject.create()
 
     val wallets: Observable<List<Wallet>>
         get() = mWallets
@@ -19,6 +22,12 @@ class SelectWalletActivityReducer(actionType: Observable<SelectWalletActivityAct
 
     val saveSelectedWalletId: Observable<Unit>
         get() = mSaveSelectedWalletId
+
+    val accountInfo: Observable<AccountMetaDataPair>
+        get() = mAccountInfo
+
+    val updateWallet: Observable<Long>
+        get() = mUpdateWallet
 
     init {
         actionType.ofType(SelectWalletActivityActionType.Wallets::class.java)
@@ -40,6 +49,22 @@ class SelectWalletActivityReducer(actionType: Observable<SelectWalletActivityAct
         actionType.ofType(SelectWalletActivityActionType.SaveSelectedWalletId::class.java)
             .subscribe({
                 mSaveSelectedWalletId.onNext(it.complete)
+            }, {
+                it.printStackTrace()
+            })
+            .let { disposables.add(it) }
+
+        actionType.ofType(SelectWalletActivityActionType.AccountInfo::class.java)
+            .subscribe({
+                mAccountInfo.onNext(it.accountMetaDataPair)
+            }, {
+                it.printStackTrace()
+            })
+            .let { disposables.add(it) }
+
+        actionType.ofType(SelectWalletActivityActionType.UpdateWallet::class.java)
+            .subscribe({
+                mUpdateWallet.onNext(it.walletId)
             }, {
                 it.printStackTrace()
             })

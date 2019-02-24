@@ -1,5 +1,6 @@
 package wallet.raccoon.raccoonwallet.store.getter
 
+import com.ryuta46.nemkotlin.model.AccountMetaDataPair
 import io.reactivex.Observable
 import wallet.raccoon.raccoonwallet.flux.DisposableMapper
 import wallet.raccoon.raccoonwallet.model.db.Wallet
@@ -9,4 +10,6 @@ class SelectWalletActivityGetter(reducer: SelectWalletActivityReducer) : Disposa
     val wallets: Observable<List<Wallet>> = reducer.wallets
     val selectedWalletId: Observable<Long> = reducer.selectedWalletId
     val saveSelectedWalletId: Observable<Unit> = reducer.saveSelectedWalletId
+    val accountInfo: Observable<AccountMetaDataPair> = reducer.accountInfo
+    val updateWallet: Observable<Long> = reducer.updateWallet
 }
