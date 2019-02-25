@@ -1,13 +1,33 @@
 package wallet.raccoon.raccoonwallet.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import wallet.raccoon.raccoonwallet.R
+import androidx.fragment.app.Fragment
+import dagger.android.AndroidInjection
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
+import wallet.raccoon.raccoonwallet.view.fragment.send.AmountInputFragment
+import javax.inject.Inject
 
-class SendActivity : AppCompatActivity() {
+class SendActivity : BaseFragmentActivity(), HasSupportFragmentInjector {
+  @Inject
+  lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+
+  override fun supportFragmentInjector() = fragmentDispatchingAndroidInjector
+
+  override fun setLayout() = SIMPLE_FRAGMENT_ONLY_LAYOUT
+  override fun initialFragment() = AmountInputFragment.newInstance()
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_send)
+  }
+
+  companion object {
+    fun createIntent(context: Context): Intent {
+      val intent = Intent(context, SendActivity::class.java)
+      return intent
+    }
   }
 }
