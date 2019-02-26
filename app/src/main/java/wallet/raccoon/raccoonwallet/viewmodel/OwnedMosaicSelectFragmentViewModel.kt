@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.ryuta46.nemkotlin.model.Mosaic
 import com.ryuta46.nemkotlin.model.MosaicDefinitionMetaDataPair
-import wallet.raccoon.raccoonwallet.flux.store.AmountInputFragmentStore
+import wallet.raccoon.raccoonwallet.flux.store.OwnedMosaicSelectFragmentStore
 import javax.inject.Inject
 
-class AmountInputFragmetViewModel @Inject constructor(
+class OwnedMosaicSelectFragmentViewModel @Inject constructor(
   private val context: Context,
-  private val store: AmountInputFragmentStore
+  private val store: OwnedMosaicSelectFragmentStore
 ) : BaseViewModel() {
   val ownedMosaicsData: MutableLiveData<List<Mosaic>> = MutableLiveData()
   val namespaceMosaicsData: MutableLiveData<List<MosaicDefinitionMetaDataPair>> = MutableLiveData()

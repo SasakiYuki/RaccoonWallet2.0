@@ -2,13 +2,13 @@ package wallet.raccoon.raccoonwallet.flux.creator
 
 import android.content.Context
 import wallet.raccoon.raccoonwallet.flux.store.DisposableMapper
-import wallet.raccoon.raccoonwallet.flux.type.AmountInputFragmentActionType
+import wallet.raccoon.raccoonwallet.flux.type.OwnedMosaicSelectFragmentActionType
 import wallet.raccoon.raccoonwallet.network.Network
-import wallet.raccoon.raccoonwallet.usecase.AmountInputFragmentUseCase
+import wallet.raccoon.raccoonwallet.usecase.OwnedMosaicSelectFragmentUseCase
 
-class AmountInputFragmentActionCreator(
-  private val useCase: AmountInputFragmentUseCase,
-  private val dispatch: (AmountInputFragmentActionType) -> Unit
+class OwnedMosaicSelectFragmentActionCreator(
+  private val useCase: OwnedMosaicSelectFragmentUseCase,
+  private val dispatch: (OwnedMosaicSelectFragmentActionType) -> Unit
 ) : DisposableMapper() {
   suspend fun loadOwnedMosaics(
     context: Context,
@@ -18,7 +18,7 @@ class AmountInputFragmentActionCreator(
         context,
         useCase.getOwnedMosaics(address),
         {
-          dispatch(AmountInputFragmentActionType.OwnedMosaics(it))
+          dispatch(OwnedMosaicSelectFragmentActionType.OwnedMosaics(it))
         }, {
       it.printStackTrace()
     }
@@ -33,7 +33,7 @@ class AmountInputFragmentActionCreator(
         context,
         useCase.getNamespaceMosaic(namespace),
         {
-          dispatch(AmountInputFragmentActionType.NamespaceMosaics(it))
+          dispatch(OwnedMosaicSelectFragmentActionType.NamespaceMosaics(it))
         }, {
       it.printStackTrace()
     }

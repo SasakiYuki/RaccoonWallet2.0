@@ -5,9 +5,9 @@ import com.ryuta46.nemkotlin.model.MosaicDefinitionMetaDataPair
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import wallet.raccoon.raccoonwallet.flux.store.DisposableMapper
-import wallet.raccoon.raccoonwallet.flux.type.AmountInputFragmentActionType
+import wallet.raccoon.raccoonwallet.flux.type.OwnedMosaicSelectFragmentActionType
 
-class AmountInputFragmentReducer(actionType: Observable<AmountInputFragmentActionType>) :
+class OwnedMosaicSelectFragmentReducer(actionType: Observable<OwnedMosaicSelectFragmentActionType>) :
     DisposableMapper() {
   private val mOwnedMosaics: PublishSubject<List<Mosaic>> = PublishSubject.create()
   private val mNamespaceMosaics: PublishSubject<List<MosaicDefinitionMetaDataPair>> =
@@ -19,7 +19,7 @@ class AmountInputFragmentReducer(actionType: Observable<AmountInputFragmentActio
     get() = mNamespaceMosaics
 
   init {
-    actionType.ofType(AmountInputFragmentActionType.OwnedMosaics::class.java)
+    actionType.ofType(OwnedMosaicSelectFragmentActionType.OwnedMosaics::class.java)
         .subscribe({
           mOwnedMosaics.onNext(it.mosaicList)
         }, {
@@ -27,7 +27,7 @@ class AmountInputFragmentReducer(actionType: Observable<AmountInputFragmentActio
         })
         .let { disposables.add(it) }
 
-    actionType.ofType(AmountInputFragmentActionType.NamespaceMosaics::class.java)
+    actionType.ofType(OwnedMosaicSelectFragmentActionType.NamespaceMosaics::class.java)
         .subscribe({
           mNamespaceMosaics.onNext(it.mosaics)
         }, {

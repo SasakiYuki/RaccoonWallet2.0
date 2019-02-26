@@ -7,13 +7,13 @@ import dagger.android.support.AndroidSupportInjection
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
-import wallet.raccoon.raccoonwallet.viewmodel.AmountInputFragmetViewModel
+import wallet.raccoon.raccoonwallet.viewmodel.OwnedMosaicSelectFragmentViewModel
 import javax.inject.Inject
 
-class AmountInputFragment : BaseFragment() {
+class OwnedMosaicSelectFragment : BaseFragment() {
   @Inject
   lateinit var viewModelFactory: ViewModelFactory
-  private lateinit var viewModel: AmountInputFragmetViewModel
+  private lateinit var viewModel: OwnedMosaicSelectFragmentViewModel
 
   override fun layoutRes() = R.layout.fragment_amount_input
 
@@ -22,12 +22,12 @@ class AmountInputFragment : BaseFragment() {
     super.onAttach(context)
 
     viewModel = ViewModelProviders.of(this, viewModelFactory)
-        .get(AmountInputFragmetViewModel::class.java)
+        .get(OwnedMosaicSelectFragmentViewModel::class.java)
   }
 
   companion object {
-    fun newInstance(): AmountInputFragment {
-      val fragment = AmountInputFragment()
+    fun newInstance(): OwnedMosaicSelectFragment {
+      val fragment = OwnedMosaicSelectFragment()
       fragment.arguments = Bundle().apply {
         putInt(ARG_CONTENTS_NAME_ID, R.string.enter_send_fragment_title)
       }
