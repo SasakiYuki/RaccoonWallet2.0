@@ -5,23 +5,23 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import wallet.raccoon.raccoonwallet.flux.store.DisposableMapper
 import wallet.raccoon.raccoonwallet.model.db.Wallet
-import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
-import wallet.raccoon.raccoonwallet.model.rest.TransactionData
+import wallet.raccoon.raccoonwallet.model.rest.HarvestInfoEntity
+import wallet.raccoon.raccoonwallet.model.rest.TransactionEntity
 import wallet.raccoon.raccoonwallet.model.rest.ZaifNemEntity
 import wallet.raccoon.raccoonwallet.flux.type.HomeFragmentActionType
 
 class HomeFragmentReducer(actionType: Observable<HomeFragmentActionType>) : DisposableMapper() {
   private val mAccountInfo: PublishSubject<AccountMetaDataPair> = PublishSubject.create()
-  private val mTransactionList: PublishSubject<TransactionData> = PublishSubject.create()
-  private val mHarvestInfoList: PublishSubject<HarvestInfos> = PublishSubject.create()
+  private val mTransactionList: PublishSubject<TransactionEntity> = PublishSubject.create()
+  private val mHarvestInfoList: PublishSubject<HarvestInfoEntity> = PublishSubject.create()
   private val mNemPrice: PublishSubject<ZaifNemEntity> = PublishSubject.create()
   private val mWallet: PublishSubject<Wallet> = PublishSubject.create()
 
   val accountInfo: Observable<AccountMetaDataPair>
     get() = mAccountInfo
-  val transactionList: Observable<TransactionData>
+  val transactionList: Observable<TransactionEntity>
     get() = mTransactionList
-  val harvestInfoList: Observable<HarvestInfos>
+  val harvestInfoList: Observable<HarvestInfoEntity>
     get() = mHarvestInfoList
   val nemPrice: Observable<ZaifNemEntity>
     get() = mNemPrice
