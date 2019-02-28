@@ -18,7 +18,7 @@ class OwnedMosaicSelectFragmentActionCreator(
         context,
         useCase.getOwnedMosaics(address),
         {
-          dispatch(OwnedMosaicSelectFragmentActionType.OwnedMosaics(it))
+          dispatch(OwnedMosaicSelectFragmentActionType.OwnedMosaics(it.data))
         }, {
       it.printStackTrace()
     }
