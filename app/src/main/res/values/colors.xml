@@ -4,7 +4,7 @@
   <color name="colorPrimaryDark">#303F9F</color>
   <color name="colorAccent">#00c3b2</color>
 
-  <color name="nemGreen">#00c3b2</color>
+  <color name="nemGreen">#00C8C8</color>
   <color name="nemOrange">#f7a800</color>
   <color name="nemBlue">#66B1E6</color>
   <color name="nemGreenSelected">#009f91</color>
@@ -43,6 +43,4 @@
   <color name="gradient_gray">#8c000000</color>
 
   <color name="twitter_blue">#55ACEE</color>
-
-  <color name="mainGreen">#00C8C8</color>
 </resources>

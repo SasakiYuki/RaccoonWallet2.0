@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:foreground="?selectableItemBackground"
-                app:cardBackgroundColor="@color/mainGreen"
+                app:cardBackgroundColor="@color/nemGreen"
                 android:layout_margin="16dp"
                 android:onClick="@{createWalletClickListener}"
                 app:layout_constraintTop_toBottomOf="@id/shadow"
