@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.ryuta46.nemkotlin.model.TransactionMetaDataPair
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.view_wallet_bar.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,6 +16,7 @@ import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
 import wallet.raccoon.raccoonwallet.extentions.remove
+import wallet.raccoon.raccoonwallet.view.activity.SelectWalletActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
 import java.text.NumberFormat
@@ -46,6 +48,10 @@ class HomeFragment : BaseFragment() {
     CoroutineScope(Dispatchers.IO).launch {
       //todo 現在選択されているWalletIdをSharedPreferenceから取得する
       viewModel.loadWallet(0)
+    }
+
+    fab.setOnClickListener {
+      startActivity(SelectWalletActivity.createIntent(context!!))
     }
   }
 

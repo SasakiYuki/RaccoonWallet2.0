@@ -9,7 +9,7 @@ data class Wallet constructor(
     val id: Long = 0,
     val salt: ByteArray,
     val name: String,
-    val publicKey: String,
+    val publicKey: String = "",
     val encryptedSecretKey: ByteArray,
     val address: String,
     val isMultisig: Boolean = false
