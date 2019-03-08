@@ -5,6 +5,6 @@ import com.ryuta46.nemkotlin.model.MosaicDefinitionMetaDataPair
 
 sealed class OwnedMosaicSelectFragmentActionType {
   class OwnedMosaics(val mosaicList: List<Mosaic>) : OwnedMosaicSelectFragmentActionType()
-  class NamespaceMosaics(val mosaics: List<MosaicDefinitionMetaDataPair>) :
+  class NamespaceMosaics(val mosaics: Pair<String, List<MosaicDefinitionMetaDataPair>>) :
       OwnedMosaicSelectFragmentActionType()
 }

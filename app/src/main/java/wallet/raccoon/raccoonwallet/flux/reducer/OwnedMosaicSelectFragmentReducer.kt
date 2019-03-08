@@ -10,12 +10,12 @@ import wallet.raccoon.raccoonwallet.flux.type.OwnedMosaicSelectFragmentActionTyp
 class OwnedMosaicSelectFragmentReducer(actionType: Observable<OwnedMosaicSelectFragmentActionType>) :
     DisposableMapper() {
   private val mOwnedMosaics: PublishSubject<List<Mosaic>> = PublishSubject.create()
-  private val mNamespaceMosaics: PublishSubject<List<MosaicDefinitionMetaDataPair>> =
+  private val mNamespaceMosaics: PublishSubject<Pair<String, List<MosaicDefinitionMetaDataPair>>> =
     PublishSubject.create()
 
   val ownedMosaics: Observable<List<Mosaic>>
     get() = mOwnedMosaics
-  val namespace: Observable<List<MosaicDefinitionMetaDataPair>>
+  val namespace: Observable<Pair<String, List<MosaicDefinitionMetaDataPair>>>
     get() = mNamespaceMosaics
 
   init {

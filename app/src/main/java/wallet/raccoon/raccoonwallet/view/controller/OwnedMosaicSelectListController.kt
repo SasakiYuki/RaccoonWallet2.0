@@ -3,9 +3,11 @@ package wallet.raccoon.raccoonwallet.view.controller
 import android.view.View
 import com.airbnb.epoxy.AutoModel
 import com.airbnb.epoxy.TypedEpoxyController
+import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.model.epoxy.mosaic.OwnedMosaicHeaderModel_
 import wallet.raccoon.raccoonwallet.model.epoxy.mosaic.OwnedMosaicRowModel_
 import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
+import wallet.raccoon.raccoonwallet.util.ToastUtil
 
 class OwnedMosaicSelectListController() : TypedEpoxyController<List<FullMosaicItem>>() {
   @AutoModel
@@ -18,8 +20,7 @@ class OwnedMosaicSelectListController() : TypedEpoxyController<List<FullMosaicIt
   }
 
   private fun addList(data: List<FullMosaicItem>) {
-    ownedMosaicHeaderModel.swichChangelistener { p0, p1 ->
-    }
+    ownedMosaicHeaderModel
         .checked(true)
         .addTo(this)
     val formattedList = ArrayList<FullMosaicItem>()

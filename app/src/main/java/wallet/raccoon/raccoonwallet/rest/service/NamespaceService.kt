@@ -1,9 +1,9 @@
 package wallet.raccoon.raccoonwallet.rest.service
 
-import com.ryuta46.nemkotlin.model.MosaicDefinitionMetaDataPair
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
+import wallet.raccoon.raccoonwallet.model.rest.MosaicMetaDataEntity
 
 interface NamespaceService {
   @GET("/namespace/mosaic/definition/page")
@@ -11,5 +11,5 @@ interface NamespaceService {
     @Query(
         "namespace"
     ) namespace: String
-  ): Deferred<List<MosaicDefinitionMetaDataPair>>
+  ): Deferred<MosaicMetaDataEntity>
 }

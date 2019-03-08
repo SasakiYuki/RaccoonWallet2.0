@@ -1,6 +1,8 @@
 package wallet.raccoon.raccoonwallet.flux.creator
 
 import android.content.Context
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Deferred
 import wallet.raccoon.raccoonwallet.flux.store.DisposableMapper
 import wallet.raccoon.raccoonwallet.flux.type.OwnedMosaicSelectFragmentActionType
 import wallet.raccoon.raccoonwallet.network.Network
@@ -28,15 +30,26 @@ class OwnedMosaicSelectFragmentActionCreator(
   suspend fun loadNamespaceMosaic(
     context: Context,
     namespace: String
-  ) {
+  ): Deferred<Boolean> {
+    val deferred = CompletableDeferred<Boolean>()
     Network.request(
         context,
         useCase.getNamespaceMosaic(namespace),
         {
-          dispatch(OwnedMosaicSelectFragmentActionType.NamespaceMosaics(it))
+          deferred.complete(true)
+          dispatch(
+              OwnedMosaicSelectFragmentActionType.NamespaceMosaics(
+                  Pair(
+                      namespace,
+                      it.data
+                  )
+              )
+          )
         }, {
       it.printStackTrace()
+      deferred.complete(false)
     }
     )
+    return deferred
   }
 }

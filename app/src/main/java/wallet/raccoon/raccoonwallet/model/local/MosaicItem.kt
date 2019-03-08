@@ -1,5 +1,6 @@
 package wallet.raccoon.raccoonwallet.model.local
 
+import com.ryuta46.nemkotlin.model.Mosaic
 import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
 import wallet.raccoon.raccoonwallet.util.NEMCommons
 import java.io.Serializable
@@ -19,6 +20,9 @@ class MosaicItem(
   companion object {
     fun createNEMXEMItem() =
       MosaicItem(MosaicIdItem(NEMCommons.DEFAULT_NEM_NAMESPACE, NEMCommons.DEFAULT_NEM_NAME), 0L)
+
+    fun convert(mosaic: Mosaic) =
+      MosaicItem(MosaicIdItem.convert(mosaic.mosaicId), mosaic.quantity)
   }
 }
 
