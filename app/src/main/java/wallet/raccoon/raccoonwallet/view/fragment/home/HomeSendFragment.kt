@@ -21,6 +21,7 @@ import wallet.raccoon.raccoonwallet.extentions.isNotTextEmptyObservable
 import wallet.raccoon.raccoonwallet.extentions.pasteFromClipBoard
 import wallet.raccoon.raccoonwallet.extentions.remove
 import wallet.raccoon.raccoonwallet.util.ToastUtil
+import wallet.raccoon.raccoonwallet.view.activity.SendActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.HomeSendFragmentViewModel
 import javax.inject.Inject
@@ -49,6 +50,7 @@ class HomeSendFragment : BaseFragment() {
 
     viewModel.accountInfoData.observe(this, Observer {
       ToastUtil.show(activity!!, R.string.app_name)
+      startActivity(SendActivity.createIntent(context!!))
     })
 
     clipButton.setOnClickListener {
