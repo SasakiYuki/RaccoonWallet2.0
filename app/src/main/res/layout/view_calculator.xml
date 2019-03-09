@@ -5,6 +5,27 @@
     android:orientation="vertical"
     >
 
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="34dp"
+      android:orientation="vertical"
+      >
+
+    <wallet.raccoon.raccoonwallet.view.common.ViewPagerIndicator
+        android:id="@+id/pagerIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        />
+
+    <wallet.raccoon.raccoonwallet.view.common.WrapViewPager
+        android:id="@+id/wrapViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+  </FrameLayout>
+
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="0dp"
@@ -16,7 +37,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="right"
+        android:gravity="start"
         android:orientation="horizontal"
         >
 
