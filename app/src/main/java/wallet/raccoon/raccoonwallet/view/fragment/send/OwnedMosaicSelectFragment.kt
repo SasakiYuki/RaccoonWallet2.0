@@ -50,7 +50,6 @@ class OwnedMosaicSelectFragment : BaseFragment() {
     viewModel = ViewModelProviders.of(this, viewModelFactory)
         .get(OwnedMosaicSelectFragmentViewModel::class.java)
 
-    //TODO viewModel.observe
     viewModel.ownedMosaicsData.observe(this, Observer {
       ToastUtil.show(context!!, R.string.select_wallet_activity_title)
     })

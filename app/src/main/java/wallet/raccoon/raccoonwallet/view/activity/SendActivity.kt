@@ -8,7 +8,7 @@ import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import wallet.raccoon.raccoonwallet.R
-import wallet.raccoon.raccoonwallet.view.fragment.send.OwnedMosaicSelectFragment
+import wallet.raccoon.raccoonwallet.view.fragment.send.AmountInputFragment
 import javax.inject.Inject
 
 class SendActivity : BaseFragmentActivity(), HasSupportFragmentInjector {
@@ -18,7 +18,7 @@ class SendActivity : BaseFragmentActivity(), HasSupportFragmentInjector {
   override fun supportFragmentInjector() = fragmentDispatchingAndroidInjector
 
   override fun setLayout() = R.layout.activity_send
-  override fun initialFragment() = OwnedMosaicSelectFragment.newInstance()
+  override fun initialFragment() = AmountInputFragment.newInstance()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     AndroidInjection.inject(this)

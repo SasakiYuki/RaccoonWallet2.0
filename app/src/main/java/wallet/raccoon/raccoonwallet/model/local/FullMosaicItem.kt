@@ -1,6 +1,8 @@
 package wallet.raccoon.raccoonwallet.model.local
 
 import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
+import wallet.raccoon.raccoonwallet.model.local.MosaicItem.Companion
+import java.io.Serializable
 
 /**
  * モザイクデータの完全版
@@ -14,7 +16,7 @@ data class FullMosaicItem(
   val divisibility: Int,
   val mosaicItem: MosaicItem,
   val selected: Boolean
-) {
+) : Serializable {
   fun getFullName() = mosaicItem.mosaicId.fullName
   fun getMosaicBalance() =
     if (mosaicItem.isNEMXEMItem()) mosaicItem.quantity.convertNEMFromMicroToDouble().toString() else (mosaicItem.quantity / Math.pow(
@@ -22,5 +24,9 @@ data class FullMosaicItem(
     )).toString()
 
   fun isSelected() = selected
+
+  companion object {
+    fun create() = FullMosaicItem(0, MosaicItem.createNEMXEMItem(),true)
+  }
 }
 
