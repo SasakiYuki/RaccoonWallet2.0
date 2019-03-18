@@ -1,15 +1,16 @@
 package wallet.raccoon.raccoonwallet.view.controller
 
 import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import com.airbnb.epoxy.AutoModel
 import com.airbnb.epoxy.TypedEpoxyController
-import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.model.epoxy.mosaic.OwnedMosaicHeaderModel_
 import wallet.raccoon.raccoonwallet.model.epoxy.mosaic.OwnedMosaicRowModel_
 import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
-import wallet.raccoon.raccoonwallet.util.ToastUtil
+import wallet.raccoon.raccoonwallet.view.activity.SendActivity
+import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 
-class OwnedMosaicSelectListController() : TypedEpoxyController<List<FullMosaicItem>>() {
+class OwnedMosaicSelectListController(val activity: SendActivity) : TypedEpoxyController<List<FullMosaicItem>>() {
   @AutoModel
   lateinit var ownedMosaicHeaderModel: OwnedMosaicHeaderModel_
 
@@ -33,7 +34,9 @@ class OwnedMosaicSelectListController() : TypedEpoxyController<List<FullMosaicIt
           .id(modelCountBuiltSoFar)
           .mosaicFullItem(item)
           .itemClickListener(View.OnClickListener {
-
+            ViewModelProviders.of(activity)
+                .get(SendActivityViewModel::class.java)
+                .mosaicSelectedData.postValue(item)
           })
           .addTo(this)
     }

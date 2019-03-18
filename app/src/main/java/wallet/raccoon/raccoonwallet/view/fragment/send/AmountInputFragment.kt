@@ -1,11 +1,66 @@
 package wallet.raccoon.raccoonwallet.view.fragment.send
 
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.fragment_amount_input.calculator
+import kotlinx.android.synthetic.main.view_calculator.view.pagerIndicator
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
+import wallet.raccoon.raccoonwallet.model.local.MosaicItem
+import wallet.raccoon.raccoonwallet.view.adapter.CalculatorPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
+import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 
 class AmountInputFragment : BaseFragment() {
+  private val selectedMosaicItem: ArrayList<FullMosaicItem> = ArrayList()
   override fun layoutRes() = R.layout.fragment_amount_input
+
+  override fun onViewCreated(
+    view: View,
+    savedInstanceState: Bundle?
+  ) {
+    super.onViewCreated(view, savedInstanceState)
+    selectedMosaicItem.add(FullMosaicItem.create())
+    activity?.let { fragmentActivity ->
+      ViewModelProviders.of(fragmentActivity)
+          .get(SendActivityViewModel::class.java)
+          .mosaicSelectedData.observe(this, Observer { selectedFullMosaicItem ->
+        var isMosaicSelected = false
+        for (item in selectedMosaicItem) {
+          if (item.getFullName() == selectedFullMosaicItem.getFullName()) {
+            isMosaicSelected = true
+          }
+        }
+        if (isMosaicSelected) {
+          val filteredMosaics = ArrayList<FullMosaicItem>()
+          selectedMosaicItem.filterTo(filteredMosaics) {
+            it.getFullName() != selectedFullMosaicItem.getFullName()
+          }
+          val mappedMosaics = ArrayList<MosaicItem>()
+          filteredMosaics.mapTo(mappedMosaics) {
+            it.mosaicItem
+          }
+          selectedMosaicItem.clear()
+          selectedMosaicItem.addAll(filteredMosaics)
+          calculator.removeItem(selectedFullMosaicItem)
+          calculator.pagerAdapter = CalculatorPagerAdapter(
+              (context as AppCompatActivity).supportFragmentManager,
+              mappedMosaics
+          )
+          calculator.setupViewPager()
+          calculator.resetCurrentTexts()
+        } else {
+          selectedMosaicItem.add(selectedFullMosaicItem.changeSelectedState())
+          calculator.pagerAdapter.add(selectedFullMosaicItem.mosaicItem)
+          calculator.pagerIndicator.setCount(0)
+        }
+        calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+      })
+    }
+  }
 
   companion object {
     fun newInstance(): AmountInputFragment {

@@ -40,9 +40,30 @@
     </com.google.android.material.tabs.TabLayout>
   </com.google.android.material.appbar.AppBarLayout>
 
-  <FrameLayout
-      android:id="@+id/fragment_container"
+  <LinearLayout
+      android:id="@+id/ownedMosaicSelectFragmentContainer"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      />
+      android:visibility="gone"
+      >
+    <fragment
+        android:id="@+id/ownedMosaicSelectFragment"
+        android:name="wallet.raccoon.raccoonwallet.view.fragment.send.OwnedMosaicSelectFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/amountInputFragmentContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+    <fragment
+        android:id="@+id/amountInputFragment"
+        android:name="wallet.raccoon.raccoonwallet.view.fragment.send.AmountInputFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
 </LinearLayout>
