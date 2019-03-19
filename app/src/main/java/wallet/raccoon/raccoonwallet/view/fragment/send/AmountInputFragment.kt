@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_amount_input.calculator
 import kotlinx.android.synthetic.main.view_calculator.view.pagerIndicator
+import kotlinx.android.synthetic.main.view_calculator.view.wrapViewPager
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
 import wallet.raccoon.raccoonwallet.model.local.MosaicItem
@@ -51,13 +52,17 @@ class AmountInputFragment : BaseFragment() {
               mappedMosaics
           )
           calculator.setupViewPager()
+          calculator.pagerIndicator.setCurrentPosition(0)
+          calculator.pagerIndicator.setCount(selectedMosaicItem.count())
           calculator.resetCurrentTexts()
         } else {
           selectedMosaicItem.add(selectedFullMosaicItem.changeSelectedState())
           calculator.pagerAdapter.add(selectedFullMosaicItem.mosaicItem)
-          calculator.pagerIndicator.setCount(0)
+          calculator.resetCurrentTexts()
+          calculator.pagerIndicator.setCurrentPosition(0)
+          calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+          calculator.wrapViewPager.currentItem = 0
         }
-        calculator.pagerIndicator.setCount(selectedMosaicItem.count())
       })
     }
   }
