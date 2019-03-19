@@ -10,4 +10,5 @@ class SendActivityViewModel @Inject constructor(
   private val context: Context
 ) : BaseViewModel() {
   val mosaicSelectedData: MutableLiveData<FullMosaicItem> = MutableLiveData()
+  val switchStateData:MutableLiveData<Boolean> = MutableLiveData()
 }

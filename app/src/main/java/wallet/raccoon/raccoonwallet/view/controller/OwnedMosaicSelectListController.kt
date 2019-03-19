@@ -23,6 +23,11 @@ class OwnedMosaicSelectListController(val activity: SendActivity) : TypedEpoxyCo
   private fun addList(data: List<FullMosaicItem>) {
     ownedMosaicHeaderModel
         .checked(true)
+        .switchChangeListener { _, b ->
+          ViewModelProviders.of(activity)
+              .get(SendActivityViewModel::class.java)
+              .switchStateData.postValue(b)
+        }
         .addTo(this)
     val formattedList = ArrayList<FullMosaicItem>()
     data.filterNotTo(formattedList) {
