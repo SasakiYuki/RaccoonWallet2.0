@@ -1,7 +1,6 @@
 package wallet.raccoon.raccoonwallet.model.local
 
 import wallet.raccoon.raccoonwallet.extentions.convertNEMFromMicroToDouble
-import wallet.raccoon.raccoonwallet.model.local.MosaicItem.Companion
 import java.io.Serializable
 
 /**
@@ -25,8 +24,10 @@ data class FullMosaicItem(
 
   fun isSelected() = selected
 
+  fun changeSelectedState() = FullMosaicItem(divisibility, mosaicItem, !selected)
+
   companion object {
-    fun create() = FullMosaicItem(0, MosaicItem.createNEMXEMItem(),true)
+    fun create() = FullMosaicItem(0, MosaicItem.createNEMXEMItem(), true)
   }
 }
 

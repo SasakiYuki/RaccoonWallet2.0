@@ -17,6 +17,7 @@ import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
 import wallet.raccoon.raccoonwallet.util.ToastUtil
+import wallet.raccoon.raccoonwallet.view.activity.SendActivity
 import wallet.raccoon.raccoonwallet.view.controller.OwnedMosaicSelectListController
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.OwnedMosaicSelectFragmentViewModel
@@ -26,7 +27,7 @@ import javax.inject.Inject
 class OwnedMosaicSelectFragment : BaseFragment() {
   @Inject
   lateinit var viewModelFactory: ViewModelFactory
-  private lateinit var viewModel: OwnedMosaicSelectFragmentViewModel
+  private lateinit var ownedMosaicSelectFragmentViewModel: OwnedMosaicSelectFragmentViewModel
   private lateinit var controller: OwnedMosaicSelectListController
   private val ownedFullMosaics = ArrayList<FullMosaicItem>()
 
@@ -43,35 +44,36 @@ class OwnedMosaicSelectFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
 
-    controller = OwnedMosaicSelectListController()
+    controller = OwnedMosaicSelectListController(activity as SendActivity, true, true)
     recycler.layoutManager = LinearLayoutManager(recycler.context)
     recycler.setController(controller)
 
-    viewModel = ViewModelProviders.of(this, viewModelFactory)
+    ownedMosaicSelectFragmentViewModel = ViewModelProviders.of(this, viewModelFactory)
         .get(OwnedMosaicSelectFragmentViewModel::class.java)
 
-    viewModel.ownedMosaicsData.observe(this, Observer {
+    ownedMosaicSelectFragmentViewModel.ownedMosaicsData.observe(this, Observer {
       ToastUtil.show(context!!, R.string.select_wallet_activity_title)
     })
-    viewModel.namespaceData.observe(this, Observer {
+    ownedMosaicSelectFragmentViewModel.namespaceData.observe(this, Observer {
       CoroutineScope(Dispatchers.IO).launch {
         for (item in it) {
-          viewModel.loadNamespaceMosaic(item)
+          ownedMosaicSelectFragmentViewModel.loadNamespaceMosaic(item)
               .await()
           Single.timer(500L, MILLISECONDS)
               .await()
         }
       }
     })
-    viewModel.fullMosaicItemData.observe(this, Observer {
+    ownedMosaicSelectFragmentViewModel.fullMosaicItemData.observe(this, Observer {
       ownedFullMosaics.add(it)
       controller.setData(ownedFullMosaics)
     })
 
     CoroutineScope(Dispatchers.IO).launch {
       // TODO AddressをWalletから持ってる
-      viewModel.loadOwnedMosaic("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
+      ownedMosaicSelectFragmentViewModel.loadOwnedMosaic("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
     }
+
   }
 
   companion object {

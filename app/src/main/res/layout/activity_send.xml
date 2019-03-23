@@ -19,17 +19,20 @@
         />
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="3dp"
         android:background="@android:color/white"
+        android:elevation="3dp"
         >
       <com.google.android.material.tabs.TabItem
+          android:id="@+id/remitTabItem"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/enter_send_fragment_tab1"
           />
       <com.google.android.material.tabs.TabItem
+          android:id="@+id/attachTabItem"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/enter_send_fragment_tab2"
@@ -37,9 +40,30 @@
     </com.google.android.material.tabs.TabLayout>
   </com.google.android.material.appbar.AppBarLayout>
 
-  <FrameLayout
-      android:id="@+id/fragment_container"
+  <LinearLayout
+      android:id="@+id/ownedMosaicSelectFragmentContainer"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      />
+      android:visibility="gone"
+      >
+    <fragment
+        android:id="@+id/ownedMosaicSelectFragment"
+        android:name="wallet.raccoon.raccoonwallet.view.fragment.send.OwnedMosaicSelectFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/amountInputFragmentContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+    <fragment
+        android:id="@+id/amountInputFragment"
+        android:name="wallet.raccoon.raccoonwallet.view.fragment.send.AmountInputFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+  </LinearLayout>
 </LinearLayout>

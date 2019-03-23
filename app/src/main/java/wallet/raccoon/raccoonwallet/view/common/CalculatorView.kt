@@ -35,6 +35,7 @@ import kotlinx.android.synthetic.main.view_calculator.view.btnZero
 import kotlinx.android.synthetic.main.view_calculator.view.pagerIndicator
 import kotlinx.android.synthetic.main.view_calculator.view.wrapViewPager
 import wallet.raccoon.raccoonwallet.R
+import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
 import wallet.raccoon.raccoonwallet.model.local.MosaicItem
 import wallet.raccoon.raccoonwallet.type.CalculatorNumberType.EIGHT
 import wallet.raccoon.raccoonwallet.type.CalculatorNumberType.FIVE
@@ -85,35 +86,7 @@ class CalculatorView(
       CalculatorPagerAdapter((context as AppCompatActivity).supportFragmentManager, ArrayList())
     pagerAdapter.add(MosaicItem.createNEMXEMItem())
     setupButtons()
-    wrapViewPager.adapter = pagerAdapter
-    pagerIndicator.setCount(pagerAdapter.count)
-    wrapViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-      override fun onPageScrollStateChanged(state: Int) {
-      }
-
-      override fun onPageScrolled(
-        position: Int,
-        positionOffset: Float,
-        positionOffsetPixels: Int
-      ) {
-      }
-
-      override fun onPageSelected(position: Int) {
-        presenter = CalculatorPresenterImpl(this@CalculatorView)
-        setupCurrentTexts(position)
-        if (pagerAdapter.getItem(position) != null) {
-          val amount = calculatedPair[pagerAdapter.getItem(position).getFullName()]
-          amount?.let {
-            val charArray = it.toCharArray()
-            for (item in charArray) {
-              (presenter as CalculatorPresenterImpl).typeNumberFromString(item.toString())
-            }
-          }
-        }
-        pagerIndicator.setCurrentPosition(position)
-      }
-
-    })
+    setupViewPager()
     presenter = CalculatorPresenterImpl(this)
   }
 
@@ -198,6 +171,38 @@ class CalculatorView(
     }
   }
 
+  fun setupViewPager() {
+    wrapViewPager.adapter = pagerAdapter
+    pagerIndicator.setCount(pagerAdapter.count)
+    wrapViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+      override fun onPageScrollStateChanged(state: Int) {
+      }
+
+      override fun onPageScrolled(
+        position: Int,
+        positionOffset: Float,
+        positionOffsetPixels: Int
+      ) {
+      }
+
+      override fun onPageSelected(position: Int) {
+        presenter = CalculatorPresenterImpl(this@CalculatorView)
+        setupCurrentTexts(position)
+        if (pagerAdapter.getItem(position) != null) {
+          val amount = calculatedPair[pagerAdapter.getItem(position).getFullName()]
+          amount?.let {
+            val charArray = it.toCharArray()
+            for (item in charArray) {
+              (presenter as CalculatorPresenterImpl).typeNumberFromString(item.toString())
+            }
+          }
+        }
+        pagerIndicator.setCurrentPosition(position)
+      }
+
+    })
+  }
+
   private fun setupButtons() {
     btnZero.setOnClickListener {
       presenter.typeNumber(ZERO)
@@ -278,6 +283,16 @@ class CalculatorView(
   private fun disableRightArrowButton() {
     btnRightArrow.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_medium))
     btnRightArrow.isEnabled = false
+  }
+
+  fun removeItem(mosaicItem: FullMosaicItem) {
+    calculatedPair.remove(mosaicItem.getFullName())
+  }
+
+  fun resetCurrentTexts() {
+    currentTxtDisplay = null
+    currentTxtSignals = null
+    currentTextDisplayRight = null
   }
 }
 

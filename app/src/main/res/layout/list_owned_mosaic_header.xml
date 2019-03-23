@@ -4,6 +4,11 @@
   <data>
 
     <variable
+        name="switchChangeListener"
+        type="android.widget.CompoundButton.OnCheckedChangeListener"
+        />
+
+    <variable
         name="checked"
         type="Boolean"
         />
@@ -32,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="@{checked}"
+        android:onCheckedChanged="@{switchChangeListener}"
         />
   </LinearLayout>
 </layout>
