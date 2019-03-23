@@ -28,42 +28,75 @@ class AmountInputFragment : BaseFragment() {
     activity?.let { fragmentActivity ->
       ViewModelProviders.of(fragmentActivity)
           .get(SendActivityViewModel::class.java)
-          .mosaicSelectedData.observe(this, Observer { selectedFullMosaicItem ->
-        var isMosaicSelected = false
-        for (item in selectedMosaicItem) {
-          if (item.getFullName() == selectedFullMosaicItem.getFullName()) {
-            isMosaicSelected = true
+          .let { viewModel ->
+            viewModel
+                .mosaicSelectedData.observe(this, Observer { selectedFullMosaicItem ->
+              var isMosaicSelected = false
+              for (item in selectedMosaicItem) {
+                if (item.getFullName() == selectedFullMosaicItem.getFullName()) {
+                  isMosaicSelected = true
+                }
+              }
+              if (isMosaicSelected) {
+                val filteredMosaics = ArrayList<FullMosaicItem>()
+                selectedMosaicItem.filterTo(filteredMosaics) {
+                  it.getFullName() != selectedFullMosaicItem.getFullName()
+                }
+                val mappedMosaics = ArrayList<MosaicItem>()
+                filteredMosaics.mapTo(mappedMosaics) {
+                  it.mosaicItem
+                }
+                selectedMosaicItem.clear()
+                selectedMosaicItem.addAll(filteredMosaics)
+                calculator.removeItem(selectedFullMosaicItem)
+                calculator.pagerAdapter = CalculatorPagerAdapter(
+                    (context as AppCompatActivity).supportFragmentManager,
+                    mappedMosaics
+                )
+                calculator.setupViewPager()
+                calculator.pagerIndicator.setCurrentPosition(0)
+                calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+                calculator.resetCurrentTexts()
+              } else {
+                selectedMosaicItem.add(selectedFullMosaicItem.changeSelectedState())
+                calculator.pagerAdapter.add(selectedFullMosaicItem.mosaicItem)
+                calculator.resetCurrentTexts()
+                calculator.pagerIndicator.setCurrentPosition(0)
+                calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+                calculator.wrapViewPager.currentItem = 0
+              }
+            })
+            viewModel.switchStateData.observe(this, Observer {
+              if (it) {
+                selectedMosaicItem.add(0, FullMosaicItem.create())
+                calculator.pagerAdapter.add(MosaicItem.createNEMXEMItem())
+                calculator.resetCurrentTexts()
+                calculator.pagerIndicator.setCurrentPosition(0)
+                calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+                calculator.wrapViewPager.currentItem = 0
+              } else {
+                val filteredMosaics = ArrayList<FullMosaicItem>()
+                selectedMosaicItem.filterTo(filteredMosaics) { mosaicItem ->
+                  !mosaicItem.mosaicItem.isNEMXEMItem()
+                }
+                val mappedMosaics = ArrayList<MosaicItem>()
+                filteredMosaics.mapTo(mappedMosaics) {
+                  it.mosaicItem
+                }
+                selectedMosaicItem.clear()
+                selectedMosaicItem.addAll(filteredMosaics)
+                calculator.removeItem(FullMosaicItem.create())
+                calculator.pagerAdapter = CalculatorPagerAdapter(
+                    (context as AppCompatActivity).supportFragmentManager,
+                    mappedMosaics
+                )
+                calculator.setupViewPager()
+                calculator.pagerIndicator.setCurrentPosition(0)
+                calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+                calculator.resetCurrentTexts()
+              }
+            })
           }
-        }
-        if (isMosaicSelected) {
-          val filteredMosaics = ArrayList<FullMosaicItem>()
-          selectedMosaicItem.filterTo(filteredMosaics) {
-            it.getFullName() != selectedFullMosaicItem.getFullName()
-          }
-          val mappedMosaics = ArrayList<MosaicItem>()
-          filteredMosaics.mapTo(mappedMosaics) {
-            it.mosaicItem
-          }
-          selectedMosaicItem.clear()
-          selectedMosaicItem.addAll(filteredMosaics)
-          calculator.removeItem(selectedFullMosaicItem)
-          calculator.pagerAdapter = CalculatorPagerAdapter(
-              (context as AppCompatActivity).supportFragmentManager,
-              mappedMosaics
-          )
-          calculator.setupViewPager()
-          calculator.pagerIndicator.setCurrentPosition(0)
-          calculator.pagerIndicator.setCount(selectedMosaicItem.count())
-          calculator.resetCurrentTexts()
-        } else {
-          selectedMosaicItem.add(selectedFullMosaicItem.changeSelectedState())
-          calculator.pagerAdapter.add(selectedFullMosaicItem.mosaicItem)
-          calculator.resetCurrentTexts()
-          calculator.pagerIndicator.setCurrentPosition(0)
-          calculator.pagerIndicator.setCount(selectedMosaicItem.count())
-          calculator.wrapViewPager.currentItem = 0
-        }
-      })
     }
   }
 

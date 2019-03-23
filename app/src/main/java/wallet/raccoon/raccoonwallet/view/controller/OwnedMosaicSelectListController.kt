@@ -10,7 +10,11 @@ import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
 import wallet.raccoon.raccoonwallet.view.activity.SendActivity
 import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 
-class OwnedMosaicSelectListController(val activity: SendActivity) : TypedEpoxyController<List<FullMosaicItem>>() {
+class OwnedMosaicSelectListController(
+  val activity: SendActivity,
+  var showHeader: Boolean,
+  var switchState: Boolean
+) : TypedEpoxyController<List<FullMosaicItem>>() {
   @AutoModel
   lateinit var ownedMosaicHeaderModel: OwnedMosaicHeaderModel_
 
@@ -22,13 +26,13 @@ class OwnedMosaicSelectListController(val activity: SendActivity) : TypedEpoxyCo
 
   private fun addList(data: List<FullMosaicItem>) {
     ownedMosaicHeaderModel
-        .checked(true)
+        .checked(switchState)
         .switchChangeListener { _, b ->
           ViewModelProviders.of(activity)
               .get(SendActivityViewModel::class.java)
               .switchStateData.postValue(b)
         }
-        .addTo(this)
+        .addIf(showHeader, this)
     val formattedList = ArrayList<FullMosaicItem>()
     data.filterNotTo(formattedList) {
       it.mosaicItem.isNEMXEMItem()

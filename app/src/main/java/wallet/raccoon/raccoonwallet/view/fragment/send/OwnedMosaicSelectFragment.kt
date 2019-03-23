@@ -44,7 +44,7 @@ class OwnedMosaicSelectFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
 
-    controller = OwnedMosaicSelectListController(activity as SendActivity)
+    controller = OwnedMosaicSelectListController(activity as SendActivity, true, true)
     recycler.layoutManager = LinearLayoutManager(recycler.context)
     recycler.setController(controller)
 
