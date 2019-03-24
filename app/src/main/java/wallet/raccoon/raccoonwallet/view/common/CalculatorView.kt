@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_calculation_amount.textDisplayRight
@@ -48,11 +49,14 @@ import wallet.raccoon.raccoonwallet.type.CalculatorNumberType.THREE
 import wallet.raccoon.raccoonwallet.type.CalculatorNumberType.TWO
 import wallet.raccoon.raccoonwallet.type.CalculatorNumberType.ZERO
 import wallet.raccoon.raccoonwallet.type.OperatorType
+import wallet.raccoon.raccoonwallet.view.activity.BaseActivity
+import wallet.raccoon.raccoonwallet.view.activity.SendActivity
 import wallet.raccoon.raccoonwallet.view.adapter.CalculatorPagerAdapter
 import wallet.raccoon.raccoonwallet.view.common.calculator.CalculationContract
 import wallet.raccoon.raccoonwallet.view.common.calculator.CalculatorPresenter
 import wallet.raccoon.raccoonwallet.view.common.calculator.CalculatorPresenterImpl
 import wallet.raccoon.raccoonwallet.view.fragment.send.CalculationAmountFragment
+import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 
 class CalculatorView(
   context: Context?,
@@ -260,6 +264,14 @@ class CalculatorView(
     }
     btnRightArrow.setOnClickListener {
       calculatorListener?.onClickRight(calculatedPair)
+      val activity = (context as BaseActivity)
+      if (activity is SendActivity) {
+        ViewModelProviders.of(activity)
+            .get(SendActivityViewModel::class.java)
+            .let { viewModel ->
+              viewModel.calculateFinishData.postValue(Unit)
+            }
+      }
     }
     btnMAX.setOnClickListener {
       val item = pagerAdapter.getItem(wrapViewPager.currentItem)

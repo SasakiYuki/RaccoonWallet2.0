@@ -21,6 +21,9 @@ class CalculationAmountFragment : BaseFragment() {
     ) else mosaicItem.getFullName()
   }
 
+  private fun replaceMessageAttachmentConfirmFragment() {
+  }
+
   companion object {
     private val ARGS_MOSAIC = "args_mosaic"
     fun newInstance(mosaicItem: MosaicItem): CalculationAmountFragment {

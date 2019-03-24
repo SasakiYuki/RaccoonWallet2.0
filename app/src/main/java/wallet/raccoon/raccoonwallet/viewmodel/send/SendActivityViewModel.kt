@@ -13,4 +13,5 @@ class SendActivityViewModel @Inject constructor(
   val switchStateData: MutableLiveData<Boolean> = MutableLiveData()
   val automaticAddedXEMData: MutableLiveData<Unit> = MutableLiveData()
   val addedMosaicData: MutableLiveData<Unit> = MutableLiveData()
+  val calculateFinishData: MutableLiveData<Unit> = MutableLiveData()
 }

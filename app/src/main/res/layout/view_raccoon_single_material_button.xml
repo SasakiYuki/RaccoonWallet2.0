@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+    >
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/defaultMaterialButton"
+      android:layout_width="192dp"
+      android:layout_height="45dp"
+      android:layout_marginEnd="@dimen/space_small"
+      android:layout_marginLeft="@dimen/space_small"
+      android:layout_marginRight="@dimen/space_small"
+      android:layout_marginStart="@dimen/space_small"
+      android:backgroundTint="@android:color/white"
+      android:contentDescription="@null"
+      app:cornerRadius="24sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      style="@style/Widget.MaterialComponents.Button"
+      />
+
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="20dp"
+      android:layout_height="20dp"
+      android:layout_marginTop="6dp"
+      android:contentDescription="@null"
+      android:elevation="8dp"
+      android:padding="2dp"
+      android:tint="@color/colorDarkWhite"
+      app:layout_constraintLeft_toLeftOf="@id/defaultMaterialButton"
+      app:layout_constraintRight_toRightOf="@id/defaultMaterialButton"
+      app:layout_constraintTop_toTopOf="@id/defaultMaterialButton"
+      />
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:elevation="8dp"
+      android:textColor="@color/colorDarkWhite"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="@id/defaultMaterialButton"
+      app:layout_constraintLeft_toLeftOf="@id/defaultMaterialButton"
+      app:layout_constraintRight_toRightOf="@id/defaultMaterialButton"
+      tools:text="編集"
+      />
+</androidx.constraintlayout.widget.ConstraintLayout>
