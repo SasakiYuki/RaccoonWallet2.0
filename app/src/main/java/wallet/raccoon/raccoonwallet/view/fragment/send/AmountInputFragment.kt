@@ -42,6 +42,10 @@ class AmountInputFragment : BaseFragment() {
                 selectedMosaicItem.filterTo(filteredMosaics) {
                   it.getFullName() != selectedFullMosaicItem.getFullName()
                 }
+                if (filteredMosaics.size == 0) {
+                  filteredMosaics.add(FullMosaicItem.create())
+                  viewModel.automaticAddedXEMData.postValue(Unit)
+                }
                 val mappedMosaics = ArrayList<MosaicItem>()
                 filteredMosaics.mapTo(mappedMosaics) {
                   it.mosaicItem
@@ -58,7 +62,10 @@ class AmountInputFragment : BaseFragment() {
                 calculator.pagerIndicator.setCount(selectedMosaicItem.count())
                 calculator.resetCurrentTexts()
               } else {
-                selectedMosaicItem.add(selectedFullMosaicItem.changeSelectedState())
+                if (!selectedFullMosaicItem.mosaicItem.isNEMXEMItem()) {
+                  viewModel.addedMosaicData.postValue(Unit)
+                }
+                selectedMosaicItem.add(selectedFullMosaicItem.  changeSelectedState())
                 calculator.pagerAdapter.add(selectedFullMosaicItem.mosaicItem)
                 calculator.resetCurrentTexts()
                 calculator.pagerIndicator.setCurrentPosition(0)
@@ -68,12 +75,20 @@ class AmountInputFragment : BaseFragment() {
             })
             viewModel.switchStateData.observe(this, Observer {
               if (it) {
-                selectedMosaicItem.add(0, FullMosaicItem.create())
-                calculator.pagerAdapter.add(MosaicItem.createNEMXEMItem())
-                calculator.resetCurrentTexts()
-                calculator.pagerIndicator.setCurrentPosition(0)
-                calculator.pagerIndicator.setCount(selectedMosaicItem.count())
-                calculator.wrapViewPager.currentItem = 0
+                var alreadyAdded = false
+                for(item in selectedMosaicItem) {
+                  if (item.mosaicItem.isNEMXEMItem()) {
+                    alreadyAdded = true
+                  }
+                }
+                if (!alreadyAdded) {
+                  selectedMosaicItem.add(0, FullMosaicItem.create())
+                  calculator.pagerAdapter.add(MosaicItem.createNEMXEMItem())
+                  calculator.resetCurrentTexts()
+                  calculator.pagerIndicator.setCurrentPosition(0)
+                  calculator.pagerIndicator.setCount(selectedMosaicItem.count())
+                  calculator.wrapViewPager.currentItem = 0
+                }
               } else {
                 val filteredMosaics = ArrayList<FullMosaicItem>()
                 selectedMosaicItem.filterTo(filteredMosaics) { mosaicItem ->
