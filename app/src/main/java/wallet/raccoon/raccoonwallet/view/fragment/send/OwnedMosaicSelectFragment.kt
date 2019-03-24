@@ -16,11 +16,11 @@ import kotlinx.coroutines.rx2.await
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
-import wallet.raccoon.raccoonwallet.util.ToastUtil
 import wallet.raccoon.raccoonwallet.view.activity.SendActivity
 import wallet.raccoon.raccoonwallet.view.controller.OwnedMosaicSelectListController
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.OwnedMosaicSelectFragmentViewModel
+import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import javax.inject.Inject
 
@@ -44,7 +44,7 @@ class OwnedMosaicSelectFragment : BaseFragment() {
   ) {
     super.onViewCreated(view, savedInstanceState)
 
-    controller = OwnedMosaicSelectListController(activity as SendActivity, true, true)
+    controller = OwnedMosaicSelectListController(activity as SendActivity, false, true)
     recycler.layoutManager = LinearLayoutManager(recycler.context)
     recycler.setController(controller)
 
@@ -52,7 +52,6 @@ class OwnedMosaicSelectFragment : BaseFragment() {
         .get(OwnedMosaicSelectFragmentViewModel::class.java)
 
     ownedMosaicSelectFragmentViewModel.ownedMosaicsData.observe(this, Observer {
-      ToastUtil.show(context!!, R.string.select_wallet_activity_title)
     })
     ownedMosaicSelectFragmentViewModel.namespaceData.observe(this, Observer {
       CoroutineScope(Dispatchers.IO).launch {
@@ -74,6 +73,33 @@ class OwnedMosaicSelectFragment : BaseFragment() {
       ownedMosaicSelectFragmentViewModel.loadOwnedMosaic("NCMKWNFWUILEVCKBSON2MS65BXU4NJ2GBJTIJBTK")
     }
 
+    activity?.let { fragmentActivity ->
+      ViewModelProviders.of(fragmentActivity)
+          .get(SendActivityViewModel::class.java)
+          .let { viewModel ->
+            viewModel.automaticAddedXEMData.observe(this, Observer {
+              controller.showHeader = false
+              controller.setData(ownedFullMosaics)
+            })
+            viewModel.addedMosaicData.observe(this, Observer {
+              controller.switchState = true
+              controller.showHeader = true
+              controller.setData(ownedFullMosaics)
+            })
+            viewModel.mosaicSelectedData.observe(this, Observer {
+              val list = ArrayList<FullMosaicItem>()
+              for (item in ownedFullMosaics) {
+                if (item.getFullName() == it.getFullName()) {
+                  list.add(item.changeSelectedState())
+                } else {
+                  list.add(item)
+                }
+              }
+              ownedFullMosaics.clear()
+              ownedFullMosaics.addAll(list)
+            })
+          }
+    }
   }
 
   companion object {
