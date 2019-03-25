@@ -19,9 +19,9 @@ class RaccoonSingleMaterialButton(context: Context?, attrs: AttributeSet?, defSt
     val view = View.inflate(context, R.layout.view_raccoon_single_material_button, this)
     context?.obtainStyledAttributes(attrs, R.styleable.RaccoonSingleMaterialButton, defStyleAttr, 0)?.let {
       try {
-//        view.textView.text = it.getString(R.styleable.RaccoonSingleMaterialButton_text)
-//        val resourceId = it.getResourceId(R.styleable.RaccoonSingleMaterialButton_src, R.mipmap.icon_harvest_small)
-//        view.imageView.setImageDrawable(ContextCompat.getDrawable(context, resourceId))
+        view.textView.text = it.getString(R.styleable.RaccoonSingleMaterialButton_text)
+        val resourceId = it.getResourceId(R.styleable.RaccoonSingleMaterialButton_src, R.mipmap.icon_harvest_small)
+        view.imageView.setImageDrawable(ContextCompat.getDrawable(context, resourceId))
       } catch (e: Exception) {
         e.printStackTrace()
       } finally {

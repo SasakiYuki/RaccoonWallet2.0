@@ -33,29 +33,43 @@
       />
 
 
-  <wallet.raccoon.raccoonwallet.view.common.RaccoonSingleMaterialButton
+  <com.google.android.material.button.MaterialButton
       android:id="@+id/yesButton"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="bottom|center"
-      android:visibility="visible"
+      android:layout_width="192dp"
+      android:layout_height="45dp"
+      android:layout_marginEnd="@dimen/space_small"
+      android:layout_marginLeft="@dimen/space_small"
+      android:layout_marginRight="@dimen/space_small"
+      android:layout_marginStart="@dimen/space_small"
+      android:backgroundTint="@color/nemGreen"
+      android:elevation="3dp"
+      android:text="@string/com_yes"
+      android:textColor="@android:color/white"
+      app:cornerRadius="24sp"
       app:layout_constraintBottom_toTopOf="@id/noButton"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:text="@string/com_yes"
+      style="@style/Widget.MaterialComponents.Button.TextButton"
       />
 
-  <wallet.raccoon.raccoonwallet.view.common.RaccoonSingleMaterialButton
+  <com.google.android.material.button.MaterialButton
       android:id="@+id/noButton"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="bottom|center"
+      android:layout_width="192dp"
+      android:layout_height="45dp"
       android:layout_marginBottom="24dp"
-      android:visibility="visible"
+      android:layout_marginEnd="@dimen/space_small"
+      android:layout_marginLeft="@dimen/space_small"
+      android:layout_marginRight="@dimen/space_small"
+      android:layout_marginStart="@dimen/space_small"
+      android:elevation="3dp"
+      android:text="@string/com_no"
+      android:textColor="@color/nemGreen"
+      app:cornerRadius="24sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:text="@string/com_no"
+      app:strokeColor="@color/nemGreen"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
