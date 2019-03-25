@@ -565,6 +565,9 @@
   <string name="address_book_friend_wallet_title">Wallet</string>
   <string name="address_book_friend_info_title">Profile</string>
 
+  <!-- MessageAttachmentConfirmFragment -->
+  <string name="message_attachment_confirm_main_text">メッセージを添付しますか？</string>
+
   <!--Dialog-->
   <string name="dialog_confirm_display_twice">Do not show again</string>
   <string name="dialog_confirm_title">message</string>

@@ -13,14 +13,10 @@ import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_send.amountInputFragmentContainer
-import kotlinx.android.synthetic.main.activity_send.ownedMosaicSelectFragment
 import kotlinx.android.synthetic.main.activity_send.ownedMosaicSelectFragmentContainer
 import kotlinx.android.synthetic.main.activity_send.tabLayout
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
-import wallet.raccoon.raccoonwallet.model.local.FullMosaicItem
-import wallet.raccoon.raccoonwallet.view.fragment.send.AmountInputFragment
-import wallet.raccoon.raccoonwallet.view.fragment.send.OwnedMosaicSelectFragment
 import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 import javax.inject.Inject
 
@@ -41,7 +37,11 @@ class SendActivity : BaseActivity(), HasSupportFragmentInjector {
         .get(SendActivityViewModel::class.java)
     super.onCreate(savedInstanceState)
 
-    viewModel.mosaicSelectedData.observe(this, Observer {selectedFullMosaicItem ->
+    viewModel.mosaicSelectedData.observe(this, Observer { selectedFullMosaicItem ->
+    })
+
+    viewModel.calculateFinishData.observe(this, Observer {
+      startActivity(SendSettingActivity.createIntent(this))
     })
 
     setToolBarBackButton()

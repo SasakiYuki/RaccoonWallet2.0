@@ -25,6 +25,10 @@
     <activity android:name=".view.activity.WalletCreateActivity"/>
     <activity android:name=".view.activity.PinCodeSettingActivity"/>
     <activity android:name=".view.activity.SendActivity"/>
+    <activity
+        android:name=".view.activity.SendSettingActivity"
+        android:theme="@style/SendSettingActivity">
+    </activity>
   </application>
 
 </manifest>
