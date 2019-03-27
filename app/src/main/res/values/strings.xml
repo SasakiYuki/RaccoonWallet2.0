@@ -568,6 +568,13 @@
   <!-- MessageAttachmentConfirmFragment -->
   <string name="message_attachment_confirm_main_text">メッセージを添付しますか？</string>
 
+  <!-- MessageTypeSelectFragment -->
+  <string name="message_type_select_fragment_main_text">メッセージのタイプを選択</string>
+  <string name="message_type_select_fragment_message_plane">通常のメッセージです。\n取引所への認証番号を入力する際は、必ずこちらで行いましょう。</string>
+  <string name="message_type_select_fragment_message_crypt">取引所入金時の認証番号などに使う場合は問題の原因になりますので、絶対に暗号化はしないでください。</string>
+  <string name="message_type_select_fragment_message_plane_icon_text">通常</string>
+  <string name="message_type_select_fragment_message_crypt_icon_text">暗号化</string>
+
   <!--Dialog-->
   <string name="dialog_confirm_display_twice">Do not show again</string>
   <string name="dialog_confirm_title">message</string>
