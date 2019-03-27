@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_message_type_select.descriptionTe
 import kotlinx.android.synthetic.main.fragment_message_type_select.mailImageView
 import kotlinx.android.synthetic.main.fragment_message_type_select.mailLayout
 import kotlinx.android.synthetic.main.fragment_message_type_select.mailTextView
+import kotlinx.android.synthetic.main.fragment_message_type_select.yesButton
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 
@@ -44,6 +45,10 @@ class MessageTypeSelectFragment : BaseFragment() {
           ContextCompat.getDrawable(it.context, R.drawable.ic_lock_black)
       )
       cryptTextView.setTextColor(ContextCompat.getColor(it.context, R.color.textBlack))
+    }
+
+    yesButton.setOnClickListener {
+      replaceFragment(SendMessageInputFragment.newInstance(), true)
     }
   }
 
