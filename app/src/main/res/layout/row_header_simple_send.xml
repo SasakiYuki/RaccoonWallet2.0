@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:src="@mipmap/heroimage_send_small"
+          />
+
+      <wallet.raccoon.raccoonwallet.view.common.WalletBarView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          />
+    </FrameLayout>
+
+  </LinearLayout>
+</layout>
