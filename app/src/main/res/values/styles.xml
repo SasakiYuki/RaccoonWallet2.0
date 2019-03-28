@@ -25,7 +25,7 @@
   </style>
 
   <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-    <item name="android:textColorPrimary">@color/nemGreen</item>
+    <item name="android:textColorPrimary">@color/toolbarTextColor</item>
   </style>
 
   <style name="WhiteCheckBox" parent="Theme.AppCompat.Light">

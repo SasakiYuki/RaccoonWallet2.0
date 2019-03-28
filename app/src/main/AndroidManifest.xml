@@ -29,6 +29,7 @@
         android:name=".view.activity.SendSettingActivity"
         android:theme="@style/SendSettingActivity">
     </activity>
+    <activity android:name=".view.activity.SelectWalletActivity"/>
   </application>
 
 </manifest>

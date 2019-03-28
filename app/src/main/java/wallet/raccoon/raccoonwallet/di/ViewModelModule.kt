@@ -5,10 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import wallet.raccoon.raccoonwallet.viewmodel.OwnedMosaicSelectFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.HomeFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.HomeSendFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
+import wallet.raccoon.raccoonwallet.viewmodel.OwnedMosaicSelectFragmentViewModel
+import wallet.raccoon.raccoonwallet.viewmodel.SelectWalletViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.SplashFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 
@@ -46,4 +47,9 @@ internal abstract class ViewModelModule {
   @IntoMap
   @ViewModelKey(SendActivityViewModel::class)
   abstract fun bindSendActivityViewModel(viewModel: SendActivityViewModel): ViewModel
+  
+  @Binds
+  @IntoMap
+  @ViewModelKey(SelectWalletViewModel::class)
+  abstract fun bindSelectWalletActivityViewModel(viewModel: SelectWalletViewModel): ViewModel
 }

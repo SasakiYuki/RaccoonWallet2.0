@@ -10,8 +10,11 @@ import wallet.raccoon.raccoonwallet.model.db.Wallet
 interface WalletDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrUpdate(wallet: Wallet)
+    suspend fun insertOrUpdate(wallet: Wallet): Long
 
     @Query("SELECT * FROM Wallet WHERE id = :walletId")
     suspend fun findById(walletId: Long): Wallet
+
+    @Query("SELECT * FROM Wallet ORDER BY id ASC")
+    suspend fun findAll(): List<Wallet>
 }
