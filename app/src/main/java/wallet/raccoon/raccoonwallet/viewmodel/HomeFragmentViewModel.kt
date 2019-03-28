@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.ryuta46.nemkotlin.model.AccountMetaDataPair
 import wallet.raccoon.raccoonwallet.model.db.Wallet
-import wallet.raccoon.raccoonwallet.model.rest.HarvestInfos
-import wallet.raccoon.raccoonwallet.model.rest.TransactionData
+import wallet.raccoon.raccoonwallet.model.rest.HarvestInfoEntity
+import wallet.raccoon.raccoonwallet.model.rest.TransactionEntity
 import wallet.raccoon.raccoonwallet.model.rest.ZaifNemEntity
 import wallet.raccoon.raccoonwallet.flux.store.HomeFragmentStore
 import javax.inject.Inject
@@ -14,9 +14,9 @@ class HomeFragmentViewModel @Inject constructor(
   private val context: Context,
   private val store: HomeFragmentStore
 ) : BaseViewModel() {
-  val harvestInfoData: MutableLiveData<HarvestInfos> = MutableLiveData()
+  val harvestInfoData: MutableLiveData<HarvestInfoEntity> = MutableLiveData()
   val accountInfoData: MutableLiveData<AccountMetaDataPair> = MutableLiveData()
-  val transactionList: MutableLiveData<TransactionData> = MutableLiveData()
+  val transactionList: MutableLiveData<TransactionEntity> = MutableLiveData()
   val nemPriceData: MutableLiveData<ZaifNemEntity> = MutableLiveData()
   val walletData: MutableLiveData<Wallet> = MutableLiveData()
 

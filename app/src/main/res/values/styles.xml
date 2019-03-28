@@ -8,6 +8,8 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+  <style name="SendSettingActivity" parent="Theme.MaterialComponents.Light.NoActionBar"/>
+
   <!-- Toolbar -->
   <style name="ToolBar" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="android:layout_width">match_parent</item>

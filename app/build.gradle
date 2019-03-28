@@ -59,6 +59,7 @@ dependencies {
   implementation "com.google.dagger:dagger:$daggerVersion"
   implementation "com.google.dagger:dagger-android:$daggerVersion"
   implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+  implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
   kapt "com.google.dagger:dagger-compiler:$daggerVersion"
   kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
@@ -109,6 +110,7 @@ dependencies {
   kapt "androidx.room:room-compiler:$roomVersion"
   implementation "androidx.room:room-coroutines:$roomVersion"
 
+  implementation 'com.nakama.arraypageradapter:arraypageradapter:0.1.1'
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'com.android.support.test:runner:1.0.2'

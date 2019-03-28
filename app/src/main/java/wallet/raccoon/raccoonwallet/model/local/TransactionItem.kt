@@ -158,7 +158,7 @@ data class TransactionItem(
         Observable.fromIterable(it)
             .map { mosaic ->
               MosaicItem(
-                  mosaicId = mosaic.mosaicId,
+                  mosaicId = MosaicIdItem.convert(mosaic.mosaicId),
                   quantity = mosaic.quantity
               )
             }

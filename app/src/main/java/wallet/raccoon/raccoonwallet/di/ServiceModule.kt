@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import wallet.raccoon.raccoonwallet.rest.service.AccountService
+import wallet.raccoon.raccoonwallet.rest.service.NamespaceService
 import wallet.raccoon.raccoonwallet.rest.service.XembookService
 import wallet.raccoon.raccoonwallet.rest.service.ZaifService
 import javax.inject.Named
@@ -25,4 +26,9 @@ class ServiceModule {
   @Singleton
   fun provideXembookService(@Named(AppModule.XEMBOOK) retrofit: Retrofit): XembookService =
     retrofit.create(XembookService::class.java)
+
+  @Provides
+  @Singleton
+  fun provideNamespaceService(@Named(AppModule.NORMAL) retrofit: Retrofit): NamespaceService =
+    retrofit.create(NamespaceService::class.java)
 }
