@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.isseiaoki.simplecropview.CropImageView
 import com.squareup.picasso.Picasso
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_my_profile_info.changeImageIconImageView
@@ -28,7 +29,9 @@ import kotlinx.android.synthetic.main.fragment_my_profile_info.userScreenImageVi
 import kotlinx.android.synthetic.main.fragment_my_profile_info.walletCountTextView
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
+import wallet.raccoon.raccoonwallet.extentions.getColorFromResource
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
+import wallet.raccoon.raccoonwallet.view.activity.CropImageActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.profile.MyProfileInfoViewModel
 import javax.inject.Inject
@@ -65,12 +68,12 @@ class MyProfileInfoFragment : BaseFragment() {
 
   private fun setupInfoButton() {
     infoButton.setOnClickListener {
-      RaccoonAlertDialog.createDialog(
-          RaccoonAlertViewModel(), getString(R.string.my_profile_info_fragment_alert_dialog_title),
-          getString(R.string.my_profile_info_fragment_alert_dialog_message),
-          getString(R.string.com_ok)
-      )
-          .show(activity?.supportFragmentManager, RaccoonAlertDialog::class.java.name)
+//      RaccoonAlertDialog.createDialog(
+//          RaccoonAlertViewModel(), getString(R.string.my_profile_info_fragment_alert_dialog_title),
+//          getString(R.string.my_profile_info_fragment_alert_dialog_message),
+//          getString(R.string.com_ok)
+//      )
+//          .show(activity?.supportFragmentManager, RaccoonAlertDialog::class.java.name)
     }
   }
 
@@ -164,7 +167,7 @@ class MyProfileInfoFragment : BaseFragment() {
           .observe(this@MyProfileInfoFragment, Observer {
             it ?: return@Observer
             setMyProfileInformation(it)
-            RxBus.send(MyProfileEvent(it))
+//            RxBus.send(MyProfileEvent(it))
           })
       addressLiveData
           .observe(this@MyProfileInfoFragment, Observer {
@@ -179,7 +182,7 @@ class MyProfileInfoFragment : BaseFragment() {
       updateEventLiveData
           .observe(this@MyProfileInfoFragment, Observer {
             it ?: return@Observer
-            RxBus.send(MyProfileEvent(it))
+//            RxBus.send(MyProfileEvent(it))
             setMyProfileInformation(it)
           })
       screenChangeEventLiveData

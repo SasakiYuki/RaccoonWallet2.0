@@ -52,22 +52,22 @@ class MyProfileInfoViewModel @Inject constructor(private val store: MyProfileInf
         }.let {
           addDisposable(it)
         }
-    RxBus.receive(MyAddressProfileBottomButtonEvent::class.java)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe {
-          if (it is MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton) {
-            bottomCompleteButtonEventLiveData.value = Unit
-          } else if (it is MyAddressProfileBottomButtonEvent.OnClickEditBottomButton) {
-            bottomEditButtonEventLiveData.value = Unit
-          } else if (it is MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton) {
-            screenChangeEventLiveData.value = Unit
-          }
-        }.let { addDisposable(it) }
-    RxBus.receive(MasterWalletInfoEvent::class.java)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe {
-          addressLiveData.value = it.walletInfo.walletAddress
-        }
+//    RxBus.receive(MyAddressProfileBottomButtonEvent::class.java)
+//        .observeOn(AndroidSchedulers.mainThread())
+//        .subscribe {
+//          if (it is MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton) {
+//            bottomCompleteButtonEventLiveData.value = Unit
+//          } else if (it is MyAddressProfileBottomButtonEvent.OnClickEditBottomButton) {
+//            bottomEditButtonEventLiveData.value = Unit
+//          } else if (it is MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton) {
+//            screenChangeEventLiveData.value = Unit
+//          }
+//        }.let { addDisposable(it) }
+//    RxBus.receive(MasterWalletInfoEvent::class.java)
+//        .observeOn(AndroidSchedulers.mainThread())
+//        .subscribe {
+//          addressLiveData.value = it.walletInfo.walletAddress
+//        }
   }
 
   private fun countUpMyAddress() {

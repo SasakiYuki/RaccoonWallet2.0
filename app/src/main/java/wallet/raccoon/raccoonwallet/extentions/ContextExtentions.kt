@@ -27,5 +27,8 @@ fun Context.pasteFromClipBoard(): String {
     return ""
   }
 }
+fun Context.getColorFromResource(colorResourceId: Int) = ContextCompat.getColor(this, colorResourceId)
+
+fun Context.checkPermission(permission: String) = ContextCompat.checkSelfPermission(this, permission)
 
 fun Context.getDensity(): Float = this.resources.displayMetrics.density

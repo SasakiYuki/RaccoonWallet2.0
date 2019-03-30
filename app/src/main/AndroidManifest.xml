@@ -30,6 +30,10 @@
         android:theme="@style/SendSettingActivity">
     </activity>
     <activity android:name=".view.activity.SelectWalletActivity"/>
+    <activity android:name=".view.activity.profile.MyAddressProfileActivity">
+    </activity>
+    <activity android:name=".view.activity.CropImageActivity">
+    </activity>
   </application>
 
 </manifest>

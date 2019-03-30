@@ -66,7 +66,7 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
         MyAddress(walletInfoId = it.id).let {
           viewModel.insertMyAddress(it)
         }
-        RxBus.send(WalletInfoEvent.InsertWalletInfo(it))
+//        RxBus.send(WalletInfoEvent.InsertWalletInfo(it))
       })
       myProfileEntityEvent.observe(this@MyAddressProfileActivity, Observer {
         it ?: return@Observer
@@ -172,14 +172,14 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
           SelectModeAddWalletActivity.createIntent(this), SelectModeAddWalletActivity.REQUEST_CODE
       )
     })
-    RxBus.send(MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton())
+//    RxBus.send(MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton())
   }
 
   private fun changeEditBottomButton() {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_edit)
     bottomButton.setImage(R.mipmap.icon_pencil)
     bottomButton.setClickListener(View.OnClickListener {
-      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickEditBottomButton())
+//      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickEditBottomButton())
       changeCompleteBottomButton()
     })
   }
@@ -188,7 +188,7 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_complete)
     bottomButton.setImage(R.mipmap.icon_check_gray2)
     bottomButton.setClickListener(View.OnClickListener {
-      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton())
+//      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton())
       changeEditBottomButton()
     })
   }

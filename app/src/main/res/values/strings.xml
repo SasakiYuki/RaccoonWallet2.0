@@ -57,7 +57,7 @@
   <string name="main_navigation_help">Help</string>
   <string name="main_navigation_setting">Settings</string>
   <string name="main_bottom_navigation_receive">RECEIVE</string>
-  <string name="main_bottom_navigation_home"> </string>
+  <string name="main_bottom_navigation_home"></string>
   <string name="main_bottom_navigation_send">SEND</string>
   <string name="main_bottom_navigation_qr_labo">QR Lab</string>
   <string name="main_bottom_navigation_scan">SCAN</string>
@@ -66,14 +66,18 @@
   <!-- FirstTutorialActivity -->
   <string name="first_tutorial_button">Let\'s get started.</string>
   <string name="first_tutorial_title">Hello,NEM. Hello,UX.</string>
-  <string name="first_tutorial_message1">Hi, I am glad to see you! \n Let us begin New Economy Movement by Blockchain together! </string>
-  <string name="first_tutorial_message2">New Economy platform based on cryptocurrency and new ideas encourages you to have amazing experiences.</string>
+  <string name="first_tutorial_message1">Hi, I am glad to see you! \n Let us begin New Economy Movement by Blockchain
+        together!
+    </string>
+  <string name="first_tutorial_message2">New Economy platform based on cryptocurrency and new ideas encourages you to
+        have amazing experiences.
+    </string>
   <string name="first_tutorial_message3">New Economy Movement for liberty and co-creation is already here.</string>
 
   <string name="fragment_qr_lab_dentaku">Request payment</string>
-  <string name="fragment_qr_lab_sell_list">Use Selling Item list </string>
+  <string name="fragment_qr_lab_sell_list">Use Selling Item list</string>
   <string name="fragment_qr_lab_register">QR Register</string>
-  <string name="fragment_qr_lab_register_description">Create QR invoice with total amount by scanning a code. </string>
+  <string name="fragment_qr_lab_register_description">Create QR invoice with total amount by scanning a code.</string>
 
   <!-- HomeFragment -->
   <string name="home_fragment_balance">残高</string>
@@ -98,7 +102,7 @@
   <!-- PinCodeFragment -->
   <string name="pin_code_fragment_enter">Enter your PIN</string>
   <string name="pin_code_fragment_confirm">Confirm your PIN</string>
-  <string name="pin_code_setting_success">Setup completed </string>
+  <string name="pin_code_setting_success">Setup completed</string>
   <string name="pin_code_setting_confirm_error">Incorrect PIN code. \nPlease try again.</string>
 
   <!-- CalculatorActivity -->
@@ -127,7 +131,7 @@
   <string name="calculator_amount">Amount</string>
   <string name="calculator_send_user">Recipient</string>
 
-  <string name="nem_converter_error_price">Failed to retrieve </string>
+  <string name="nem_converter_error_price">Failed to retrieve</string>
 
   <!-- ReceiveFragment -->
   <string name="receive_fragment_address">Your Address</string>
@@ -136,12 +140,14 @@
   <!-- SelectWalletActivity -->
   <string name="select_wallet_activity_create_new_wallet">Create new wallet</string>
   <string name="select_wallet_empty_title">There is no wallet.</string>
-  <string name="select_wallet_empty_message">The list of wallet(s) will be shown here when creating a new wallet by tapping above \n or linking your existing wallet account. </string>
+  <string name="select_wallet_empty_message">The list of wallet(s) will be shown here when creating a new wallet by
+        tapping above \n or linking your existing wallet account.
+    </string>
 
   <!-- TransactionListActivity -->
   <string name="transaction_list_activity_title">Transactions</string>
   <string name="transaction_list_activity_empty_title">Oops! No transaction yet.</string>
-  <string name="transaction_list_activity_empty_message">All transactions will be shown here. </string>
+  <string name="transaction_list_activity_empty_message">All transactions will be shown here.</string>
 
   <!-- TransactionDetailFragment -->
   <string name="transaction_detail_title">Transaction detail</string>
@@ -150,7 +156,7 @@
   <string name="transaction_detail_second_non_amount">Amount : Trading volume unknown</string>
   <string name="transaction_detail_fee">Fee : %1$s XEM</string>
   <string name="transaction_detail_block">Block : %1$d</string>
-  <string name="transaction_detail_hash">Hash : </string>
+  <string name="transaction_detail_hash">Hash :</string>
   <string name="transaction_detail_non_message">no message</string>
   <string name="transaction_detail_mosaic_count">Mosaic : %1$d type</string>
   <string name="transaction_detail_mosaic_name">Name : %1$s</string>
@@ -165,40 +171,52 @@
   <string name="send_top_fragment_send">Destination</string>
   <string name="send_top_fragment_hint">Enter destination address</string>
   <string name="send_top_fragment_address_error">Invalid address</string>
-  <string name="send_top_fragment_confirm_title">Hey, Watch out! </string>
-  <string name="send_top_fragment_confirm_message">You are about to send some crypto to the newbie address that has never run on Blockchain before. That said, please be assured that it is still legit address and therefore you can transfer cryptocurrency. In the next time, please check whether the \n address is correct or not, as much as you need to double check whether the recipient is reliable or not. </string>
-  <string name="send_top_fragment_amount_confirm_title">Hey, it is 0XEM. Are you sure? </string>
+  <string name="send_top_fragment_confirm_title">Hey, Watch out!</string>
+  <string name="send_top_fragment_confirm_message">You are about to send some crypto to the newbie address that has
+        never run on Blockchain before. That said, please be assured that it is still legit address and therefore you
+        can transfer cryptocurrency. In the next time, please check whether the \n address is correct or not, as much as
+        you need to double check whether the recipient is reliable or not.
+    </string>
+  <string name="send_top_fragment_amount_confirm_title">Hey, it is 0XEM. Are you sure?</string>
   <string name="send_top_fragment_amount_confirm_message">Are you sure you want to send 0 XEM?</string>
   <string name="send_top_fragment_amount_confirm_dialog_positive">Yes</string>
   <string name="send_top_fragment_amount_confirm_dialog_negative">No</string>
-  <string name="send_top_fragment_message_confirm_title">Nothing else written in Message </string>
-  <string name="send_top_fragment_message_confirm_message">You left message in blank. \n Are you sure you want to continue? </string>
+  <string name="send_top_fragment_message_confirm_title">Nothing else written in Message</string>
+  <string name="send_top_fragment_message_confirm_message">You left message in blank. \n Are you sure you want to
+        continue?
+    </string>
   <string name="send_top_fragment_message_confirm_dialog_positive">Yes</string>
   <string name="send_top_fragment_message_confirm_dialog_negative">Attach</string>
 
   <!-- SelectSendModeFragment -->
   <string name="select_send_mode_fragment_title">Select transfer mode</string>
-  <string name="select_send_mode_fragment_sub_title">Do you want to send with a message? </string>
+  <string name="select_send_mode_fragment_sub_title">Do you want to send with a message?</string>
   <string name="select_send_mode_fragment_standard_title">STANDARD SEND</string>
   <string name="select_send_mode_fragment_standard_hint">Send without a message.</string>
   <string name="select_send_mode_fragment_standard_message">Send in a standard way</string>
   <string name="select_send_mode_fragment_message_title">Message SEND</string>
-  <string name="select_send_mode_fragment_message_hint">Cannot exceed 1024 characters. Used as authentication number when you deposit in crypto exchanges.</string>
+  <string name="select_send_mode_fragment_message_hint">Cannot exceed 1024 characters. Used as authentication number
+        when you deposit in crypto exchanges.
+    </string>
   <string name="select_send_mode_fragment_message_message">Attach message in transaction</string>
 
   <!-- SelectMessageTypeFragment -->
   <string name="select_message_type_fragment_title">Encrypt the message</string>
   <string name="select_message_type_fragment_normal_message_title">Plain Message</string>
-  <string name="select_message_type_fragment_normal_message_description">Plain message. \n Be sure to input authentication code here when you depositing in crypto exchanges.</string>
+  <string name="select_message_type_fragment_normal_message_description">Plain message. \n Be sure to input
+        authentication code here when you depositing in crypto exchanges.
+    </string>
   <string name="select_message_type_fragment_crypt_message_title">Encrypted message</string>
-  <string name="select_message_type_fragment_crypt_message_description">Let\'s secure your privacy with military grade encryption.  </string>
+  <string name="select_message_type_fragment_crypt_message_description">Let\'s secure your privacy with military grade
+        encryption.
+    </string>
 
   <!-- EnterSendFragment -->
   <string name="enter_send_fragment_title">Enter amount</string>
   <string name="enter_send_fragment_tab1">Remit processing</string>
   <string name="enter_send_fragment_tab2">Attach Mosaic</string>
   <string name="enter_send_fragment_mosaic_only">Send with XEM</string>
-  <string name="enter_send_fragment_xem_amount_error">Failed to retrieve your remaining balance.  </string>
+  <string name="enter_send_fragment_xem_amount_error">Failed to retrieve your remaining balance.</string>
 
   <!-- SendConfirmFragment -->
   <string name="send_confirm_fragment_title">This is the final remittance confirmation screen</string>
@@ -208,17 +226,24 @@
   <string name="send_confirm_fragment_send_title">Message</string>
   <string name="send_confirm_fragment_finger_print_ready">Are you ready?</string>
   <string name="send_confirm_fragment_finger_print_send">Confirm sending by fingerprint authentication</string>
-  <string name="send_confirm_fragment_pin_code_send">Show PIN on screen </string>
+  <string name="send_confirm_fragment_pin_code_send">Show PIN on screen</string>
   <string name="send_confirm_fragment_confirm_dialog_title">This is the final remittance confirmation screen</string>
-  <string name="send_confirm_fragment_confirm_dialog_message">Authenticate by fingerprint or PIN to complete sending. Please check information carefully before authenticating. </string>
-  <string name="send_confirm_fingerprint_limit_error">Exceeded maximum 5 times limit. Please type in PIN code. </string>
+  <string name="send_confirm_fragment_confirm_dialog_message">Authenticate by fingerprint or PIN to complete sending.
+        Please check information carefully before authenticating.
+    </string>
+  <string name="send_confirm_fingerprint_limit_error">Exceeded maximum 5 times limit. Please type in PIN code.
+    </string>
   <string name="send_confirm_fingerprint_error">Place the finger on the sensor again.</string>
 
   <!-- CreateWalletTutorialFragment -->
   <string name="create_wallet_tutorial_title">Welcome!</string>
-  <string name="create_wallet_tutorial_message">Hello once again! \n Welcome to Raccoon Wallet. \n Before you start Raccoon, you need to prepare a wallet first. \n Please choose if you make a new wallet or import one.</string>
+  <string name="create_wallet_tutorial_message">Hello once again! \n Welcome to Raccoon Wallet. \n Before you start
+        Raccoon, you need to prepare a wallet first. \n Please choose if you make a new wallet or import one.
+    </string>
   <string name="create_wallet_tutorial_dialog_title">It seems you have already set up PIN</string>
-  <string name="create_wallet_tutorial_dialog_message">It seems you have already set up PIN. \n Please press OK to complete lesson. \n Thank you! </string>
+  <string name="create_wallet_tutorial_dialog_message">It seems you have already set up PIN. \n Please press OK to
+        complete lesson. \n Thank you!
+    </string>
 
   <!-- SelectWalletActivity -->
   <string name="select_wallet_activity_title">Select a wallet</string>
@@ -231,7 +256,9 @@
   <string name="create_wallet_activity_title">Welcome!</string>
 
   <!-- CreateWalletFragment -->
-  <string name="create_wallet_fragment_greeting">So, you chose to create a new wallet!  \n Let us guide you how to create it! \n First of all, please name your wallet. \n Any name is fine as you wish. </string>
+  <string name="create_wallet_fragment_greeting">So, you chose to create a new wallet! \n Let us guide you how to
+        create it! \n First of all, please name your wallet. \n Any name is fine as you wish.
+    </string>
   <string name="create_wallet_fragment_edit_text_wallet_name_hint">Enter Wallet name</string>
   <string name="create_wallet_fragment_confirm_description">Please check before using App.</string>
   <string name="create_wallet_fragment_terms_of_service">Terms of Use and Privacy Policy</string>
@@ -240,35 +267,61 @@
   <string name="created_wallet_activity_title">Ready</string>
 
   <!-- CreatedWalletFragment -->
-  <string name="created_wallet_fragment_greeting">Congratulations! \n Now that your Wallet has been created. Please see your address below. </string>
+  <string name="created_wallet_fragment_greeting">Congratulations! \n Now that your Wallet has been created. Please
+        see your address below.
+    </string>
   <string name="created_wallet_fragment_address_hint">Wallet address created this time</string>
-  <string name="created_wallet_fragment_wallet_bar_description">If you want to maintain your wallet, press the button in the bar above. \n It is not working in this page so please try later.  </string>
+  <string name="created_wallet_fragment_wallet_bar_description">If you want to maintain your wallet, press the button
+        in the bar above. \n It is not working in this page so please try later.
+    </string>
 
   <!-- ChooseStartSecurityActivity -->
   <string name="choose_start_security_activity_title">Good job!</string>
 
   <!-- ChooseStartSecurityFragment -->
-  <string name="choose_start_security_fragment_description_for_first">Creating a new Wallet is now completed. \n If you are new in cryptocurrency, \n we suggest you to take Security Lesson. \n In the lesson, you will learn how to set up PIN code as well as how to backup your Wallet. \n\n  If you wish to use Wallet now, please move on to \"HOME\" to skip the lesson. </string>
-  <string name="choose_start_security_fragment_description_for_second">Creating a new Wallet is now completed. \n If you want to back up your wallet, please go to the lesson. \nn For those who wish to use Wallet now, please move on to \"HOME\" to skip the lesson. </string>
+  <string name="choose_start_security_fragment_description_for_first">Creating a new Wallet is now completed. \n If
+        you are new in cryptocurrency, \n we suggest you to take Security Lesson. \n In the lesson, you will learn how
+        to set up PIN code as well as how to backup your Wallet. \n\n If you wish to use Wallet now, please move on to
+        \"HOME\" to skip the lesson.
+    </string>
+  <string name="choose_start_security_fragment_description_for_second">Creating a new Wallet is now completed. \n If
+        you want to back up your wallet, please go to the lesson. \nn For those who wish to use Wallet now, please move
+        on to \"HOME\" to skip the lesson.
+    </string>
   <string name="choose_start_security_fragment_security_lesson">Security Lesson</string>
   <string name="choose_start_security_fragment_home">home</string>
-  <string name="choose_start_security_fragment_dialog_title">Do you want to skip Security Lesson? </string>
-  <string name="choose_start_security_fragment_dialog_message">You are about to skip the lesson how to set up PIN code and Private Key backup. We strongly advise you to secure your account by understanding Security issues but do you still want to continue to go HOME? </string>
-  <string name="choose_start_security_fragment_dialog_title_second">Roger that! </string>
-  <string name="choose_start_security_fragment_dialog_message_second">If you want to back up your Wallet or set up PIN code, you can always do so at Wallet bar or application setting in Menu bar. \n Also, you can take Security Lesson at anytime by go to Security in the application setting. </string>
+  <string name="choose_start_security_fragment_dialog_title">Do you want to skip Security Lesson?</string>
+  <string name="choose_start_security_fragment_dialog_message">You are about to skip the lesson how to set up PIN code
+        and Private Key backup. We strongly advise you to secure your account by understanding Security issues but do
+        you still want to continue to go HOME?
+    </string>
+  <string name="choose_start_security_fragment_dialog_title_second">Roger that!</string>
+  <string name="choose_start_security_fragment_dialog_message_second">If you want to back up your Wallet or set up PIN
+        code, you can always do so at Wallet bar or application setting in Menu bar. \n Also, you can take Security
+        Lesson at anytime by go to Security in the application setting.
+    </string>
 
   <!-- PrivateKeyStoreSupportActivity -->
   <string name="tutorial_description_fragment_title">Security Lesson</string>
-  <string name="tutorial_description_fragment_main">Welcome aboard! \n Are you looking for Security Lesson ? Well, here it is! Let\'s get started. \n\n First of all, can you tell me about yourself by choosing one of the followings. </string>
+  <string name="tutorial_description_fragment_main">Welcome aboard! \n Are you looking for Security Lesson ? Well,
+        here it is! Let\'s get started. \n\n First of all, can you tell me about yourself by choosing one of the
+        followings.
+    </string>
 
   <!-- PrivateKeyDescriptionFragment -->
-  <string name="private_key_description_fragment_description_1">About Private Key </string>
-  <string name="private_key_description_fragment_description">Private Key is the most significant thing, which you must secure it at all cost. \n\n Private Key controls all assets and account information - it can also be used to restore your Wallet. Therefore, everyone has to know this basic knowledge. \n\n Please do not lose your Private Key, and never tell others. </string>
+  <string name="private_key_description_fragment_description_1">About Private Key</string>
+  <string name="private_key_description_fragment_description">Private Key is the most significant thing, which you
+        must secure it at all cost. \n\n Private Key controls all assets and account information - it can also be used
+        to restore your Wallet. Therefore, everyone has to know this basic knowledge. \n\n Please do not lose your
+        Private Key, and never tell others.
+    </string>
 
   <!-- PrivateKeyDisplayFragment -->
   <string name="private_key_display_fragment_title">Backup</string>
   <string name="private_key_display_fragment_description_1">Don\'t take a screen shot of your private key.</string>
-  <string name="private_key_display_fragment_description_2">\n Please write down on a paper or secure it on Password management App/Software</string>
+  <string name="private_key_display_fragment_description_2">\n Please write down on a paper or secure it on Password
+        management App/Software
+    </string>
   <string name="private_key_display_fragment_hint">Private Key</string>
   <string name="private_key_display_fragment_copied_click">Copied private key to the clipboard</string>
 
@@ -276,50 +329,71 @@
   <string name="display_qr_activity_title">My Wallet QR</string>
 
   <!-- SendFinishFragment -->
-  <string name="send_finish_fragment_title">Your transfer request has been completed.  </string>
-  <string name="send_finish_fragment_send_finish">Sending NEM/XEM\n Completed. </string>
+  <string name="send_finish_fragment_title">Your transfer request has been completed.</string>
+  <string name="send_finish_fragment_send_finish">Sending NEM/XEM\n Completed.</string>
   <string name="send_finish_fragment_home">HOME</string>
   <string name="send_finish_fragment_transaction">Transfer detail</string>
   <string name="send_error_message_balance">You don\'t have enough balance</string>
 
   <!-- SelectTutorialLevelFragment -->
-  <string name="select_tutorial_level_fragment_title">Let\'s select Lesson! </string>
-  <string name="select_tutorial_level_fragment_newbie_title">Start Cryptocurrency by Raccoon </string>
+  <string name="select_tutorial_level_fragment_title">Let\'s select Lesson!</string>
+  <string name="select_tutorial_level_fragment_newbie_title">Start Cryptocurrency by Raccoon</string>
   <string name="select_tutorial_level_fragment_newbie_subtitle">Back up Private Key + Set up PIN code</string>
   <string name="select_tutorial_level_fragment_newbie_description">Welcome to Raccoon!</string>
   <string name="select_tutorial_level_fragment_login_title">Logged in by Private Key</string>
   <string name="select_tutorial_level_fragment_login_subtitle">Set up PIN Code</string>
-  <string name="select_tutorial_level_fragment_login_description">Thank you for choosing Raccoon. </string>
-  <string name="select_tutorial_level_fragment_raccoon_title">It is a Raccoon user. </string>
+  <string name="select_tutorial_level_fragment_login_description">Thank you for choosing Raccoon.</string>
+  <string name="select_tutorial_level_fragment_raccoon_title">It is a Raccoon user.</string>
   <string name="select_tutorial_level_fragment_raccoon_subtitle">Back up Wallet</string>
-  <string name="select_tutorial_level_fragment_raccoon_description">Thank you for staying loyal. It\'s a nice weather today. </string>
+  <string name="select_tutorial_level_fragment_raccoon_description">Thank you for staying loyal. It\'s a nice weather
+        today.
+    </string>
 
   <!-- AboutActivity -->
   <string name="about_activity_title">About This APP</string>
-  <string name="about_activity_message">Raccoon is made by these pure three visions: reliable, UI is easy to use, and make cryptocurrency enjoyable than ever. </string>
+  <string name="about_activity_message">Raccoon is made by these pure three visions: reliable, UI is easy to use, and
+        make cryptocurrency enjoyable than ever. 
+    </string>
   <string name="about_activity_section_header">Raccoon</string>
   <string name="about_activity_official_web_page">Official Website | raccoonwallet.com</string>
-  <string name="about_activity_official_discord">Official DISCORD Server |  Link </string>
+  <string name="about_activity_official_discord">Official DISCORD Server | Link</string>
   <string name="about_activity_official_licence">Open Source License</string>
   <string name="about_activity_official_review">Write a review</string>
   <string name="about_activity_review_title">Hello</string>
-  <string name="about_activity_review_message">Thank you for using Raccoon. If you could spare your time a little, please write us a review - you can do so by tapping this dialog or from \"About\" at anytime. Thank you very much for your kind cooperation \n  Raccoon Team </string>
+  <string name="about_activity_review_message">Thank you for using Raccoon. If you could spare your time a little,
+        please write us a review - you can do so by tapping this dialog or from \"About\" at anytime. Thank you very
+        much for your kind cooperation \n Raccoon Team
+    </string>
   <string name="about_activity_review_button">Write a review</string>
 
   <!-- TutorialNewbieDescriptionFragment -->
   <string name="tutorial_newbie_description_fragment_title">For CryptoNewbie</string>
-  <string name="tutorial_newbie_description_fragment_description">For those who are about to start Crypto. \n First above anything, cryptocurrency has \"Private Key,\" which is very significant. \n This Private Key is used to control your asset in the Wallet; it also be used to back up your Wallet in case you lose your devices or whatsoever. \n You might also need to set up PIN code to lock your application - just so you need to protect from fraud as well. \n Hence, we are going to give you lesson regarding to Private Key and PIN code setup. \n And now let\'s move on. Are you ready? </string>
+  <string name="tutorial_newbie_description_fragment_description">For those who are about to start Crypto. \n First
+        above anything, cryptocurrency has \"Private Key,\" which is very significant. \n This Private Key is used to
+        control your asset in the Wallet; it also be used to back up your Wallet in case you lose your devices or
+        whatsoever. \n You might also need to set up PIN code to lock your application - just so you need to protect
+        from fraud as well. \n Hence, we are going to give you lesson regarding to Private Key and PIN code setup. \n
+        And now let\'s move on. Are you ready?
+    </string>
 
   <!-- TutorialLoginDescriptionFragment -->
   <string name="tutorial_login_description_fragment_title">For CryptoVeteran</string>
-  <string name="tutorial_login_description_fragment_description">For those who are already professional in cryptocurrency. \n Thank you for choosing Raccoon. \n Well, there might be nothing for you to learn from us. \n Please do setup PIN code from this screen. \n If you have forgotten to back up Private Key, you might want to take Security Lesson from beginner\'s guide. </string>
+  <string name="tutorial_login_description_fragment_description">For those who are already professional in
+        cryptocurrency. \n Thank you for choosing Raccoon. \n Well, there might be nothing for you to learn from us. \n
+        Please do setup PIN code from this screen. \n If you have forgotten to back up Private Key, you might want to
+        take Security Lesson from beginner\'s guide.
+    </string>
 
   <!-- TutorialRaccoonDescriptionFragment -->
-  <string name="tutorial_raccoon_description_fragment_description">Good day! \n You want to do back up Private Key, right? \n You can check your Private Key from the next screen. \n Thank you for staying loyal with us. </string>
+  <string name="tutorial_raccoon_description_fragment_description">Good day! \n You want to do back up Private Key,
+        right? \n You can check your Private Key from the next screen. \n Thank you for staying loyal with us.
+    </string>
 
   <!-- ImportSecretKeyFragment -->
   <string name="import_secret_key_fragment_title">Import private key</string>
-  <string name="import_secret_key_fragment_message">Good day, our dearest cryptocoiner. \n Please type in your private key \n or scan the QR code. \n2 Your account will be linked to Raccoon. </string>
+  <string name="import_secret_key_fragment_message">Good day, our dearest cryptocoiner. \n Please type in your private
+        key \n or scan the QR code. \n2 Your account will be linked to Raccoon.
+    </string>
   <string name="import_secret_key_fragment_hint">Enter private key</string>
   <string name="import_secret_key_fragment_empty_error">Enter private key</string>
 
@@ -332,38 +406,62 @@
   <!-- ImportWalletPasswordActivity -->
   <string name="import_wallet_password_activity_title">Enter password</string>
   <string name="import_wallet_password_title">Enter NanoWallet password</string>
-  <string name="import_wallet_password_message">You are about to link the account from NanoWallet by reading QR code. \n To complete this process, you need to enter NanoWallet password. </string>
+  <string name="import_wallet_password_message">You are about to link the account from NanoWallet by reading QR code.
+        \n To complete this process, you need to enter NanoWallet password.
+    </string>
   <string name="import_wallet_password_hint">Enter password</string>
   <string name="import_wallet_password_paste_error">Failed to paste</string>
 
   <!-- ImportWalletNameFragment -->
   <string name="import_wallet_name_fragment_title">Import Wallet name</string>
-  <string name="import_wallet_name_fragment_message">Great! \nYour account has been linked successfully. \nGiving a name to the wallet would help you.</string>
+  <string name="import_wallet_name_fragment_message">Great! \nYour account has been linked successfully. \nGiving a
+        name to the wallet would help you.
+    </string>
   <string name="import_wallet_name_fragment_hint">Wallet name</string>
 
   <!-- TutorialPinCodeFragment -->
-  <string name="tutorial_pin_code_fragment_title">Next, set up your PIN! </string>
-  <string name="tutorial_pin_code_fragment_main">Hello again!   \n Have you done backup your Wallet already? \n Next, you set up PIN code for application. \n\n Wish you good luck! </string>
+  <string name="tutorial_pin_code_fragment_title">Next, set up your PIN!</string>
+  <string name="tutorial_pin_code_fragment_main">Hello again! \n Have you done backup your Wallet already? \n Next,
+        you set up PIN code for application. \n\n Wish you good luck!
+    </string>
   <string name="tutorial_pin_code_fragment_button">Set up PIN Code</string>
 
   <!-- PinCodeSettingFragment -->
   <string name="pin_code_setting_fragment_dialog_title">Set up PIN Code</string>
-  <string name="pin_code_setting_fragment_dialog_1">Let\'s set up PIN code to protect your application. Please key in 6 digit number. \n You will need to key in two times the same for the confirmation of your PIN code. \n ※ We strongly advise you to avoid using the repetitive digit number or key in your birth date from security perspective.  </string>
-  <string name="pin_code_setting_fragment_dialog_2">If you have forgotten your PIN code, you will never be able to access to your account no matter what, therefore please do not forget it. That said, your asset is still in your Wallet account. By this mean, you will lose your asset only when you have lost Private Key. </string>
+  <string name="pin_code_setting_fragment_dialog_1">Let\'s set up PIN code to protect your application. Please key in
+        6 digit number. \n You will need to key in two times the same for the confirmation of your PIN code. \n ※ We
+        strongly advise you to avoid using the repetitive digit number or key in your birth date from security
+        perspective.
+    </string>
+  <string name="pin_code_setting_fragment_dialog_2">If you have forgotten your PIN code, you will never be able to
+        access to your account no matter what, therefore please do not forget it. That said, your asset is still in your
+        Wallet account. By this mean, you will lose your asset only when you have lost Private Key.
+    </string>
   <string name="pin_code_setting_fragment_dialog_confirm_title">SUCCESS</string>
-  <string name="pin_code_setting_fragment_dialog_confirm_message">6 digit PIN code has been set up successfully to secure App.</string>
+  <string name="pin_code_setting_fragment_dialog_confirm_message">6 digit PIN code has been set up successfully to
+        secure App.
+    </string>
 
   <!-- CompletedPinCodeSettingFragmentment -->
   <string name="pin_code_setting_end_fragment_title">Set fingerprint authentication</string>
-  <string name="pin_code_setting_end_fragment_description">Now that you have done setup PIN. \n This may be the last lesson to you. \n\n You might as well want to set up fingerprint and/or face authentication. Do you want to proceed? </string>
+  <string name="pin_code_setting_end_fragment_description">Now that you have done setup PIN. \n This may be the last
+        lesson to you. \n\n You might as well want to set up fingerprint and/or face authentication. Do you want to
+        proceed?
+    </string>
   <string name="pin_code_setting_end_fragment_button_finger">Set fingerprint authentication</string>
   <string name="pin_code_setting_end_fragment_button_end">Complete Lesson</string>
   <string name="pin_code_setting_end_not_available_title">Oops!</string>
-  <string name="pin_code_setting_end_not_available_message">It seems you have not done with setup fingerprint authentication on your device. \n Do you want to continue with fingerprint setup on Android OS setting? </string>
+  <string name="pin_code_setting_end_not_available_message">It seems you have not done with setup fingerprint
+        authentication on your device. \n Do you want to continue with fingerprint setup on Android OS setting?
+    </string>
 
   <!-- CompleteImportWalletActivity -->
-  <string name="complete_import_wallet_activity_title">Link completed. </string>
-  <string name="complete_import_wallet_activity_message">Congratulations! \n You have done linking your Wallet to this account.  \n If you want to change or add your Wallet, you can do so by Wallet bar to access management screen. \n If you could spare your time, we advise you to take Security Lesson. You will learn how to set up PIN and how to backup your Wallet. </string>
+  <string name="complete_import_wallet_activity_title">Link completed.</string>
+  <string name="complete_import_wallet_activity_message">Congratulations! \n You have done linking your Wallet to this
+        account. \n If you want to change or add your Wallet, you can do so by Wallet bar to access management screen.
+        \n If you could spare your time, we advise you to take Security Lesson. You will learn how to set up PIN and how
+        to backup your Wallet.
+    </string>
   <string name="complete_import_wallet_activity_lesson_button">Security Lesson</string>
 
   <!-- QrScanFragment -->
@@ -372,25 +470,42 @@
 
   <!-- WalletCreatedFragment -->
   <string name="wallet_created_fragment_title">Good job!</string>
-  <string name="wallet_created_fragment_description_newbie">Otsukaresama deshita m (    ) m n\ This is the end of Security Lesson. \n\n If you want to learn more, please take a look at Help at Menu section. \n\n We wish you a happy Crypto life! </string>
-  <string name="wallet_created_fragment_description_login">Otsukaresama deshita m (    ) m n\ This is the end of Security Lesson. \n You can learn how to use this Wallet by Help in Menu section. \n\n We wish you a happy Crypto life! </string>
-  <string name="wallet_created_fragment_description_raccoon">Thank you for using Raccoon. \n So this is the end of Security Lesson. \n\n We hope you continue enjoying crypto life. </string>
+  <string name="wallet_created_fragment_description_newbie">Otsukaresama deshita m ( ) m n\ This is the end of
+        Security Lesson. \n\n If you want to learn more, please take a look at Help at Menu section. \n\n We wish you a
+        happy Crypto life!
+    </string>
+  <string name="wallet_created_fragment_description_login">Otsukaresama deshita m ( ) m n\ This is the end of Security
+        Lesson. \n You can learn how to use this Wallet by Help in Menu section. \n\n We wish you a happy Crypto life!
+    </string>
+  <string name="wallet_created_fragment_description_raccoon">Thank you for using Raccoon. \n So this is the end of
+        Security Lesson. \n\n We hope you continue enjoying crypto life.
+    </string>
 
   <!-- Fingerprint -->
   <string name="fingerprint_authenticate_title">Unlock using fingerprint authentication</string>
-  <string name="fingerprint_authenticate_message">Unlock app using fingerprint authentication. Touch the sensor of your device.</string>
+  <string name="fingerprint_authenticate_message">Unlock app using fingerprint authentication. Touch the sensor of
+        your device.
+    </string>
   <string name="fingerprint_authenticate_success_title">SUCCESS!</string>
-  <string name="fingerprint_authenticate_success_message">Fingerprint authentication is completed. </string>
+  <string name="fingerprint_authenticate_success_message">Fingerprint authentication is completed.</string>
   <string name="fingerprint_authenticate_failed_title">Failed to authenticate</string>
-  <string name="fingerprint_authenticate_failed_message">Fingerprint authentication is failed. Please place your finger on the sensor again.</string>
+  <string name="fingerprint_authenticate_failed_message">Fingerprint authentication is failed. Please place your
+        finger on the sensor again.
+    </string>
   <string name="fingerprint_authenticate_error_over_limit_title">Retry limit exceeded</string>
-  <string name="fingerprint_authenticate_error_over_limit_message">Exceeded maximum 5 times limit. Please type in PIN code. </string>
+  <string name="fingerprint_authenticate_error_over_limit_message">Exceeded maximum 5 times limit. Please type in PIN
+        code.
+    </string>
 
   <!-- FingerprintSettingDialog -->
   <string name="fingerprint_setting_authenticate_title">Setup access by fingerprint authentication</string>
-  <string name="fingerprint_setting_authenticate_message">You can unlock the application by fingerprint authentication. Please press \n OK to finish setup. </string>
+  <string name="fingerprint_setting_authenticate_message">You can unlock the application by fingerprint
+        authentication. Please press \n OK to finish setup.
+    </string>
   <string name="fingerprint_setting_authenticate_success_title">SUCCESS!</string>
-  <string name="fingerprint_setting_authenticate_success_message">Setup log in by fingerprint authentication is completed. </string>
+  <string name="fingerprint_setting_authenticate_success_message">Setup log in by fingerprint authentication is
+        completed.
+    </string>
 
   <!-- SettingHome -->
   <string name="setting_home_title">Settings</string>
@@ -398,13 +513,13 @@
   <string name="setting_home_language">Select language</string>
   <string name="setting_home_notification">Notifications</string>
   <string name="setting_home_security_section">Security</string>
-  <string name="setting_home_password">Set/Change Password </string>
+  <string name="setting_home_password">Set/Change Password</string>
   <string name="setting_home_fingerprint">Fingerprint required</string>
   <string name="setting_home_app_lock">Require PIN at startup</string>
   <string name="setting_home_security_lesson">Take Security Lesson</string>
 
   <!-- SelectModeAddWalletActivity -->
-  <string name="select_mode_add_wallet_title">How do you like to set up? </string>
+  <string name="select_mode_add_wallet_title">How do you like to set up?</string>
   <string name="select_mode_add_wallet_from_wallet">Register by Existing Wallet</string>
   <string name="select_mode_add_wallet_direct">Type in directly</string>
   <string name="select_mode_add_wallet_no_wallet">Please create wallet</string>
@@ -418,11 +533,12 @@
 
   <!-- SettingFingerprint -->
   <string name="setting_pincodd_not_available_title">Oops!</string>
-  <string name="setting_pincodd_not_available_message">Your PIN setup is uncompleted. Please set up your PIN first. </string>
-  <string name="setting_fingerprint_success">Fingerprint authentication setup is completed. </string>
+  <string name="setting_pincodd_not_available_message">Your PIN setup is uncompleted. Please set up your PIN first.
+    </string>
+  <string name="setting_fingerprint_success">Fingerprint authentication setup is completed.</string>
 
   <!-- SettingAppLock -->
-  <string name="setting_app_lock_complete_message">Application lock setup is completed. </string>
+  <string name="setting_app_lock_complete_message">Application lock setup is completed.</string>
 
   <!-- InstantPinCodeFragment -->
   <string name="instant_pin_code_message">Input PIN to confirm your transfer</string>
@@ -471,8 +587,10 @@
   <!-- SelectMyProfileAddressAddActivity -->
   <string name="select_my_profile_address_add_activity_title">Select wallet to register</string>
   <string name="select_my_profile_address_add_activity_bottom_button">Complete</string>
-  <string name="select_my_profile_address_add_activity_empty_title">There is no wallet to register </string>
-  <string name="select_my_profile_address_add_activity_empty_description">You have not created Wallet yet or the Wallet is already registered. </string>
+  <string name="select_my_profile_address_add_activity_empty_title">There is no wallet to register</string>
+  <string name="select_my_profile_address_add_activity_empty_description">You have not created Wallet yet or the
+        Wallet is already registered.
+    </string>
 
   <!-- WalletDetailFragment -->
   <string name="wallet_detail_fragment_title">Wallet detail</string>
@@ -480,47 +598,60 @@
   <string name="wallet_detail_constitution">Wallet configuration (m-of-n)</string>
   <string name="wallet_detail_score">Importance score</string>
   <string name="wallet_detail_public_key">Public key</string>
-  <string name="wallet_detail_public_key_empty">Not acquired </string>
+  <string name="wallet_detail_public_key_empty">Not acquired</string>
 
   <!-- MyProfileInfoFragment -->
   <string name="my_profile_info_fragment_wallet">Wallet</string>
   <string name="my_profile_info_fragment_guest">GUEST</string>
   <string name="my_profile_info_fragment_guest_sub">Guest</string>
-  <string name="my_profile_info_fragment_setting_wallet">You have not set up master wallet yet. </string>
+  <string name="my_profile_info_fragment_setting_wallet">You have not set up master wallet yet.</string>
   <string name="my_profile_info_fragment_change_user_screen">Change background</string>
   <string name="my_profile_info_fragment_change_user_icon">Change icon</string>
   <string name="my_profile_info_fragment_alert_dialog_title">About symbol</string>
-  <string name="my_profile_info_fragment_alert_dialog_message">The Crown symbol represents your main address in the Wallet. </string>
+  <string name="my_profile_info_fragment_alert_dialog_message">The Crown symbol represents your main address in the
+        Wallet.
+    </string>
 
   <!-- WalletBackupActivity -->
   <string name="wallet_backup_activity_title">Backup</string>
 
   <!-- MyAddressProfileActivity -->
   <string name="my_address_profile_activity_empty_title">The list is still empty</string>
-  <string name="my_address_profile_activity_empty_description">This is your management area for Wallet. You can add Wallet and also add your data from profile tab.  </string>
+  <string name="my_address_profile_activity_empty_description">This is your management area for Wallet. You can add
+        Wallet and also add your data from profile tab.
+    </string>
 
   <!-- WalletRemoveActivity -->
   <string name="wallet_remove_activity_title">Delete</string>
-  <string name="wallet_remove_message">You are about to delete your Wallet. If you do not have Private Key, you will never be able to restore your data. Are you sure you want to continue? </string>
+  <string name="wallet_remove_message">You are about to delete your Wallet. If you do not have Private Key, you will
+        never be able to restore your data. Are you sure you want to continue?
+    </string>
   <string name="wallet_remove_button">Delete</string>
 
   <!-- WalletRenameActivity -->
   <string name="wallet_rename_activity_title">Change wallet name</string>
 
   <!-- WalletBar -->
-  <string name="wallet_bar_balance_error">Failed to acquire </string>
+  <string name="wallet_bar_balance_error">Failed to acquire</string>
   <string name="wallet_bar_name_error">Not selected</string>
 
   <!-- RaccoonErrorDialog -->
   <string name="raccoon_error_pin_title">You cannot continue to Send screen</string>
-  <string name="raccoon_error_pin_message">You cannot continue to Send screen because no PIN code has been set up yet. \n Set up PIN from Settings tab before you send your crypto.</string>
+  <string name="raccoon_error_pin_message">You cannot continue to Send screen because no PIN code has been set up yet.
+        \n Set up PIN from Settings tab before you send your crypto.
+    </string>
   <string name="raccoon_error_pin_button">Move to setup PIN page</string>
-  <string name="raccoon_error_wallet_message">You cannot continue to Send screen due to no Wallet has been selected. \n In order to continue to remit asset, you need to select Wallet.</string>
-  <string name="raccoon_error_wallet_button">Continue to Wallet selection screen. </string>
+  <string name="raccoon_error_wallet_message">You cannot continue to Send screen due to no Wallet has been selected.
+        \n In order to continue to remit asset, you need to select Wallet.
+    </string>
+  <string name="raccoon_error_wallet_button">Continue to Wallet selection screen.</string>
 
   <!-- AddressErrorDialog -->
-  <string name="address_error_dialog_title">The recipient can\'t receive an encrypted message. </string>
-  <string name="address_error_dialog_message">In order to send an encrypted message, the recipient needs to have their public key. \n Since the current recipient does not have their public key, you can\'t send the encrypted message.</string>
+  <string name="address_error_dialog_title">The recipient can\'t receive an encrypted message.</string>
+  <string name="address_error_dialog_message">In order to send an encrypted message, the recipient needs to have their
+        public key. \n Since the current recipient does not have their public key, you can\'t send the encrypted
+        message.
+    </string>
 
   <!-- BalanceActivity -->
   <string name="balance_activity_title">Wallet balance</string>
@@ -535,9 +666,15 @@
   <string name="raccoon_donate_activity_ios_engineer">iOS Engineer</string>
 
   <string name="donate_detail_fragment_title">Profile</string>
-  <string name="donate_detail_fragment_android_message">Android Engineer \n@YukiYamadaJP\n@Riberd_Puzzle1\n\n・Android App Developer </string>
-  <string name="donate_detail_fragment_rhime_message">Designer\n・Android / iOS App\'s IA/UI/UX Design \n・Visual Design / Branding </string>
-  <string name="donate_detail_fragment_ios_message">Engineer \n・iOS Development Director \n・PWA(Progressive Web Apps) Developer</string>
+  <string name="donate_detail_fragment_android_message">Android Engineer \n@YukiYamadaJP\n@Riberd_Puzzle1\n\n・Android
+        App Developer
+    </string>
+  <string name="donate_detail_fragment_rhime_message">Designer\n・Android / iOS App\'s IA/UI/UX Design \n・Visual Design
+        / Branding
+    </string>
+  <string name="donate_detail_fragment_ios_message">Engineer \n・iOS Development Director \n・PWA(Progressive Web Apps)
+        Developer
+    </string>
   <string name="donate_detail_fragment_donate">Donate</string>
 
   <!-- AddressBookListActivity -->
@@ -548,7 +685,7 @@
   <string name="address_book_list_search_chip_local">Local</string>
   <string name="address_book_list_search_chip_twitter">Twitter</string>
   <string name="address_book_list_sort_first">A-Z</string>
-  <string name="address_book_list_sort_second">Your favorite list </string>
+  <string name="address_book_list_sort_second">Your favorite list</string>
 
   <!-- CreateFriend -->
   <string name="create_friend_address_title">Profile</string>
