@@ -33,4 +33,11 @@
     <item name="colorControlActivated">@android:color/white</item>
   </style>
 
+  <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+    <item name="bottomSheetStyle">@style/BottomSheetStyleWrapper</item>
+  </style>
+
+  <style name="BottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+    <item name="behavior_peekHeight">312dp</item>
+  </style>
 </resources>

@@ -28,3 +28,4 @@ fun Context.pasteFromClipBoard(): String {
   }
 }
 
+fun Context.getDensity(): Float = this.resources.displayMetrics.density

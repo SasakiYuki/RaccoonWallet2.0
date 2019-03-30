@@ -1,5 +1,10 @@
 package wallet.raccoon.raccoonwallet.extentions
 
+import android.content.ClipData
+import android.content.ClipDescription
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import java.util.regex.Pattern
 
 fun String.toDisplayAddress(): String {
@@ -26,4 +31,16 @@ fun String.remove(target: String): String {
       .filter { it != target.single() }
       .forEach { stringBuilder.append(it) }
   return String(stringBuilder)
+}
+
+fun String.copyClipBoard(context: Context) {
+  val item = ClipData.Item(this)
+
+  val mimeType = arrayOfNulls<String>(1)
+  mimeType[0] = ClipDescription.MIMETYPE_TEXT_URILIST
+
+  val cd = ClipData(ClipDescription("text_data", mimeType), item)
+
+  val cm = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+  cm.primaryClip = cd
 }
