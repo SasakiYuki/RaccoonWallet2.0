@@ -29,7 +29,10 @@ import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.model.db.MyAddress
 import wallet.raccoon.raccoonwallet.model.db.WalletInfo
 import wallet.raccoon.raccoonwallet.view.activity.BaseActivity
+import wallet.raccoon.raccoonwallet.view.adapter.SimpleViewPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
+import wallet.raccoon.raccoonwallet.view.fragment.profile.MyProfileInfoFragment
+import wallet.raccoon.raccoonwallet.view.fragment.profile.MyWalletInfoFragment
 import wallet.raccoon.raccoonwallet.viewmodel.profile.MyAddressProfileViewModel
 import javax.inject.Inject
 
