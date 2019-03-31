@@ -1,4 +1,5 @@
 package wallet.raccoon.raccoonwallet.flux.type
 
-class TutorialCreateNewWalletActionType {
+sealed class TutorialCreateNewWalletActionType {
+    class CreateAndInsertWallet(val address: String) : TutorialCreateNewWalletActionType()
 }

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.android.support.AndroidSupportInjection
@@ -12,6 +13,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.fragment_tutorial_create_new_wallet.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
@@ -36,7 +40,21 @@ class TutorialCreateNewWalletFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupViews()
+        setupViewModel()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        editText.setText("")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        compositeDisposable.dispose()
+    }
+
+    private fun setupViews() {
         termsOfServiceTextView.setOnClickListener {
             val url = "https://raccoonwallet.com/tos_pp/"
             val builder = CustomTabsIntent.Builder()
@@ -45,9 +63,10 @@ class TutorialCreateNewWalletFragment : BaseFragment() {
         }
 
         button.setOnClickListener {
-            replaceFragment(
-                TutorialWalletAddressDisplayFragment.newInstance(editText.text.toString()), true
-            )
+            showProgress()
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.createAndSaveWallet(editText.text.toString())
+            }
         }
 
         RxTextView.textChanges(editText)
@@ -63,14 +82,11 @@ class TutorialCreateNewWalletFragment : BaseFragment() {
             .addTo(compositeDisposable)
     }
 
-    override fun onResume() {
-        super.onResume()
-        editText.setText("")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        compositeDisposable.dispose()
+    private fun setupViewModel() {
+        viewModel.createAndInsertWallet.observe(this, Observer { address ->
+            hideProgress()
+            replaceFragment(TutorialWalletAddressDisplayFragment.newInstance(editText.text.toString(), address), true)
+        })
     }
 
     companion object {
