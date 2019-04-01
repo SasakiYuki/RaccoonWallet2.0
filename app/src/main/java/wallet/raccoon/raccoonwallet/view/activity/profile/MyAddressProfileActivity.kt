@@ -1,6 +1,5 @@
 package wallet.raccoon.raccoonwallet.view.activity.profile
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -27,7 +26,6 @@ import wallet.raccoon.raccoonwallet.extentions.buildSpannableText
 import wallet.raccoon.raccoonwallet.extentions.setSpan
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.model.db.MyAddress
-import wallet.raccoon.raccoonwallet.model.db.WalletInfo
 import wallet.raccoon.raccoonwallet.view.activity.BaseActivity
 import wallet.raccoon.raccoonwallet.view.adapter.SimpleViewPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
@@ -168,9 +166,9 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_add)
     bottomButton.setImage(R.mipmap.icon_plus)
     bottomButton.setClickListener(View.OnClickListener {
-      startActivityForResult(
-          SelectModeAddWalletActivity.createIntent(this), SelectModeAddWalletActivity.REQUEST_CODE
-      )
+      //      startActivityForResult(
+//          SelectModeAddWalletActivity.createIntent(this), SelectModeAddWalletActivity.REQUEST_CODE
+//      )
     })
 //    RxBus.send(MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton())
   }
@@ -179,7 +177,7 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_edit)
     bottomButton.setImage(R.mipmap.icon_pencil)
     bottomButton.setClickListener(View.OnClickListener {
-//      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickEditBottomButton())
+      //      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickEditBottomButton())
       changeCompleteBottomButton()
     })
   }
@@ -188,7 +186,7 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_complete)
     bottomButton.setImage(R.mipmap.icon_check_gray2)
     bottomButton.setClickListener(View.OnClickListener {
-//      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton())
+      //      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton())
       changeEditBottomButton()
     })
   }
@@ -199,73 +197,73 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     data: Intent?
   ) {
     super.onActivityResult(requestCode, resultCode, data)
-    data?.let {
-      when (requestCode) {
-        ProfileAddressAddActivity.REQUEST_CODE -> handleProfileAddressAddActivity(resultCode, it)
-        SelectMyProfileAddressAddActivity.REQUEST_CODE -> handleSelectMyProfileAddressAddActivity(
-            resultCode, it
-        )
-        SelectModeAddWalletActivity.REQUEST_CODE -> handleSelectModeAddWalletActivity(
-            resultCode, it
-        )
-      }
-    }
+//    data?.let {
+//      when (requestCode) {
+//        ProfileAddressAddActivity.REQUEST_CODE -> handleProfileAddressAddActivity(resultCode, it)
+//        SelectMyProfileAddressAddActivity.REQUEST_CODE -> handleSelectMyProfileAddressAddActivity(
+//            resultCode, it
+//        )
+//        SelectModeAddWalletActivity.REQUEST_CODE -> handleSelectModeAddWalletActivity(
+//            resultCode, it
+//        )
+//      }
+//    }
   }
 
   private fun handleProfileAddressAddActivity(
     resultCode: Int,
     intent: Intent
   ) {
-    if (resultCode == Activity.RESULT_OK) {
-      val item =
-        intent.getSerializableExtra(ProfileAddressAddActivity.INTENT_WALLET_INFO) as WalletInfo
-      MyAddress(walletInfoId = item.id).let {
-        viewModel.insertMyAddress(it)
-      }
-    }
+//    if (resultCode == Activity.RESULT_OK) {
+//      val item =
+//        intent.getSerializableExtra(ProfileAddressAddActivity.INTENT_WALLET_INFO) as WalletInfo
+//      MyAddress(walletInfoId = item.id).let {
+//        viewModel.insertMyAddress(it)
+//      }
+//    }
   }
 
   private fun handleSelectMyProfileAddressAddActivity(
     resultCode: Int,
     intent: Intent
   ) {
-    if (resultCode == Activity.RESULT_OK) {
-      val list = intent.getSerializableExtra(
-          SelectMyProfileAddressAddActivity.KEY_WALLET_ADD_ENTITIES
-      ) as ArrayList<WalletAddEntity>
-      for (item in list) {
-        if (item.isSelected) {
-          viewModel.insertWalletInfo(
-              WalletInfo(
-                  walletName = item.walletName,
-                  walletAddress = item.walletAddress
-              )
-          )
-        }
-      }
-    }
+//    if (resultCode == Activity.RESULT_OK) {
+//      val list = intent.getSerializableExtra(
+//          SelectMyProfileAddressAddActivity.KEY_WALLET_ADD_ENTITIES
+//      ) as ArrayList<WalletAddEntity>
+//      for (item in list) {
+//        if (item.isSelected) {
+//          viewModel.insertWalletInfo(
+//              WalletInfo(
+//                  walletName = item.walletName,
+//                  walletAddress = item.walletAddress
+//              )
+//          )
+//        }
+//      }
+//    }
   }
 
   private fun handleSelectModeAddWalletActivity(
     resultCode: Int,
     intent: Intent
   ) {
-    if (resultCode == Activity.RESULT_OK) {
-      val item = intent.getSerializableExtra(
-          SelectModeAddWalletActivity.KEY_MODE
-      ) as SelectModeAddWalletActivity.Mode
-      if (item == SelectModeAddWalletActivity.Mode.Wallet) {
-        startActivityForResult(
-            SelectMyProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
-            SelectMyProfileAddressAddActivity.REQUEST_CODE
-        )
-      } else if (item == SelectModeAddWalletActivity.Mode.Direct) {
-        startActivityForResult(
-            ProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
-            ProfileAddressAddActivity.REQUEST_CODE
-        )
-      }
-    }
+//    if (resultCode == Activity.RESULT_OK) {
+//      val item = intent.getSerializableExtra(
+//          SelectModeAddWalletActivity.KEY_MODE
+//      ) as SelectModeAddWalletActivity.Mode
+//      if (item == SelectModeAddWalletActivity.Mode.Wallet) {
+//        startActivityForResult(
+//            SelectMyProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
+//            SelectMyProfileAddressAddActivity.REQUEST_CODE
+//        )
+//      } else if (item == SelectModeAddWalletActivity.Mode.Direct) {
+//        startActivityForResult(
+//            ProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
+//            ProfileAddressAddActivity.REQUEST_CODE
+//        )
+//      }
+//    }
   }
 
   companion object {

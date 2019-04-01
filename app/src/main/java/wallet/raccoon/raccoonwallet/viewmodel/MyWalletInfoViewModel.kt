@@ -47,16 +47,16 @@ class MyWalletInfoViewModel @Inject constructor(private val store: MyWalletInfoS
         .let {
           addDisposable(it)
         }
-    RxBus.receive(WalletInfoEvent::class.java)
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe {
-          if (it is WalletInfoEvent.InsertWalletInfo) {
-            walletInfoItems.add(it.walletInfo)
-          } else if (it is WalletInfoEvent.UpdateWalletInfo) {
-            mergeWalletInfo(it.walletInfo)
-          }
-          walletInfoUpdatedLiveData.value = Unit
-        }.let { addDisposable(it) }
+//    RxBus.receive(WalletInfoEvent::class.java)
+//        .observeOn(AndroidSchedulers.mainThread())
+//        .subscribe {
+//          if (it is WalletInfoEvent.InsertWalletInfo) {
+//            walletInfoItems.add(it.walletInfo)
+//          } else if (it is WalletInfoEvent.UpdateWalletInfo) {
+//            mergeWalletInfo(it.walletInfo)
+//          }
+//          walletInfoUpdatedLiveData.value = Unit
+//        }.let { addDisposable(it) }
   }
 
   private fun mergeWalletInfo(walletInfo: WalletInfo) {
@@ -90,6 +90,6 @@ class MyWalletInfoViewModel @Inject constructor(private val store: MyWalletInfoS
   }
 
   fun sendBusMasterWallet(walletInfo: WalletInfo) {
-    RxBus.send(MasterWalletInfoEvent(walletInfo))
+//    RxBus.send(MasterWalletInfoEvent(walletInfo))
   }
 }

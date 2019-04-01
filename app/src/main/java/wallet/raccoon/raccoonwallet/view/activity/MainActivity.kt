@@ -15,7 +15,11 @@ import com.google.android.material.tabs.TabLayout
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.drawerLayout
+import kotlinx.android.synthetic.main.activity_main.navigationRecyclerView
+import kotlinx.android.synthetic.main.activity_main.nemIcon
+import kotlinx.android.synthetic.main.activity_main.tabLayout
+import kotlinx.android.synthetic.main.activity_main.viewpager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,13 +34,14 @@ import wallet.raccoon.raccoonwallet.model.DrawerItemType
 import wallet.raccoon.raccoonwallet.model.MainBottomNavigationType
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.util.ToastUtil
+import wallet.raccoon.raccoonwallet.view.activity.profile.MyAddressProfileActivity
 import wallet.raccoon.raccoonwallet.view.adapter.TopFragmentPagerAdapter
 import wallet.raccoon.raccoonwallet.view.controller.DrawerListController
 import wallet.raccoon.raccoonwallet.view.fragment.SplashFragment
 import wallet.raccoon.raccoonwallet.viewmodel.MainActivityViewModel
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasSupportFragmentInjector{
+class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
   private lateinit var viewModel: MainActivityViewModel
   @Inject
@@ -67,6 +72,10 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
     viewModel.navigationClickEvent.observe(this, Observer {
       // TODO 遷移をそれぞれ実装　ドロワー
       ToastUtil.show(this, R.string.app_name)
+    })
+
+    viewModel.navigationHeaderClickEvent.observe(this, Observer {
+      startActivity(MyAddressProfileActivity.createIntent(this))
     })
 
     viewModel.splashCompleteEvent.observe(this, Observer {
@@ -104,7 +113,7 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
     viewpager.adapter = adapter
     tabLayout.setupWithViewPager(viewpager)
     viewpager.currentItem =
-        HOME_POSITION
+      HOME_POSITION
     viewpager.offscreenPageLimit = 5
   }
 
@@ -226,7 +235,8 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
 
   private val shouldShowSplash by lazy {
     intent.getBooleanExtra(
-        ARG_SHOULD_SHOW_SPLASH, true)
+        ARG_SHOULD_SHOW_SPLASH, true
+    )
   }
 
   companion object {
@@ -243,7 +253,8 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector{
       val intent =
         createIntent(context)
       intent.putExtra(
-          ARG_SHOULD_SHOW_SPLASH, showSplash)
+          ARG_SHOULD_SHOW_SPLASH, showSplash
+      )
       return intent
     }
   }

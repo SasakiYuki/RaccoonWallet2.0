@@ -15,6 +15,7 @@ class MainActivityViewModel @Inject constructor(
 ) : BaseViewModel() {
   val myProfileData: MutableLiveData<MyProfileEntity> = MutableLiveData()
   val navigationClickEvent: MutableLiveData<DrawerEntity> = MutableLiveData()
+  val navigationHeaderClickEvent:MutableLiveData<Unit> = MutableLiveData()
   val splashCompleteEvent: MutableLiveData<Unit> = MutableLiveData()
 
   init {

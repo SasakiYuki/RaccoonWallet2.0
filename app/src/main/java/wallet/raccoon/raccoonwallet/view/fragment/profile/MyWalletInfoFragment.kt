@@ -100,11 +100,11 @@ class MyWalletInfoFragment : BaseFragment() {
   }
 
   private fun onClickEditRow(walletInfo: WalletInfo) {
-    activity?.let {
-      startActivity(ProfileAddressAddActivity.createIntent(it,
-          ProfileAddressAddActivity.ProfileAddressAddType.Edit,
-          walletInfo))
-    }
+//    activity?.let {
+//      startActivity(ProfileAddressAddActivity.createIntent(it,
+//          ProfileAddressAddActivity.ProfileAddressAddType.Edit,
+//          walletInfo))
+//    }
   }
 
   private fun onClickDeleteRow(walletInfo: WalletInfo) {

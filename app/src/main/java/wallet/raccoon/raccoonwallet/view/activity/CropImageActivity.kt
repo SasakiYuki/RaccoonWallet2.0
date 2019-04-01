@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_crop_image.cropImageView
 import kotlinx.android.synthetic.main.activity_crop_image.rotateLeftButton
 import kotlinx.android.synthetic.main.activity_crop_image.rotateRightButton
 import kotlinx.android.synthetic.main.activity_crop_image.saveButton
+import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.extentions.checkPermission
 import wallet.raccoon.raccoonwallet.viewmodel.CropImageViewModel
