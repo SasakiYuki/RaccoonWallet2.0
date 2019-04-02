@@ -29,6 +29,7 @@ import wallet.raccoon.raccoonwallet.model.db.MyAddress
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.CHANGE
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.COMPLETE
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.EDIT
+import wallet.raccoon.raccoonwallet.type.event.WalletInfoEvent
 import wallet.raccoon.raccoonwallet.view.activity.BaseActivity
 import wallet.raccoon.raccoonwallet.view.adapter.SimpleViewPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
@@ -67,7 +68,7 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
         MyAddress(walletInfoId = it.id).let {
           viewModel.insertMyAddress(it)
         }
-//        RxBus.send(WalletInfoEvent.InsertWalletInfo(it))
+        viewModel.walletInfoEvent.postValue(WalletInfoEvent.InsertWalletInfo(it))
       })
       myProfileEntityEvent.observe(this@MyAddressProfileActivity, Observer {
         it ?: return@Observer

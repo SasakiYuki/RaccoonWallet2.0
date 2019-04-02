@@ -8,6 +8,7 @@ import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.model.db.MyAddress
 import wallet.raccoon.raccoonwallet.model.db.WalletInfo
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType
+import wallet.raccoon.raccoonwallet.type.event.WalletInfoEvent
 import wallet.raccoon.raccoonwallet.viewmodel.BaseViewModel
 import javax.inject.Inject
 
@@ -17,6 +18,7 @@ class MyAddressProfileViewModel @Inject constructor(private val store: MyAddress
   val myProfileEntityEvent: MutableLiveData<MyProfileEntity> = MutableLiveData()
   val insertWalletInfoLiveData: MutableLiveData<WalletInfo> = MutableLiveData()
   val bottomButtonEvent: MutableLiveData<MyAddressBottomButtonType> = MutableLiveData()
+  val walletInfoEvent:MutableLiveData<WalletInfoEvent> = MutableLiveData()
 
   init {
     store.getter.insertMyAddressObservable
