@@ -11,6 +11,7 @@
 
   <com.google.android.material.appbar.AppBarLayout
       android:id="@+id/appbar"
+      android:elevation="20dp"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       >
@@ -44,7 +45,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="20dp"
+        android:elevation="4dp"
         app:tabBackground="@android:color/white"
         />
   </com.google.android.material.appbar.AppBarLayout>
