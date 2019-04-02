@@ -30,10 +30,13 @@
         android:theme="@style/SendSettingActivity">
     </activity>
     <activity android:name=".view.activity.SelectWalletActivity"/>
-    <activity android:name=".view.activity.profile.MyAddressProfileActivity"
+    <activity
+        android:name=".view.activity.profile.MyAddressProfileActivity"
         android:theme="@style/SendSettingActivity">
     </activity>
     <activity android:name=".view.activity.CropImageActivity">
+    </activity>
+    <activity android:name=".view.activity.profile.SelectModeAddWalletActivity">
     </activity>
   </application>
 
