@@ -26,6 +26,9 @@ import wallet.raccoon.raccoonwallet.extentions.buildSpannableText
 import wallet.raccoon.raccoonwallet.extentions.setSpan
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.model.db.MyAddress
+import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.CHANGE
+import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.COMPLETE
+import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.EDIT
 import wallet.raccoon.raccoonwallet.view.activity.BaseActivity
 import wallet.raccoon.raccoonwallet.view.adapter.SimpleViewPagerAdapter
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
@@ -166,18 +169,18 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_add)
     bottomButton.setImage(R.mipmap.icon_plus)
     bottomButton.setClickListener(View.OnClickListener {
-            startActivityForResult(
+      startActivityForResult(
           SelectModeAddWalletActivity.createIntent(this), SelectModeAddWalletActivity.REQUEST_CODE
       )
     })
-//    RxBus.send(MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton())
+    viewModel.bottomButtonEvent.postValue(CHANGE)
   }
 
   private fun changeEditBottomButton() {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_edit)
     bottomButton.setImage(R.mipmap.icon_pencil)
     bottomButton.setClickListener(View.OnClickListener {
-      //      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickEditBottomButton())
+      viewModel.bottomButtonEvent.postValue(EDIT)
       changeCompleteBottomButton()
     })
   }
@@ -186,7 +189,7 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_complete)
     bottomButton.setImage(R.mipmap.icon_check_gray2)
     bottomButton.setClickListener(View.OnClickListener {
-      //      RxBus.send(MyAddressProfileBottomButtonEvent.OnClickCompleteBottomButton())
+      viewModel.bottomButtonEvent.postValue(COMPLETE)
       changeEditBottomButton()
     })
   }

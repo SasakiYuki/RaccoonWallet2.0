@@ -31,8 +31,13 @@ import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.extentions.getColorFromResource
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
+import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.CHANGE
+import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.COMPLETE
+import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.EDIT
 import wallet.raccoon.raccoonwallet.view.activity.CropImageActivity
+import wallet.raccoon.raccoonwallet.view.activity.profile.MyAddressProfileActivity
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
+import wallet.raccoon.raccoonwallet.viewmodel.profile.MyAddressProfileViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.profile.MyProfileInfoViewModel
 import javax.inject.Inject
 
@@ -57,6 +62,31 @@ class MyProfileInfoFragment : BaseFragment() {
     super.onViewCreated(view, savedInstanceState)
     setupViews()
     setupViewModel()
+
+    if (activity != null && activity is MyAddressProfileActivity) {
+      ViewModelProviders.of(activity!!, viewModelFactory)
+          .get(MyAddressProfileViewModel::class.java)
+          .let { viewModel ->
+            viewModel.bottomButtonEvent.observe(this, Observer {
+              when (it) {
+                CHANGE -> {
+                  updateMyProfile()
+                  disableEditTexts()
+                  disableEditImageViews()
+                }
+                EDIT -> {
+                  enableEditTexts()
+                  enableEditImageViews()
+                }
+                COMPLETE -> {
+                  updateMyProfile()
+                  disableEditTexts()
+                  disableEditImageViews()
+                }
+              }
+            })
+          }
+    }
   }
 
   private fun setupViews() {
@@ -68,7 +98,7 @@ class MyProfileInfoFragment : BaseFragment() {
 
   private fun setupInfoButton() {
     infoButton.setOnClickListener {
-//      RaccoonAlertDialog.createDialog(
+      //      RaccoonAlertDialog.createDialog(
 //          RaccoonAlertViewModel(), getString(R.string.my_profile_info_fragment_alert_dialog_title),
 //          getString(R.string.my_profile_info_fragment_alert_dialog_message),
 //          getString(R.string.com_ok)
