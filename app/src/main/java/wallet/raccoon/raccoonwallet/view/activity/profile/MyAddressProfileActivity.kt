@@ -166,9 +166,9 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     bottomButton.setText(R.string.my_address_profile_activity_bottom_button_add)
     bottomButton.setImage(R.mipmap.icon_plus)
     bottomButton.setClickListener(View.OnClickListener {
-      //      startActivityForResult(
-//          SelectModeAddWalletActivity.createIntent(this), SelectModeAddWalletActivity.REQUEST_CODE
-//      )
+            startActivityForResult(
+          SelectModeAddWalletActivity.createIntent(this), SelectModeAddWalletActivity.REQUEST_CODE
+      )
     })
 //    RxBus.send(MyAddressProfileBottomButtonEvent.OnChangeEditBottomButton())
   }
