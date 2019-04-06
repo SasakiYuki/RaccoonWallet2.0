@@ -53,7 +53,7 @@ class SelectWalletActivity : BaseActivity() {
         })
 
         viewModel.navigationCreateWalletClickEvent.observe(this, Observer {
-            //todo ウォレット作成へ遷移させる
+            startActivity(WalletCreateActivity.createIntent(this))
         })
 
         viewModel.navigationSettingClickEvent.observe(this, Observer {
