@@ -2,7 +2,7 @@ package wallet.raccoon.raccoonwallet.view.fragment.tutorial
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_tutorial_lesson_private_key_display.button
+import kotlinx.android.synthetic.main.fragment_tutorial_lesson_private_key_description.*
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.type.TutorialType
 import wallet.raccoon.raccoonwallet.type.TutorialType.NEWBIE

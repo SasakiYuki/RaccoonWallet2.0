@@ -18,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import wallet.raccoon.raccoonwallet.R
 import wallet.raccoon.raccoonwallet.di.ViewModelFactory
+import wallet.raccoon.raccoonwallet.util.WalletProvider
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
 import wallet.raccoon.raccoonwallet.viewmodel.TutorialCreateNewWalletViewModel
 import javax.inject.Inject
@@ -83,9 +84,13 @@ class TutorialCreateNewWalletFragment : BaseFragment() {
     }
 
     private fun setupViewModel() {
-        viewModel.createAndInsertWallet.observe(this, Observer { address ->
+        viewModel.createAndInsertWallet.observe(this, Observer { wallet ->
             hideProgress()
-            replaceFragment(TutorialWalletAddressDisplayFragment.newInstance(editText.text.toString(), address), true)
+
+            WalletProvider.wallet = wallet
+            replaceFragment(
+                TutorialWalletAddressDisplayFragment.newInstance(editText.text.toString(), wallet.address), true
+            )
         })
     }
 

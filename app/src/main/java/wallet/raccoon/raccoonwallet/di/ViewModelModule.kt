@@ -52,4 +52,9 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TutorialCreateNewWalletViewModel::class)
     abstract fun bindTutorialCreateNewWalletFragmentViewModel(viewModel: TutorialCreateNewWalletViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TutorialLessonPrivateKeyDisplayViewModel::class)
+    abstract fun bindTutorialLessonPrivateKeyDisplayFragmentViewModel(viewModel: TutorialLessonPrivateKeyDisplayViewModel): ViewModel
 }

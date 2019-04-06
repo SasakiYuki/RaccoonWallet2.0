@@ -32,7 +32,7 @@ internal abstract class ActivityBuilderModule {
 
     @ActivityScope
     @ContributesAndroidInjector(
-        modules = [(WalletCreateActivityModule::class), (TutorialCreateNewWalletModule::class)]
+        modules = [(WalletCreateActivityModule::class), (TutorialCreateNewWalletModule::class), (TutorialLessonPrivateKeyDisplayModule::class)]
     )
     abstract fun bindWalletCreateActivity(): WalletCreateActivity
 }

@@ -16,4 +16,6 @@ class TutorialCreateNewWalletUseCase @Inject constructor(
     }
 
     suspend fun insertWallet(wallet: Wallet) = walletRepository.saveWallet(wallet)
+
+    suspend fun getWalletById(walletId: Long) = walletRepository.getWalletById(walletId)
 }

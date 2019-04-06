@@ -30,4 +30,11 @@ class WalletRepository @Inject constructor(private val walletDao: WalletDao) {
             encryptedSecretKey = encryptedSecretKey
         )
     }
+
+    suspend fun decryptPrivateKey(walletId: Long, pin: ByteArray): String {
+        val wallet = getWalletById(walletId)
+
+        return AesCryptographer.decrypt(wallet.encryptedSecretKey, wallet.salt, pin.toString(Charsets.UTF_8))
+            .toString(Charsets.UTF_8)
+    }
 }
