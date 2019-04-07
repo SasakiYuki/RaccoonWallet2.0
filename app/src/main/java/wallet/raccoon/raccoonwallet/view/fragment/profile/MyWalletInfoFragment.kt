@@ -16,8 +16,10 @@ import wallet.raccoon.raccoonwallet.di.ViewModelFactory
 import wallet.raccoon.raccoonwallet.extentions.copyClipBoard
 import wallet.raccoon.raccoonwallet.extentions.showToast
 import wallet.raccoon.raccoonwallet.model.db.WalletInfo
+import wallet.raccoon.raccoonwallet.type.ProfileAddressAddType
 import wallet.raccoon.raccoonwallet.type.event.WalletInfoEvent
 import wallet.raccoon.raccoonwallet.view.activity.profile.MyAddressProfileActivity
+import wallet.raccoon.raccoonwallet.view.activity.profile.ProfileAddressAddActivity
 import wallet.raccoon.raccoonwallet.view.controller.WalletInfoClickListener
 import wallet.raccoon.raccoonwallet.view.controller.WalletInfoListController
 import wallet.raccoon.raccoonwallet.view.fragment.BaseFragment
@@ -135,11 +137,12 @@ class MyWalletInfoFragment : BaseFragment() {
   }
 
   private fun onClickEditRow(walletInfo: WalletInfo) {
-//    activity?.let {
-//      startActivity(ProfileAddressAddActivity.createIntent(it,
-//          ProfileAddressAddActivity.ProfileAddressAddType.Edit,
-//          walletInfo))
-//    }
+    activity?.let {
+      startActivity(
+          ProfileAddressAddActivity.createIntent(it,
+          ProfileAddressAddType.Edit,
+          walletInfo))
+    }
   }
 
   private fun onClickDeleteRow(walletInfo: WalletInfo) {

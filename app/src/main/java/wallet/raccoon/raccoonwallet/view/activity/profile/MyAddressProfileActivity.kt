@@ -1,5 +1,6 @@
 package wallet.raccoon.raccoonwallet.view.activity.profile
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -26,6 +27,7 @@ import wallet.raccoon.raccoonwallet.extentions.buildSpannableText
 import wallet.raccoon.raccoonwallet.extentions.setSpan
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
 import wallet.raccoon.raccoonwallet.model.db.MyAddress
+import wallet.raccoon.raccoonwallet.model.db.WalletInfo
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.CHANGE
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.COMPLETE
 import wallet.raccoon.raccoonwallet.type.MyAddressBottomButtonType.EDIT
@@ -201,30 +203,30 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     data: Intent?
   ) {
     super.onActivityResult(requestCode, resultCode, data)
-//    data?.let {
-//      when (requestCode) {
-//        ProfileAddressAddActivity.REQUEST_CODE -> handleProfileAddressAddActivity(resultCode, it)
+    data?.let {
+      when (requestCode) {
+        ProfileAddressAddActivity.REQUEST_CODE -> handleProfileAddressAddActivity(resultCode, it)
 //        SelectMyProfileAddressAddActivity.REQUEST_CODE -> handleSelectMyProfileAddressAddActivity(
 //            resultCode, it
 //        )
-//        SelectModeAddWalletActivity.REQUEST_CODE -> handleSelectModeAddWalletActivity(
-//            resultCode, it
-//        )
-//      }
-//    }
+        SelectModeAddWalletActivity.REQUEST_CODE -> handleSelectModeAddWalletActivity(
+            resultCode, it
+        )
+      }
+    }
   }
 
   private fun handleProfileAddressAddActivity(
     resultCode: Int,
     intent: Intent
   ) {
-//    if (resultCode == Activity.RESULT_OK) {
-//      val item =
-//        intent.getSerializableExtra(ProfileAddressAddActivity.INTENT_WALLET_INFO) as WalletInfo
-//      MyAddress(walletInfoId = item.id).let {
-//        viewModel.insertMyAddress(it)
-//      }
-//    }
+    if (resultCode == Activity.RESULT_OK) {
+      val item =
+        intent.getSerializableExtra(ProfileAddressAddActivity.INTENT_WALLET_INFO) as WalletInfo
+      MyAddress(walletInfoId = item.id).let {
+        viewModel.insertMyAddress(it)
+      }
+    }
   }
 
   private fun handleSelectMyProfileAddressAddActivity(
@@ -252,22 +254,22 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     resultCode: Int,
     intent: Intent
   ) {
-//    if (resultCode == Activity.RESULT_OK) {
-//      val item = intent.getSerializableExtra(
-//          SelectModeAddWalletActivity.KEY_MODE
-//      ) as SelectModeAddWalletActivity.Mode
-//      if (item == SelectModeAddWalletActivity.Mode.Wallet) {
+    if (resultCode == Activity.RESULT_OK) {
+      val item = intent.getSerializableExtra(
+          SelectModeAddWalletActivity.KEY_MODE
+      ) as SelectModeAddWalletActivity.Mode
+      if (item == SelectModeAddWalletActivity.Mode.Wallet) {
 //        startActivityForResult(
 //            SelectMyProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
 //            SelectMyProfileAddressAddActivity.REQUEST_CODE
 //        )
-//      } else if (item == SelectModeAddWalletActivity.Mode.Direct) {
-//        startActivityForResult(
-//            ProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
-//            ProfileAddressAddActivity.REQUEST_CODE
-//        )
-//      }
-//    }
+      } else if (item == SelectModeAddWalletActivity.Mode.Direct) {
+        startActivityForResult(
+            ProfileAddressAddActivity.createIntent(this@MyAddressProfileActivity),
+            ProfileAddressAddActivity.REQUEST_CODE
+        )
+      }
+    }
   }
 
   companion object {
