@@ -14,6 +14,7 @@ import wallet.raccoon.raccoonwallet.viewmodel.SelectWalletViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.SplashFragmentViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.profile.MyAddressProfileViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.profile.MyProfileInfoViewModel
+import wallet.raccoon.raccoonwallet.viewmodel.profile.ProfileAddressAddViewModel
 import wallet.raccoon.raccoonwallet.viewmodel.send.SendActivityViewModel
 
 @Module
@@ -70,4 +71,9 @@ internal abstract class ViewModelModule {
   @IntoMap
   @ViewModelKey(MyProfileInfoViewModel::class)
   abstract fun bindMyProfileInfoViewModel(viewModel: MyProfileInfoViewModel): ViewModel
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(ProfileAddressAddViewModel::class)
+  abstract fun bindProfileAddressAddViewModel(viewModel: ProfileAddressAddViewModel): ViewModel
 }
