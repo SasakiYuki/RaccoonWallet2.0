@@ -4,15 +4,18 @@ import io.reactivex.Single
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import wallet.raccoon.raccoonwallet.db.dao.WalletInfoDao
 import wallet.raccoon.raccoonwallet.model.MyProfileEntity
+import wallet.raccoon.raccoonwallet.model.db.WalletInfo
 import wallet.raccoon.raccoonwallet.util.SharedPreferenceUtils
 import javax.inject.Inject
 
 class MyProfileRepository @Inject constructor(
-  private val sharedPreferenceUtils: SharedPreferenceUtils
+  private val sharedPreferenceUtils: SharedPreferenceUtils,
+  private val walletInfoDao: WalletInfoDao
 ) {
 
-  fun loadMyProfile(): Deferred<MyProfileEntity?> =
+  fun loadMyProfileAsync(): Deferred<MyProfileEntity?> =
     GlobalScope.async {
       sharedPreferenceUtils.myProfile
     }
@@ -29,4 +32,21 @@ class MyProfileRepository @Inject constructor(
       emitter.onSuccess(entity)
     }
   }
+
+  fun insertWalletInfoAsync(entity: WalletInfo): Deferred<WalletInfo> =
+    GlobalScope.async {
+      WalletInfo(
+          walletInfoDao.insert(entity),
+          entity.walletName,
+          entity.walletAddress,
+          entity.isMaster
+      )
+    }
+
+  fun updateWalletInfoAsync(walletInfo: WalletInfo): Deferred<WalletInfo> =
+    GlobalScope.async {
+      walletInfoDao.update(walletInfo)
+      walletInfo
+    }
+
 }

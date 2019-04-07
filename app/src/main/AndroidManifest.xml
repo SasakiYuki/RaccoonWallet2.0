@@ -38,6 +38,8 @@
     </activity>
     <activity android:name=".view.activity.profile.SelectModeAddWalletActivity">
     </activity>
+    <activity android:name=".view.activity.profile.ProfileAddressAddActivity">
+    </activity>
   </application>
 
 </manifest>
