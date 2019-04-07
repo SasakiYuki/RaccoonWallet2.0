@@ -22,24 +22,24 @@ class ProfileAddressAddViewModel @Inject constructor(
     store.getter.insertObservable
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
+        .subscribe {
           insertLiveData.value = it
-//          RxBus.send(WalletInfoEvent.InsertWalletInfo(it))
-        })
+        }
         .let { addDisposable(it) }
     store.getter.updateObservable
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
+        .subscribe {
           updateLiveData.value = it
-//          RxBus.send(WalletInfoEvent.UpdateWalletInfo(it))
-        })
+        }
+        .let { addDisposable(it) }
     store.getter.errorObservable
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
+        .subscribe {
           errorLiveData.value = it
-        })
+        }
+        .let { addDisposable(it) }
   }
 
   suspend fun insert(walletInfo: WalletInfo) {
