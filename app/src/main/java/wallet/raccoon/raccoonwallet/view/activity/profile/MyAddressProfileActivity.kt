@@ -54,6 +54,10 @@ class MyAddressProfileActivity : BaseActivity(), HasSupportFragmentInjector {
     AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
     setupViewModel()
+  }
+
+  override fun onResume() {
+    super.onResume()
     setupViews()
   }
 

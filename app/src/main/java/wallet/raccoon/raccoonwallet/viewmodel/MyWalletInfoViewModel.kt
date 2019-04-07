@@ -31,10 +31,15 @@ class MyWalletInfoViewModel @Inject constructor(private val store: MyWalletInfoS
     store.getter.walletInfoObservable
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe({
-          walletInfoItems.add(it)
+        .subscribe {walletInfo ->
+          for (item in walletInfoItems) {
+            if (walletInfo.id == item.id) {
+              return@subscribe
+            }
+          }
+          walletInfoItems.add(walletInfo)
           walletInfoUpdatedLiveData.value = Unit
-        })
+        }
         .let {
           addDisposable(it)
         }

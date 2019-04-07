@@ -139,9 +139,12 @@ class MyWalletInfoFragment : BaseFragment() {
   private fun onClickEditRow(walletInfo: WalletInfo) {
     activity?.let {
       startActivity(
-          ProfileAddressAddActivity.createIntent(it,
-          ProfileAddressAddType.Edit,
-          walletInfo))
+          ProfileAddressAddActivity.createIntent(
+              it,
+              ProfileAddressAddType.Edit,
+              walletInfo
+          )
+      )
     }
   }
 
